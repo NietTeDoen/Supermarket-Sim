@@ -1,7 +1,6 @@
-package com.example.supermarketsim;
+package Classes;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class SupermarketSimulator {
     public static void main(String[] args) {

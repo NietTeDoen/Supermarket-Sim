@@ -1,4 +1,4 @@
-package com.example.supermarketsim;
+package Classes;
 
 import javax.swing.*;
 import java.awt.*;

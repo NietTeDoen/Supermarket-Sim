@@ -1,6 +1,5 @@
-module com.example.supermarketsim {
+module supermarketsim {
     requires java.desktop;
 
-    opens com.example.supermarketsim to javafx.fxml;
-    exports com.example.supermarketsim;
+    exports Classes;
 }
