@@ -9,22 +9,31 @@ public class Main {
     public static void main(String[] args) throws IOException {
         SwingUtilities.invokeLater(() -> {
             try {
-                CreateAndShowGUI();
+                SetupApplication();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         });
     }
 
-    private static void CreateAndShowGUI() throws IOException {
-        JFrame frame = new JFrame("Supermarket Simulator");
-        JButton button = new JButton("Simulate");
-        frame.add(button);
+    private static void SetupApplication() throws IOException {
+        SwingUtilities.invokeLater(() -> {
+            JFrame frame = new JFrame("Supermarket Simulator");
 
-        frame.add(new SimulationPanel());
+            ImageIcon icon = new ImageIcon(Main.class.getResource("/images/Logo.png"));
+            frame.setIconImage(icon.getImage());
 
-        frame.setSize(1280,720);
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        frame.setVisible(true);
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+            frame.setVisible(true);
+
+            try {
+                frame.add(new SimulationPanel());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+        });
     }
+
 }
