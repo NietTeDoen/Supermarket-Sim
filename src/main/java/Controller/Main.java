@@ -1,4 +1,6 @@
-package Classes;
+package Controller;
+
+import View.SimulationPanel;
 
 import javax.swing.*;
 import java.io.IOException;
