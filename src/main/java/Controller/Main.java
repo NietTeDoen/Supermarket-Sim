@@ -1,5 +1,7 @@
 package Controller;
 
+import Model.Person;
+import Model.Winkelwagen;
 import View.SimulationPanel;
 
 import javax.swing.*;
