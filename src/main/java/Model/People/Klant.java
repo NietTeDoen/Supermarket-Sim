@@ -1,7 +1,8 @@
-package Model;
+package Model.People;
+
+import Model.Store.Product;
 
 import java.util.List;
-import java.util.UUID;
 
 public class Klant extends  Person {
     private List<Product> ProductsList;

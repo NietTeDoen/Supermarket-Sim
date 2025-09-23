@@ -1,6 +1,4 @@
-package Model;
-
-import javax.swing.text.StyledEditorKit;
+package Model.People;
 
 public class Medewerker extends Person {
     private String Taak;

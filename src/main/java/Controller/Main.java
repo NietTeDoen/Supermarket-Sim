@@ -1,7 +1,5 @@
 package Controller;
 
-import Model.Person;
-import Model.Winkelwagen;
 import View.SimulationPanel;
 
 import javax.swing.*;
@@ -11,8 +9,13 @@ public class Main {
     public static void main(String[] args) throws IOException {
         SwingUtilities.invokeLater(() -> {
             try {
+                System.out.println("Starting Tick Controller...");
+                TickController tickController = new TickController();
+                tickController.start();
                 SetupApplication();
             } catch (IOException e) {
+                throw new RuntimeException(e);
+            } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
         });

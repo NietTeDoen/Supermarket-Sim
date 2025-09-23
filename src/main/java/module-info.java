@@ -3,5 +3,7 @@ module supermarketsim {
 
     exports Controller;
     exports View;
-    exports Model;
+    exports Model.Logic;
+    exports Model.People;
+    exports Model.Store;
 }

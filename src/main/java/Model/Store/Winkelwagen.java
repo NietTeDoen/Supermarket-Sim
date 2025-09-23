@@ -1,4 +1,4 @@
-package Model;
+package Model.Store;
 
 import java.util.List;
 import java.util.UUID;

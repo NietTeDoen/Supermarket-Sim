@@ -1,4 +1,4 @@
-package Model;
+package Model.Store;
 
 import java.util.Map;
 

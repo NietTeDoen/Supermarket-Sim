@@ -1,4 +1,4 @@
-package Model;
+package Model.People;
 
 import java.util.UUID;
 

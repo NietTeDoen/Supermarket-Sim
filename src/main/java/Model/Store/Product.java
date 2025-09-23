@@ -1,4 +1,4 @@
-package Model;
+package Model.Store;
 
 public class Product {
     private String Name;
