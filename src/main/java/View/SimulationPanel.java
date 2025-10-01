@@ -9,7 +9,7 @@ import java.io.InputStream;
 
 public class SimulationPanel extends JPanel {
 
-    InputStream background = getClass().getResourceAsStream("/images/background.png");
+    InputStream background = getClass().getResourceAsStream("/images/tempbackground.png");
     BufferedImage image = ImageIO.read(background);
 
     public SimulationPanel() throws IOException {
