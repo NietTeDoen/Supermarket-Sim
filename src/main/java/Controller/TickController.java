@@ -23,7 +23,7 @@ public class TickController {
         if(count < 30)
             count++;
         else {
-            System.out.println("Tick " + (System.currentTimeMillis() - nextTick));
+//            System.out.println("Tick " + (System.currentTimeMillis() - nextTick));
             count = 0;
         }
     }
