@@ -20,6 +20,6 @@ public class World
 
         Schappen.add(new Schap(0,0));
 
-        Persons.add(new Person(5f, new Integer[]{0,0}, new Integer[]{0,0} , null));
+        //Persons.add(new Person(5f, new Integer[]{0,0}, new Node[]{0,0} , null));
     }
 }

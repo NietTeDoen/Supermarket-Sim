@@ -11,10 +11,10 @@ import java.util.List;
 import java.util.Map;
 
 public class Main {
+    public static Map<String, Node> nodes = new HashMap<>();
     public static void main(String[] args) throws IOException {
         SwingUtilities.invokeLater(() -> {
             try {
-                System.out.println("Starting Tick Controller...");
                 TickController tickController = new TickController();
                 SetupApplication();
                 grafen();
@@ -43,25 +43,7 @@ public class Main {
 
         SimulationPanel panel = new SimulationPanel();
 
-        // 🔥 Add mouse listener here
-        panel.addMouseListener(new java.awt.event.MouseAdapter() {
-            @Override
-            public void mouseClicked(java.awt.event.MouseEvent e) {
-                int width = panel.getWidth();
-                int height = panel.getHeight();
-
-                // Absolute coords
-                int absX = e.getX();
-                int absY = e.getY();
-
-                // Relative coords (0.0 → 1.0)
-                double relX = (double) absX / width;
-                double relY = (double) absY / height;
-
-                System.out.println("Clicked at: (" + absX + ", " + absY +
-                        ")  relative=(" + relX + ", " + relY + ")");
-            }
-        });
+        TickController.setPanel(panel);
 
         frame.add(panel);
         frame.setVisible(true);
@@ -73,7 +55,6 @@ public class Main {
         WorldGraph graph = new WorldGraph();
 
         HashMap<String, double[]> nodeCordinates = new HashMap<>();
-        Map<String, Node> nodes = new HashMap<>();
 
         //Dit zijn de relatieve cordinaten. die doen we x de screensize om de goede punten te plaatsen.
         nodeCordinates.put("entrance", new double[]{0.5234375, 0.8140610545790934});
