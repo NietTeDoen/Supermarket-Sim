@@ -14,6 +14,7 @@ public class Person {
 
     private Node startNode;
     private Node endNode;
+    private String[] path;
 
     public Person(Float Speed, Integer[] Positie, Node[] Target, String sprite) {
         PersonId = UUID.randomUUID();

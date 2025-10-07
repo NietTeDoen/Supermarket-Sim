@@ -2,6 +2,8 @@ package Controller;
 
 import Model.Logic.Node;
 import Model.Logic.WorldGraph;
+import Model.Store.Product;
+import Model.Store.Schap;
 import View.SimulationPanel;
 
 import javax.swing.*;
@@ -12,12 +14,16 @@ import java.util.Map;
 
 public class Main {
     public static Map<String, Node> nodes = new HashMap<>();
+    public static Schap[] schappenlijst = new Schap[5];
+
+    public static Product[] productlijst =  new Product[5];
     public static void main(String[] args) throws IOException {
         SwingUtilities.invokeLater(() -> {
             try {
                 TickController tickController = new TickController();
                 SetupApplication();
                 grafen();
+                initiateSchappenLijst();
                   new Thread(() -> {
                     try {
                         tickController.start();
@@ -47,6 +53,30 @@ public class Main {
 
         frame.add(panel);
         frame.setVisible(true);
+    }
+
+    private static void initiateSchappenLijst(){
+        schappenlijst[0] = new Schap(0,0);
+        schappenlijst[1] = new Schap(0,0);
+        schappenlijst[2] = new Schap(0,0);
+        schappenlijst[3] = new Schap(0,0);
+        schappenlijst[4] = new Schap(0,0);
+        schappenlijst[5] = new Schap(0,0);
+
+        productlijst[0] = new Product("Cola", 1.99);
+        productlijst[1] = new Product("Milk", 1.99);
+        productlijst[2] = new Product("Potatoes", 1.99);
+        productlijst[3] = new Product("Pork", 1.99);
+        productlijst[4] = new Product("Carrot", 1.99);
+        productlijst[5] = new Product("Cookie", 1.99);
+
+        for (int i = 0; i < 5; i++) {
+            schappenlijst[i].AddProduct(productlijst[i], 24);
+        }
+    }
+
+    private void initiatecustomer(){
+        //TODO
     }
 
 
