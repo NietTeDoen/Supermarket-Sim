@@ -10,9 +10,9 @@ import java.util.List;
 
 public class World
 {
-    private List<Kassa> kassas = new ArrayList<Kassa>();
-    private List<Schap> Schappen =  new ArrayList<Schap>();
-    private List<Person> Persons = new ArrayList<Person>();
+    public List<Kassa> kassas = new ArrayList<Kassa>();
+    public List<Schap> Schappen =  new ArrayList<Schap>();
+    public List<Person> Persons = new ArrayList<Person>();
 
     public  World()
     {

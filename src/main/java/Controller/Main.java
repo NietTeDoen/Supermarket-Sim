@@ -2,6 +2,8 @@ package Controller;
 
 import Model.Logic.Node;
 import Model.Logic.WorldGraph;
+import Model.People.Klant;
+import Model.People.Person;
 import Model.Store.Product;
 import Model.Store.Schap;
 import View.SimulationPanel;
@@ -13,10 +15,24 @@ import java.util.List;
 import java.util.Map;
 
 public class Main {
+    public static SimulationPanel panel;
+
+    static {
+        try {
+            panel = new SimulationPanel();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public static Map<String, Node> nodes = new HashMap<>();
     public static Schap[] schappenlijst = new Schap[5];
 
     public static Product[] productlijst =  new Product[5];
+
+    public Main() throws IOException {
+    }
+
     public static void main(String[] args) throws IOException {
         SwingUtilities.invokeLater(() -> {
             try {
@@ -24,6 +40,7 @@ public class Main {
                 SetupApplication();
                 grafen();
                 initiateSchappenLijst();
+                testperson();
                   new Thread(() -> {
                     try {
                         tickController.start();
@@ -47,12 +64,22 @@ public class Main {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
-        SimulationPanel panel = new SimulationPanel();
-
         TickController.setPanel(panel);
 
         frame.add(panel);
         frame.setVisible(true);
+    }
+
+    private static void testperson(){
+        TickController tickController = new TickController();
+
+        float tempx = (float) 0.5234375 * panel.width;
+        float tempy = (float) 0.8140610545790934 * panel.height;
+        Node[] tempnode = {nodes.get("exit")};
+
+        Integer[] startposition = {(int) tempx, (int) tempy};
+        Person person = new Klant(5f, startposition, tempnode, "", null);
+        tickController.addCharacter(person);
     }
 
     private static void initiateSchappenLijst(){

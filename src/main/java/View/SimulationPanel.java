@@ -16,13 +16,17 @@ public class SimulationPanel extends JPanel {
     InputStream background = getClass().getResourceAsStream("/images/background.png");
     BufferedImage image = ImageIO.read(background);
 
+    public int width  = image.getWidth();
+    public int height = image.getHeight();
+
     public SimulationPanel() throws IOException {
+    }
+    public int[] getRes(){
+        return new int[]{image.getWidth(), image.getHeight()};
     }
 
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        int width = getWidth();
-        int height = getHeight();
         g.drawImage(image, 0, 0, width, height, this);
 
         for (var entry : Main.nodes.entrySet()) {
