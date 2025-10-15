@@ -1,24 +1,141 @@
 package Model.Store;
 
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * De {@code Schap}-klasse stelt een winkelrek (schap) voor in de supermarkt.
+ * <p>
+ * Elk schap heeft een specifieke positie op de map, een bepaald type
+ * en een voorraad van producten. Ook wordt er een afbeelding geladen die het schap visueel
+ * weergeeft in de simulatie.
+ * </p>
+ */
 public class Schap {
-    private Map<Product, Integer> Voorraad;
-    private int[] positie;
 
-    public Schap(int x, int y) {
-        this.positie = new int[x * y];
+    /** X-coördinaat van het schap op het scherm. */
+    private int x;
+
+    /** Y-coördinaat van het schap op het scherm. */
+    private int y;
+
+    /** Het type schap, dat bepaalt welke afbeelding en afmetingen worden gebruikt. */
+    private SchapType type;
+
+    /** De afbeelding die visueel bij dit schap hoort. */
+    private BufferedImage image;
+
+    /** De voorraad van producten in dit schap. */
+    private Map<Product, Integer> voorraad;
+
+    /**
+     * Maakt een nieuw {@code Schap}-object aan met een positie en type.
+     * <p>
+     * De constructor initialiseert een lege voorraad en laadt automatisch
+     * de bijbehorende afbeelding voor het opgegeven {@link SchapType}.
+     * </p>
+     *
+     * @param x    de X-coördinaat van het schap
+     * @param y    de Y-coördinaat van het schap
+     * @param type het type schap dat bepaalt welke afbeelding wordt gebruikt
+     */
+    public Schap(int x, int y, SchapType type) {
+        this.x = x;
+        this.y = y;
+        this.type = type;
+        this.voorraad = new HashMap<>();
+        loadImage();
     }
 
-    public void AddProduct(Product product, int quantity) {
-        Voorraad.put(product, Voorraad.get(product) + quantity);
+    /**
+     * Laadt de afbeelding die bij het {@link SchapType} hoort.
+     * Als de afbeelding niet gevonden kan worden, wordt er een waarschuwing weergegeven
+     * en blijft het {@code image}-veld op {@code null}.
+     */
+    private void loadImage() {
+        try {
+            image = ImageIO.read(getClass().getResource(type.getImagePath()));
+        } catch (IOException | IllegalArgumentException e) {
+            System.err.println("Kon afbeelding niet laden voor schaptype: " + type);
+            image = null;
+        }
     }
 
-    public boolean RemoveProduct(Product product) {
-        if (Voorraad.containsKey(product) &&  Voorraad.get(product) > 0) {
-            Voorraad.put(product, Voorraad.get(product) - 1);
+    /**
+     * Voegt een product toe aan de voorraad van dit schap.
+     * Als het product al aanwezig is, wordt de hoeveelheid verhoogd.
+     *
+     * @param product  het {@link Product} dat moet worden toegevoegd
+     * @param quantity het aantal eenheden dat moet worden toegevoegd
+     */
+    public void addProduct(Product product, int quantity) {
+        voorraad.put(product, voorraad.getOrDefault(product, 0) + quantity);
+    }
+
+    /**
+     * Verwijdert één eenheid van een product uit de voorraad.
+     * <p>
+     * Als de voorraad op 0 staat of het product niet voorkomt, gebeurt er niets.
+     * </p>
+     *
+     * @param product het {@link Product} dat verwijderd moet worden
+     * @return {@code true} als het product succesvol verwijderd is, anders {@code false}
+     */
+    public boolean removeProduct(Product product) {
+        if (voorraad.containsKey(product) && voorraad.get(product) > 0) {
+            voorraad.put(product, voorraad.get(product) - 1);
             return true;
         }
         return false;
+    }
+
+    /**
+     * Tekent het schap op het scherm.
+     * <p>
+     * Als de afbeelding niet beschikbaar is, wordt een grijs vlak met de schapnaam getekend.
+     * </p>
+     *
+     * @param g het {@link Graphics}-object waarmee het schap wordt getekend
+     */
+    public void draw(Graphics g) {
+        if (image != null) {
+            g.drawImage(image, x, y, type.getWidth(), type.getHeight(), null);
+        } else {
+            g.setColor(Color.GRAY);
+            g.fillRect(x, y, 50, 50);
+            g.setColor(Color.BLACK);
+            g.drawString(type.name(), x + 5, y + 25);
+        }
+    }
+
+    /**
+     * Geeft de X-coördinaat van het schap.
+     *
+     * @return de X-coördinaat
+     */
+    public int getX() {
+        return x;
+    }
+
+    /**
+     * Geeft de Y-coördinaat van het schap.
+     *
+     * @return de Y-coördinaat
+     */
+    public int getY() {
+        return y;
+    }
+
+    /**
+     * Geeft het type schap.
+     *
+     * @return het {@link SchapType} van dit schap
+     */
+    public SchapType getType() {
+        return type;
     }
 }

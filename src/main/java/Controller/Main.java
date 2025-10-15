@@ -1,37 +1,28 @@
 package Controller;
 
 import Model.Logic.Node;
+import Model.Logic.World;
 import Model.Logic.WorldGraph;
 import Model.People.Klant;
 import Model.People.Person;
 import Model.Store.Product;
 import Model.Store.Schap;
+import Model.Store.SchapType;
 import View.SimulationPanel;
 
 import javax.swing.*;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Main {
+
     public static SimulationPanel panel;
-
-    static {
-        try {
-            panel = new SimulationPanel();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     public static Map<String, Node> nodes = new HashMap<>();
-    public static Schap[] schappenlijst = new Schap[5];
 
-    public static Product[] productlijst =  new Product[5];
+    public static List<Schap> schappenlijst = new ArrayList<>();
+    public static List<Product> productlijst = new ArrayList<>();
 
-    public Main() throws IOException {
-    }
+    public Main() throws IOException { }
 
     public static void main(String[] args) throws IOException {
         SwingUtilities.invokeLater(() -> {
@@ -41,20 +32,21 @@ public class Main {
                 grafen();
                 initiateSchappenLijst();
                 testperson();
-                  new Thread(() -> {
+
+                // Start de tick-thread
+                new Thread(() -> {
                     try {
                         tickController.start();
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
                 }).start();
+
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         });
-
     }
-
     private static void SetupApplication() throws IOException {
         JFrame frame = new JFrame("Supermarket Simulator");
 
@@ -64,17 +56,24 @@ public class Main {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
+        // Maak wereld en tekenpaneel
+        World world = new World();
+        panel = new SimulationPanel(world);
         TickController.setPanel(panel);
+
+        // Voeg schappen toe zodra ze zijn geïnitialiseerd
+        for (Schap s : schappenlijst) {
+            world.addSchap(s);
+        }
 
         frame.add(panel);
         frame.setVisible(true);
     }
-
     private static void testperson(){
         TickController tickController = new TickController();
 
-        float tempx = (float) 0.5234375 * panel.width;
-        float tempy = (float) 0.8140610545790934 * panel.height;
+        float tempx = (float) 0.5234375 * panel.getPanelWidth();
+        float tempy = (float) 0.8140610545790934 * panel.getPanelHeight();
         Node[] tempnode = {nodes.get("exit")};
 
         Integer[] startposition = {(int) tempx, (int) tempy};
@@ -82,23 +81,21 @@ public class Main {
         tickController.addCharacter(person);
     }
 
-    private static void initiateSchappenLijst(){
-        schappenlijst[0] = new Schap(0,0);
-        schappenlijst[1] = new Schap(0,0);
-        schappenlijst[2] = new Schap(0,0);
-        schappenlijst[3] = new Schap(0,0);
-        schappenlijst[4] = new Schap(0,0);
-        schappenlijst[5] = new Schap(0,0);
+    private static void initiateSchappenLijst() {
+        schappenlijst.add(new Schap(200, 300, SchapType.Kast1));
+        schappenlijst.add(new Schap(400, 300, SchapType.Kast2));
+        schappenlijst.add(new Schap(600, 300, SchapType.Kast3));
+        schappenlijst.add(new Schap(800, 300, SchapType.Liggend_kast1));
+        schappenlijst.add(new Schap(1000, 300, SchapType.Liggend_kast2));
 
-        productlijst[0] = new Product("Cola", 1.99);
-        productlijst[1] = new Product("Milk", 1.99);
-        productlijst[2] = new Product("Potatoes", 1.99);
-        productlijst[3] = new Product("Pork", 1.99);
-        productlijst[4] = new Product("Carrot", 1.99);
-        productlijst[5] = new Product("Cookie", 1.99);
+        productlijst.add(new Product("Cola", 1.99));
+        productlijst.add(new Product("Milk", 1.49));
+        productlijst.add(new Product("Potatoes", 0.99));
+        productlijst.add(new Product("Pork", 3.99));
+        productlijst.add(new Product("Carrot", 0.79));
 
-        for (int i = 0; i < 5; i++) {
-            schappenlijst[i].AddProduct(productlijst[i], 24);
+        for (int i = 0; i < schappenlijst.size(); i++) {
+            schappenlijst.get(i).addProduct(productlijst.get(i), 24);
         }
     }
 

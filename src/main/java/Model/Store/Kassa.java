@@ -1,30 +1,136 @@
 package Model.Store;
+
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * De {@code Kassa}-klasse stelt een kassa in de supermarkt voor.
+ * <p>
+ * Deze klasse bevat zowel logische functionaliteit (zoals het scannen en
+ * verwijderen van producten) als visuele eigenschappen voor weergave
+ * in de simulatie.
+ * </p>
+ */
 public class Kassa {
-    private List<Product> ScannedItem;
-    private Double Prijs;
 
-    public Kassa(List<Product> ScannedItem,  Double Prijs) {
-        this.ScannedItem = ScannedItem;
-        this.Prijs = Prijs;
+    /** Lijst met alle gescande producten aan deze kassa. */
+    private List<Product> scannedItems;
+
+    /** De totale prijs van alle gescande producten. */
+    private Double prijs;
+
+    /** Afbeelding die de kassa visueel weergeeft. */
+    private BufferedImage image;
+
+    /** X-coördinaat van de kassa op het scherm. */
+    private int x;
+
+    /** Y-coördinaat van de kassa op het scherm. */
+    private int y;
+
+    /**
+     * Constructor voor logische initialisatie van een kassa.
+     * Wordt gebruikt in niet-visuele context.
+     *
+     * @param scannedItems de lijst van gescande producten
+     * @param prijs        de huidige totaalprijs
+     */
+    public Kassa(List<Product> scannedItems, Double prijs) {
+        this.scannedItems = scannedItems;
+        this.prijs = prijs;
     }
 
+    /**
+     * Constructor voor visuele weergave van de kassa in de simulatie.
+     * <p>
+     * Deze constructor initialiseert een lege kassa met standaardprijs 0
+     * en laadt automatisch de kassa-afbeelding uit de resourcesmap.
+     * </p>
+     *
+     * @param x de X-coördinaat waar de kassa getekend moet worden
+     * @param y de Y-coördinaat waar de kassa getekend moet worden
+     */
+    public Kassa(int x, int y) {
+        this.x = x;
+        this.y = y;
+        this.scannedItems = new ArrayList<>();
+        this.prijs = 0.0;
+        loadImage();
+    }
+
+    /**
+     * Laadt de afbeelding van de kassa uit de resource-map.
+     * Als de afbeelding niet gevonden kan worden, wordt een waarschuwing weergegeven.
+     */
+    private void loadImage() {
+        try {
+            image = ImageIO.read(getClass().getResource("/images/Kassa.png"));
+        } catch (IOException | IllegalArgumentException e) {
+            System.err.println("Kon kassa-afbeelding niet laden!");
+            image = null;
+        }
+    }
+
+    /**
+     * Tekent de kassa op het scherm.
+     * <p>
+     * Als de afbeelding niet beschikbaar is, wordt een rechthoek getekend.
+     * </p>
+     *
+     * @param g het {@link Graphics}-object waarmee de kassa wordt getekend
+     */
+    public void draw(Graphics g) {
+        if (image != null) {
+            g.drawImage(image, x, y, 308, 510, null);
+        } else {
+            g.setColor(Color.ORANGE);
+            g.fillRect(x, y, 120, 120);
+            g.setColor(Color.BLACK);
+            g.drawString("Kassa", x + 35, y + 65);
+        }
+    }
+
+    /**
+     * Geeft de totale prijs van alle gescande producten.
+     *
+     * @return de huidige totaalprijs
+     */
     public Double getPrijs() {
-        return Prijs;
+        return prijs;
     }
 
+    /**
+     * Geeft de lijst van alle gescande producten.
+     *
+     * @return een lijst van {@link Product}-objecten
+     */
     public List<Product> getScannedItems() {
-        return ScannedItem;
+        return scannedItems;
     }
 
-    public Boolean AddProduct(Product product) {
-        return ScannedItem.add(product);
+    /**
+     * Voegt een product toe aan de kassa en telt de prijs op bij het totaal.
+     *
+     * @param product het toe te voegen {@link Product}
+     * @return {@code true} als het product succesvol is toegevoegd
+     */
+    public Boolean addProduct(Product product) {
+        prijs += product.getPrijs();
+        return scannedItems.add(product);
     }
 
-    public Boolean RemoveProduct(Product product) {
-        return ScannedItem.remove(product);
+    /**
+     * Verwijdert een product uit de kassa en trekt de prijs af van het totaal.
+     *
+     * @param product het te verwijderen {@link Product}
+     * @return {@code true} als het product succesvol is verwijderd
+     */
+    public Boolean removeProduct(Product product) {
+        prijs -= product.getPrijs();
+        return scannedItems.remove(product);
     }
-
 }
