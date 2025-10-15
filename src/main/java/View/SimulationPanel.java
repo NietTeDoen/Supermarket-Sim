@@ -6,41 +6,59 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.HashMap;
+import java.util.Map;
 
 import Controller.Main;
 import Model.Logic.Node;
+import Model.Logic.World;
 
 public class SimulationPanel extends JPanel {
 
-    InputStream background = getClass().getResourceAsStream("/images/background.png");
-    BufferedImage image = ImageIO.read(background);
+    private BufferedImage backgroundImage;
+    private World world;
 
-    public int width;
-    public int height;
+    public SimulationPanel(World world) throws IOException {
+        this.world = world;
 
-    public SimulationPanel() throws IOException {
+        InputStream background = getClass().getResourceAsStream("/images/background.png");
+        if (background != null) {
+            backgroundImage = ImageIO.read(background);
+        } else {
+            System.err.println("⚠️ Background image not found!");
+        }
     }
-    public int[] getRes(){
-        return new int[]{width, height};
-    }
 
+    @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        height = getHeight();
-        width = getWidth();
-        g.drawImage(image, 0, 0, width, height, this);
 
-        for (var entry : Main.nodes.entrySet()) {
-            String key = entry.getKey();
-            Node n = entry.getValue();
+        int panelWidth = getWidth();
+        int panelHeight = getHeight();
 
-            float tempx = n.x * width;
-            float tempy = n.y * height;
-
-            g.setColor(Color.RED);
-
-            g.fillOval((int) tempx, (int) tempy, 15, 15);
+        if (backgroundImage != null) {
+            g.drawImage(backgroundImage, 0, 0, panelWidth, panelHeight, this);
         }
+
+        // Nodes tekenen
+        for (Map.Entry<String, Node> entry : Main.nodes.entrySet()) {
+            Node n = entry.getValue();
+            int tempx = (int) (n.x * panelWidth);
+            int tempy = (int) (n.y * panelHeight);
+            g.setColor(Color.RED);
+            g.fillOval(tempx, tempy, 15, 15);
+        }
+
+
+        if (world != null) {
+            world.draw(g);
+        }
+    }
+
+    public int getPanelWidth() {
+        return getWidth();
+    }
+
+    public int getPanelHeight() {
+        return getHeight();
     }
 }

@@ -62,4 +62,13 @@ public class Person {
         TickController.addCharacter(this);
     }
 
+    public void draw(java.awt.Graphics g) {
+        if (Positie == null) return;
+
+        g.setColor(java.awt.Color.RED);
+        g.fillOval(Positie[0], Positie[1], 20, 20);
+
+        g.setColor(java.awt.Color.BLACK);
+        g.drawString("Person", Positie[0] - 5, Positie[1] - 5);
+    }
 }
