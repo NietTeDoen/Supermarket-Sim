@@ -17,8 +17,8 @@ public class SimulationPanel extends JPanel {
     private BufferedImage backgroundImage;
     private World world;
 
-    public SimulationPanel(World world) throws IOException {
-        this.world = world;
+    public SimulationPanel() throws IOException {
+        this.world = Main.world;
 
         InputStream background = getClass().getResourceAsStream("/images/background.png");
         if (background != null) {

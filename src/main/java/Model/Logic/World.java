@@ -73,6 +73,7 @@ import Model.Store.Kassa;
 import Model.Store.Schap;
 import Model.Store.SchapType;
 
+import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -86,16 +87,21 @@ public class World {
     private List<Schap> schappen = new ArrayList<>();
     private List<Person> persons = new ArrayList<>();
 
+    private static JPanel panel;
+
     public World() {
 
-        kassas.add(new Kassa(250, 550));
+        // Kassas (relatieve coördinaten)
+        kassas.add(new Kassa(0.0977, 0.3819));
 
-        schappen.add(new Schap(1450, 150, SchapType.Kast1));
-        schappen.add(new Schap(800, 150, SchapType.Kast2));
-        schappen.add(new Schap(250, 150, SchapType.Kast3));
-        schappen.add(new Schap(1050, 450, SchapType.Liggend_kast1));
-        schappen.add(new Schap(1785, 540, SchapType.Liggend_kast2));
-        schappen.add(new Schap(2000, 130, SchapType.Koelkast));
+// Schappen (relatieve coördinaten)
+        schappen.add(new Schap(0.5664, 0.1042, SchapType.Kast1));
+        schappen.add(new Schap(0.3125, 0.1042, SchapType.Kast2));
+        schappen.add(new Schap(0.0977, 0.1042, SchapType.Kast3));
+        schappen.add(new Schap(0.4102, 0.3125, SchapType.Liggend_kast1));
+        schappen.add(new Schap(0.6973, 0.3750, SchapType.Liggend_kast2));
+        schappen.add(new Schap(0.7813, 0.0903, SchapType.Koelkast));
+
 
     }
 

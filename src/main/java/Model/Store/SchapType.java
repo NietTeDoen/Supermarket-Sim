@@ -8,16 +8,16 @@ package Model.Store;
 public enum SchapType {
 
     // 📦 Elk schaptype heeft een uniek afbeeldingspad en vaste afmetingen.
-    Kast1("/images/Kast-1.png", 393, 265),       // size × 1.3
-    Kast2("/images/kast-2.png", 387, 264),       // size × 1.3
-    Kast3("/images/kast-3.png", 424, 262),       // size × 1.4
-    Liggend_kast1("/images/liggend-kast-1.png", 390, 634), // size × 1.4
-    Liggend_kast2("/images/liggend-kast-2.png", 300, 588), // size × 1.4
-    Koelkast("/images/Koelkast.png", 333, 335);  // size × 1.3
+    Kast1("/images/Kast-1.png", 0.1535, 0.1840),       // size × 1.3
+    Kast2("/images/kast-2.png", 0.1512, 0.1833),
+    Kast3("/images/kast-3.png", 0.1656, 0.1819),
+    Liggend_kast1("/images/liggend-kast-1.png", 0.1523, 0.4403),
+    Liggend_kast2("/images/liggend-kast-2.png", 0.1172, 0.4083),
+    Koelkast("/images/Koelkast.png", 0.1301, 0.2326);  // size × 1.3
 
     private final String imagePath;
-    private final int width;
-    private final int height;
+    private final double width;
+    private final double height;
 
     /**
      * Maakt een nieuw {@code SchapType}-object aan met een afbeeldingspad, breedte en hoogte.
@@ -26,7 +26,7 @@ public enum SchapType {
      * @param width     de breedte waarmee de afbeelding wordt getekend
      * @param height    de hoogte waarmee de afbeelding wordt getekend
      */
-    SchapType(String imagePath, int width, int height) {
+    SchapType(String imagePath, double width, double height) {
         this.imagePath = imagePath;
         this.width = width;
         this.height = height;
@@ -46,7 +46,7 @@ public enum SchapType {
      *
      * @return de breedte in pixels
      */
-    public int getWidth() {
+    public double getWidth() {
         return width;
     }
 
@@ -55,7 +55,7 @@ public enum SchapType {
      *
      * @return de hoogte in pixels
      */
-    public int getHeight() {
+    public double getHeight() {
         return height;
     }
 }

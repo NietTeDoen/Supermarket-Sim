@@ -4,6 +4,7 @@ import Model.People.Person;
 import View.SimulationPanel;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -58,4 +59,11 @@ public class TickController {
             count = 0;
         }
     }
+
+    public static Point convertRelative(double relX, double relY) {
+        int x = (int)(relX * panel.getWidth());
+        int y = (int)(relY * panel.getHeight());
+        return new Point(x, y);
+    }
+
 }

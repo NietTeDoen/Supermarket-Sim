@@ -5,6 +5,7 @@ import Model.Logic.World;
 import Model.Logic.WorldGraph;
 import Model.People.Klant;
 import Model.People.Person;
+import Model.Store.Kassa;
 import Model.Store.Product;
 import Model.Store.Schap;
 import Model.Store.SchapType;
@@ -47,6 +48,8 @@ public class Main {
             }
         });
     }
+    public static World world = new World();
+
     private static void SetupApplication() throws IOException {
         JFrame frame = new JFrame("Supermarket Simulator");
 
@@ -57,9 +60,12 @@ public class Main {
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
         // Maak wereld en tekenpaneel
-        World world = new World();
-        panel = new SimulationPanel(world);
+
+        panel = new SimulationPanel();
         TickController.setPanel(panel);
+        Schap.setPanel(panel);
+        Kassa.setPanel(panel);
+
 
         // Voeg schappen toe zodra ze zijn geïnitialiseerd
         for (Schap s : schappenlijst) {
@@ -79,6 +85,8 @@ public class Main {
         Integer[] startposition = {(int) tempx, (int) tempy};
         Person person = new Klant(5f, startposition, tempnode, "", null);
         tickController.addCharacter(person);
+        Schap.setPanel(panel);
+
     }
 
     private static void initiateSchappenLijst() {

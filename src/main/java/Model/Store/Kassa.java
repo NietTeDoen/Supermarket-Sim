@@ -1,6 +1,7 @@
 package Model.Store;
 
 import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -27,10 +28,16 @@ public class Kassa {
     private BufferedImage image;
 
     /** X-coördinaat van de kassa op het scherm. */
-    private int x;
+    private double x;
 
     /** Y-coördinaat van de kassa op het scherm. */
-    private int y;
+    private double y;
+
+    private static JPanel panel;
+
+    public static void setPanel(JPanel p) {
+        panel = p;
+    }
 
     /**
      * Constructor voor logische initialisatie van een kassa.
@@ -54,7 +61,7 @@ public class Kassa {
      * @param x de X-coördinaat waar de kassa getekend moet worden
      * @param y de Y-coördinaat waar de kassa getekend moet worden
      */
-    public Kassa(int x, int y) {
+    public Kassa(double x, double y) {
         this.x = x;
         this.y = y;
         this.scannedItems = new ArrayList<>();
@@ -85,12 +92,12 @@ public class Kassa {
      */
     public void draw(Graphics g) {
         if (image != null) {
-            g.drawImage(image, x, y, 308, 510, null);
+            g.drawImage(image, (int)(x * panel.getWidth()), (int)(y * panel.getHeight()), (int)(0.1203 * panel.getWidth()) , (int)(0.3541 * panel.getHeight()), null);
         } else {
-            g.setColor(Color.ORANGE);
-            g.fillRect(x, y, 120, 120);
+            g.setColor(Color.GRAY);
+            g.fillRect((int)x, (int)y, 50, 50);
             g.setColor(Color.BLACK);
-            g.drawString("Kassa", x + 35, y + 65);
+            g.drawString("Kassa", (int)x + 5, (int)y + 25);
         }
     }
 

@@ -1,6 +1,9 @@
 package Model.Store;
 
+import View.SimulationPanel;
+
 import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -18,10 +21,10 @@ import java.util.Map;
 public class Schap {
 
     /** X-coördinaat van het schap op het scherm. */
-    private int x;
+    private double x;
 
     /** Y-coördinaat van het schap op het scherm. */
-    private int y;
+    private double y;
 
     /** Het type schap, dat bepaalt welke afbeelding en afmetingen worden gebruikt. */
     private SchapType type;
@@ -31,6 +34,12 @@ public class Schap {
 
     /** De voorraad van producten in dit schap. */
     private Map<Product, Integer> voorraad;
+
+    private static JPanel panel;
+
+    public static void setPanel(JPanel p) {
+        panel = p;
+    }
 
     /**
      * Maakt een nieuw {@code Schap}-object aan met een positie en type.
@@ -43,7 +52,7 @@ public class Schap {
      * @param y    de Y-coördinaat van het schap
      * @param type het type schap dat bepaalt welke afbeelding wordt gebruikt
      */
-    public Schap(int x, int y, SchapType type) {
+    public Schap(double x, double y, SchapType type) {
         this.x = x;
         this.y = y;
         this.type = type;
@@ -103,12 +112,12 @@ public class Schap {
      */
     public void draw(Graphics g) {
         if (image != null) {
-            g.drawImage(image, x, y, type.getWidth(), type.getHeight(), null);
+            g.drawImage(image, (int)(x * panel.getWidth()), (int)(y * panel.getHeight()), (int)(type.getWidth() * panel.getWidth()) , (int)(type.getHeight() * panel.getHeight()), null);
         } else {
             g.setColor(Color.GRAY);
-            g.fillRect(x, y, 50, 50);
+            g.fillRect((int)x, (int)y, 50, 50);
             g.setColor(Color.BLACK);
-            g.drawString(type.name(), x + 5, y + 25);
+            g.drawString(type.name(), (int)x + 5, (int)y + 25);
         }
     }
 
@@ -118,7 +127,7 @@ public class Schap {
      * @return de X-coördinaat
      */
     public int getX() {
-        return x;
+        return (int)x;
     }
 
     /**
@@ -127,7 +136,7 @@ public class Schap {
      * @return de Y-coördinaat
      */
     public int getY() {
-        return y;
+        return (int)y;
     }
 
     /**
