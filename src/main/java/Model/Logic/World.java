@@ -83,9 +83,9 @@ import java.util.List;
  * Hier voeg je schappen, kassa’s, en personen toe.
  */
 public class World {
-    private List<Kassa> kassas = new ArrayList<>();
-    private List<Schap> schappen = new ArrayList<>();
-    private List<Person> persons = new ArrayList<>();
+    public static List<Kassa> kassas = new ArrayList<>();
+    public static List<Schap> schappen = new ArrayList<>();
+    public static List<Person> persons = new ArrayList<>();
 
     private static JPanel panel;
 
