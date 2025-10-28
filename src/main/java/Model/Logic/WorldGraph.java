@@ -44,7 +44,7 @@ public class WorldGraph {
      * @param end de doelnode
      * @return een lijst van nodes die het pad vormen van start naar end
      */
-    public List<Node> findPath(Node start, Node end) {
+    public static List<Node> findPath(Node start, Node end) {
         // Houdt bij van welke node we op elke node gekomen zijn
         Map<Node, Node> cameFrom = new HashMap<>();
         // Queue voor BFS

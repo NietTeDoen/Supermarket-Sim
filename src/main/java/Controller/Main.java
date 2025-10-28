@@ -22,6 +22,8 @@ public class Main {
 
     public static List<Schap> schappenlijst = new ArrayList<>();
     public static List<Product> productlijst = new ArrayList<>();
+    public static HashMap<String, double[]> nodeCordinates = new HashMap<>();
+
 
     public Main() throws IOException { }
 
@@ -32,7 +34,6 @@ public class Main {
                 SetupApplication();
                 grafen();
                 initiateSchappenLijst();
-                testperson();
 
                 // Start de tick-thread
                 new Thread(() -> {
@@ -75,19 +76,6 @@ public class Main {
         frame.add(panel);
         frame.setVisible(true);
     }
-    private static void testperson(){
-        TickController tickController = new TickController();
-
-        float tempx = (float) 0.5234375 * panel.getPanelWidth();
-        float tempy = (float) 0.8140610545790934 * panel.getPanelHeight();
-        Node[] tempnode = {nodes.get("exit")};
-
-        Integer[] startposition = {(int) tempx, (int) tempy};
-        Person person = new Klant(5f, startposition, tempnode, "", null);
-        tickController.addCharacter(person);
-        Schap.setPanel(panel);
-
-    }
 
     private static void initiateSchappenLijst() {
         schappenlijst.add(new Schap(200, 300, SchapType.Kast1));
@@ -116,7 +104,6 @@ public class Main {
         // 1. Maak een WorldGraph
         WorldGraph graph = new WorldGraph();
 
-        HashMap<String, double[]> nodeCordinates = new HashMap<>();
 
         //Dit zijn de relatieve cordinaten. die doen we x de screensize om de goede punten te plaatsen.
         nodeCordinates.put("entrance", new double[]{0.5234375, 0.8140610545790934});

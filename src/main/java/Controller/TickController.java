@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.Logic.World;
 import Model.People.Person;
 import View.SimulationPanel;
 
@@ -19,10 +20,12 @@ public class TickController {
 
     int count = 0;
 
-    private static JPanel panel;
+    public static JPanel panel;
 
     public void start() throws InterruptedException {
+        Thread.sleep(50); // 50 ms wachten zodat panel volledig zichtbaar is
         System.out.println("Starting Tick Controller");
+        personList = World.getPersons();
         while (running) {
             while (System.currentTimeMillis() > nextTick) {
                 tick();
@@ -46,10 +49,12 @@ public class TickController {
     }
 
     private void tick(){
+        checkCustomerAmount();
         //update person
-        for  (Person person : personList) {
-
+        for (Person person : World.getPersons()) {
+            person.update();
         }
+
 
         panel.repaint();
         if(count < 30)
@@ -66,4 +71,31 @@ public class TickController {
         return new Point(x, y);
     }
 
+    public static int checkCustomerAmount() {
+        List<Person> persons = World.getPersons();
+
+        // Alleen spawn als panel al zichtbaar is
+        if(panel.getWidth() == 0 || panel.getHeight() == 0) return persons.size();
+
+        // Spawn maximaal tot 5 personen
+        while (persons.size() < 5) {
+            Person p = World.CreatePerson();
+            if (p != null) TickController.addCharacter(p);
+        }
+
+        return persons.size();
+    }
+
+
+
+    public static int getPanelWidth() {
+        return panel != null ? panel.getWidth() : 1920;
+    }
+
+    public static int getPanelHeight() {
+        return panel != null ? panel.getHeight() : 1080;
+    }
+
+
 }
+

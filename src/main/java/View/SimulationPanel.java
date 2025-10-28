@@ -11,6 +11,7 @@ import java.util.Map;
 import Controller.Main;
 import Model.Logic.Node;
 import Model.Logic.World;
+import Model.People.Person;
 
 public class SimulationPanel extends JPanel {
 
@@ -35,6 +36,7 @@ public class SimulationPanel extends JPanel {
         int panelWidth = getWidth();
         int panelHeight = getHeight();
 
+        // Achtergrond
         if (backgroundImage != null) {
             g.drawImage(backgroundImage, 0, 0, panelWidth, panelHeight, this);
         }
@@ -48,11 +50,18 @@ public class SimulationPanel extends JPanel {
             g.fillOval(tempx, tempy, 15, 15);
         }
 
-
+        // Eventueel andere world-objecten tekenen
         if (world != null) {
             world.draw(g);
         }
+
+        // Personen tekenen
+        for (Person p : World.getPersons()) {
+            p.draw(g);
+        }
+
     }
+
 
     public int getPanelWidth() {
         return getWidth();

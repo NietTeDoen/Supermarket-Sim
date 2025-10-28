@@ -1,74 +1,54 @@
 package Model.People;
 
-import Controller.TickController;
 import Model.Logic.Node;
+import Controller.TickController;
 
-import java.util.UUID;
+import java.awt.*;
+import java.util.List;
 
 public class Person {
-    private UUID PersonId;
-    private Float Speed;
-    private Integer[] Positie;
-    private Node[] Target;
+    private int[] positie;
     private String sprite;
 
-    private Node startNode;
-    private Node endNode;
-    private String[] path;
+    private List<Node> path;  // het pad dat deze persoon volgt
+    private int pathIndex = 0; // node in pad waar we naartoe bewegen
+    private float speed = 2f;
 
-    public Person(Float Speed, Integer[] Positie, Node[] Target, String sprite) {
-        PersonId = UUID.randomUUID();
-        this.Speed = Speed;
-        this.Positie = Positie;
-        this.Target = Target;
+    public Person(int[] positie, List<Node> path, String sprite) {
+        this.positie = positie;
+        this.path = path;
         this.sprite = sprite;
     }
 
-    public UUID getPersonId() {
-        return PersonId;
+    public void update() {
+        moveAlongPath();
     }
 
-    public Boolean setSprite(String sprite) {
-        this.sprite = sprite;
-        return true;
-    }
+    private void moveAlongPath() {
+        if (path == null || pathIndex >= path.size()) return;
 
-    public void update(){
-        if(checkIfReached()){
-            moveTo();
+        Node target = path.get(pathIndex);
+
+        int targetX = (int) (target.x * TickController.getPanelWidth());
+        int targetY = (int) (target.y * TickController.getPanelHeight());
+
+        float dx = targetX - positie[0];
+        float dy = targetY - positie[1];
+        float distance = (float) Math.sqrt(dx * dx + dy * dy);
+
+        if (distance < speed) {
+            // target bereikt
+            positie[0] = targetX;
+            positie[1] = targetY;
+            pathIndex++;
+        } else {
+            positie[0] += (dx / distance) * speed;
+            positie[1] += (dy / distance) * speed;
         }
     }
 
-    private void moveTo(){
-
-    }
-
-    private boolean checkIfReached(){
-        if(endNode.x == (float) Positie[0] && endNode.y == (float) Positie[1]){
-            return true;
-        }
-        return false;
-    }
-
-    public void setTarget(Node[] target){
-        this.Target = target;
-    }
-
-    public void despawn(){
-        TickController.removeCharacter(this);
-    }
-
-    public void spawn(){
-        TickController.addCharacter(this);
-    }
-
-    public void draw(java.awt.Graphics g) {
-        if (Positie == null) return;
-
-        g.setColor(java.awt.Color.RED);
-        g.fillOval(Positie[0], Positie[1], 20, 20);
-
-        g.setColor(java.awt.Color.BLACK);
-        g.drawString("Person", Positie[0] - 5, Positie[1] - 5);
+    public void draw(Graphics g) {
+        g.setColor(Color.BLACK);
+        g.fillRect(positie[0], positie[1], 20, 20);
     }
 }

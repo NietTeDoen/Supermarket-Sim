@@ -8,8 +8,8 @@ import java.util.List;
 public class Klant extends  Person {
     private List<Product> ProductsList;
 
-    public Klant(Float speed, Integer[] positie, Node[] target, String sprite, List<Product> ProductsList) {
-        super(speed, positie, target, sprite);
+    public Klant(int[] positie, List<Node> target, String sprite, List<Product> ProductsList) {
+        super( positie, target, sprite);
         this.ProductsList = ProductsList;
     }
 }

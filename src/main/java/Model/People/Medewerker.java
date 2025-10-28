@@ -2,11 +2,13 @@ package Model.People;
 
 import Model.Logic.Node;
 
+import java.util.List;
+
 public class Medewerker extends Person {
     private String Taak;
 
-    public Medewerker(Float speed, Integer[] positie, Node[] target, String sprite, String Taak) {
-        super(speed, positie, target, sprite);
+    public Medewerker(int[] positie, List<Node> target, String sprite, String Taak) {
+        super(positie, target, sprite);
         this.Taak = Taak;
     }
 }
