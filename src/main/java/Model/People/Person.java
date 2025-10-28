@@ -2,6 +2,7 @@ package Model.People;
 
 import Model.Logic.Node;
 import Controller.TickController;
+import Model.Logic.World;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,7 +14,7 @@ public class Person {
 
     private List<Node> path;  // het pad dat deze persoon volgt
     private int pathIndex = 0; // node in pad waar we naartoe bewegen
-    private float speed = 2f;
+    private float speed = 5f;
     private Image image;
     public Person(int[] positie, List<Node> path, String sprite) {
         this.positie = positie;
@@ -37,7 +38,10 @@ public class Person {
     private int height = 150;  // of je sprite hoogte
 
     public void update() {
-        if (path == null || pathIndex >= path.size()) return;
+        if (path == null || pathIndex >= path.size()){
+            Despawncharacter();
+            return;
+        }
 
         Node target = path.get(pathIndex);
         int targetX = (int) (target.x * TickController.getPanelWidth()) - width / 2;
@@ -67,4 +71,15 @@ public class Person {
             g.fillRect(positie[0], positie[1], 20, 20);
         }
     }
+
+    private boolean despawned = false;
+
+    public void Despawncharacter() {
+        despawned = true; // markeer voor verwijdering
+    }
+
+    public boolean isDespawned() {
+        return despawned;
+    }
+
 }

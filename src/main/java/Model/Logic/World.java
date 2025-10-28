@@ -55,6 +55,7 @@ public class World {
     public List<Schap> getSchappen() { return schappen; }
     public static List<Person> getPersons() { return persons; }
 
+    public static void RemovePerson(Person p) { persons.remove(p);}
     public static Person CreatePerson() {
         Node entrance = Main.nodes.get("entrance");
         if (entrance == null) return null;

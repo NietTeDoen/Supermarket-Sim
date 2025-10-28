@@ -7,6 +7,7 @@ import View.SimulationPanel;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
 
@@ -46,15 +47,19 @@ public class TickController {
 
     public static void removeCharacter (Person person){
         personList.remove(person);
+        World.RemovePerson(person);
     }
 
-    private void tick(){
+    private void tick() throws InterruptedException{
         checkCustomerAmount();
-        //update person
+
         for (Person person : World.getPersons()) {
-            person.update();
+            person.update(); // update markeert eventueel despawned
         }
 
+        // Na alle updates: verwijder alle gedespawnte personen
+        World.getPersons().removeIf(Person::isDespawned);
+        personList.removeIf(Person::isDespawned);
 
         panel.repaint();
         if(count < 30)
@@ -78,7 +83,7 @@ public class TickController {
         if(panel.getWidth() == 0 || panel.getHeight() == 0) return persons.size();
 
         // Spawn maximaal tot 5 personen
-        while (persons.size() < 5) {
+        while (persons.size() < 10) {
             Person p = World.CreatePerson();
             if (p != null) TickController.addCharacter(p);
         }
