@@ -3,6 +3,7 @@ package Model.People;
 import Model.Logic.Node;
 import Controller.TickController;
 
+import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
@@ -13,31 +14,41 @@ public class Person {
     private List<Node> path;  // het pad dat deze persoon volgt
     private int pathIndex = 0; // node in pad waar we naartoe bewegen
     private float speed = 2f;
-
+    private Image image;
     public Person(int[] positie, List<Node> path, String sprite) {
         this.positie = positie;
         this.path = path;
         this.sprite = sprite;
+        loadImage();
     }
+
+    private void loadImage() {
+        try {
+            // Zorg dat "Klant.png" in src/main/resources/images/ zit
+            ImageIcon icon = new ImageIcon(getClass().getResource("/images/Klant.png"));
+            image = icon.getImage();
+        } catch (NullPointerException e) {
+            System.out.println("Image not found! Zorg dat het pad klopt.");
+            image = null;
+        }
+    }
+
+    private int width = 100;   // of je sprite breedte
+    private int height = 150;  // of je sprite hoogte
 
     public void update() {
-        moveAlongPath();
-    }
-
-    private void moveAlongPath() {
         if (path == null || pathIndex >= path.size()) return;
 
         Node target = path.get(pathIndex);
-
-        int targetX = (int) (target.x * TickController.getPanelWidth());
-        int targetY = (int) (target.y * TickController.getPanelHeight());
+        int targetX = (int) (target.x * TickController.getPanelWidth()) - width / 2;
+        int targetY = (int) (target.y * TickController.getPanelHeight()) - height;
 
         float dx = targetX - positie[0];
         float dy = targetY - positie[1];
-        float distance = (float) Math.sqrt(dx * dx + dy * dy);
+        float distance = (float) Math.sqrt(dx*dx + dy*dy);
 
         if (distance < speed) {
-            // target bereikt
+            // node bereikt
             positie[0] = targetX;
             positie[1] = targetY;
             pathIndex++;
@@ -47,8 +58,13 @@ public class Person {
         }
     }
 
+
     public void draw(Graphics g) {
-        g.setColor(Color.BLACK);
-        g.fillRect(positie[0], positie[1], 20, 20);
+        if (image != null) {
+            g.drawImage(image, positie[0], positie[1],width , height, null);
+        } else {
+            g.setColor(Color.BLACK);
+            g.fillRect(positie[0], positie[1], 20, 20);
+        }
     }
 }
