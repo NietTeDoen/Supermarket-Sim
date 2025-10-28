@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.Logic.World;
+import Model.People.Klant;
 import Model.People.Person;
 import View.SimulationPanel;
 
@@ -17,7 +18,7 @@ public class TickController {
     double nextTick = System.currentTimeMillis();
     boolean running = true;
 
-    static List<Person> personList = new ArrayList<>();
+    static List<Klant> personList = new ArrayList<>();
 
     int count = 0;
 
@@ -41,11 +42,11 @@ public class TickController {
         panel = p;
     }
 
-    public static void addCharacter (Person person){
+    public static void addCharacter (Klant person){
         personList.add(person);
     }
 
-    public static void removeCharacter (Person person){
+    public static void removeCharacter (Klant person){
         personList.remove(person);
         World.RemovePerson(person);
     }
@@ -77,14 +78,14 @@ public class TickController {
     }
 
     public static int checkCustomerAmount() {
-        List<Person> persons = World.getPersons();
+        List<Klant> persons = World.getPersons();
 
         // Alleen spawn als panel al zichtbaar is
         if(panel.getWidth() == 0 || panel.getHeight() == 0) return persons.size();
 
         // Spawn maximaal tot 5 personen
         while (persons.size() < 10) {
-            Person p = World.CreatePerson();
+            Klant p = World.CreatePerson();
             if (p != null) TickController.addCharacter(p);
         }
 

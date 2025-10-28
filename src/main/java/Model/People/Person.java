@@ -38,11 +38,12 @@ public class Person {
     private int height = 150;  // of je sprite hoogte
 
     public void update() {
+        //Despawn if path is done or null
         if (path == null || pathIndex >= path.size()){
             Despawncharacter();
             return;
         }
-
+        //get the target node
         Node target = path.get(pathIndex);
         int targetX = (int) (target.x * TickController.getPanelWidth()) - width / 2;
         int targetY = (int) (target.y * TickController.getPanelHeight()) - height;

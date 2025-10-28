@@ -2,6 +2,7 @@ package Model.Logic;
 
 import Controller.Main;
 import Controller.TickController;
+import Model.People.Klant;
 import Model.People.Person;
 import Model.Store.Kassa;
 import Model.Store.Schap;
@@ -21,7 +22,7 @@ import static Controller.Main.nodeCordinates;
 public class World {
     public static List<Kassa> kassas = new ArrayList<>();
     public static List<Schap> schappen = new ArrayList<>();
-    public static List<Person> persons = new ArrayList<>();
+    public static List<Klant> persons = new ArrayList<>();
 
     private static JPanel panel;
 
@@ -42,21 +43,21 @@ public class World {
     public void draw(Graphics g) {
         for (Kassa k : kassas) k.draw(g);
         for (Schap s : schappen) s.draw(g);
-        for (Person p : persons) p.draw(g);
+        for (Klant p : persons) p.draw(g);
     }
 
     // Add-methodes
     public void addKassa(Kassa k) { kassas.add(k); }
     public void addSchap(Schap s) { schappen.add(s); }
-    public void addPerson(Person p) { persons.add(p); }
+    public void addPerson(Klant p) { persons.add(p); }
 
     // Getters
     public List<Kassa> getKassas() { return kassas; }
     public List<Schap> getSchappen() { return schappen; }
-    public static List<Person> getPersons() { return persons; }
+    public static List<Klant> getPersons() { return persons; }
 
-    public static void RemovePerson(Person p) { persons.remove(p);}
-    public static Person CreatePerson() {
+    public static void RemovePerson(Klant p) { persons.remove(p);}
+    public static Klant CreatePerson() {
         Node entrance = Main.nodes.get("entrance");
         if (entrance == null) return null;
         if (Main.panel.getWidth() == 0 || Main.panel.getHeight() == 0) return null;
@@ -73,7 +74,7 @@ public class World {
         Node[] pathNodes = NodelistGenerator(entrance);
 
         // Maak de persoon met het pad
-        Person person = new Person(new int[]{x, y}, Arrays.asList(pathNodes), "dummy");
+        Klant person = new Klant(new int[]{x, y}, Arrays.asList(pathNodes), "dummy");
 
         // Voeg toe aan de wereld
         persons.add(person);
