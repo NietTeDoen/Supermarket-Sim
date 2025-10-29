@@ -84,7 +84,7 @@ public class TickController {
         if(panel.getWidth() == 0 || panel.getHeight() == 0) return persons.size();
 
         // Spawn maximaal tot 5 personen
-        while (persons.size() < 1) {
+        while (persons.size() < 10) {
             Klant p = World.CreatePerson();
             if (p != null) TickController.addCharacter(p);
         }

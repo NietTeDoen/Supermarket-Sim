@@ -114,21 +114,12 @@ public class World {
             }
         }
 
-        Node Queue1 = Main.nodes.get("queue1");
+        Node Queue1 = Main.nodes.get("queue2");
         if (Queue1 != null) {
             List<Node> Queue1path = WorldGraph.findPath(current, Queue1);
             if (Queue1path != null && !Queue1path.isEmpty()) {
                 allSegments.add(new ArrayList<>(Queue1path));
                 current = Queue1;
-            }
-        }
-
-        Node Kassa = Main.nodes.get("cashier");
-        if (Kassa != null) {
-            List<Node> Kassapath = WorldGraph.findPath(current, Kassa);
-            if (Kassapath != null && !Kassapath.isEmpty()) {
-                allSegments.add(new ArrayList<>(Kassapath));
-                current = Kassa;
             }
         }
 
