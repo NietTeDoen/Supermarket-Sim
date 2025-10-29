@@ -28,6 +28,7 @@ public class Klant extends Person {
     private Image image;
 
     private boolean hasCheckedOut = false;
+    private static boolean bijKassa = false;
 
     public Klant(int[] positie, List<List<Node>> routeSegments, String sprite) {
         super(positie, null, sprite);
@@ -51,6 +52,7 @@ public class Klant extends Person {
         actionTicks = waitTicks;
         maxActionTicks = waitTicks;
         currentActionText = text;
+
     }
 
     public void takeProduct(String productName, int waitTicks) {
@@ -61,7 +63,20 @@ public class Klant extends Person {
     @Override
     public void update() {
         if (busy) {
-            actionTicks--;
+            if (currentActionText.equals("Wachten in de rij...")) {
+                if (!bijKassa) {
+                    // Kassa is vrij, queue actie mag stoppen
+                    actionTicks--;
+                }
+                // anders blijven ze wachten, dus geen actionTicks--
+            } else {
+                // Alles buiten de queue telt gewoon ticks af
+                actionTicks--;
+            }
+
+            if (actionTicks <= 0 && currentActionText != "Afrekenen...") {
+                bijKassa = false;
+            }
             if (actionTicks <= 0) {
                 busy = false;
                 currentActionText = "";
@@ -127,14 +142,19 @@ public class Klant extends Person {
             case "liggend-kast-2" -> takeProduct("Koekjes", 35);
             case "koelkast" -> takeProduct("Yoghurt", 45);
 
-            case "queue1", "queue2", "queue3" ->
-                    startAction("Wachten in de rij...", 20);
+            case "queue1", "queue2", "queue3" ->{
+                if(bijKassa) {
+                    startAction("Wachten in de rij...", 40);
+                }
+            }
 
-            case "cashier" ->
-                    startAction("Afrekenen...", 60);
-
+            case "cashier" -> {
+                bijKassa = true;
+                startAction("Afrekenen...", 120);
+            }
             case "exit" -> {
                 System.out.println("Klant verlaat de winkel");
+                bijKassa = false;
                 Despawncharacter();
             }
 
