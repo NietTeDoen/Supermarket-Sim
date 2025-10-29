@@ -10,8 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Klant extends Person {
+
     private List<Product> productsList = new ArrayList<>();
-    private List<List<Node>> routeSegments; // segmenten van zijn route
+    private List<List<Node>> routeSegments;
     private int currentSegmentIndex = 0;
     private int pathIndex = 0;
     private float speed = 5f;
@@ -25,6 +26,8 @@ public class Klant extends Person {
     private int height = 150;
     protected int[] positie;
     private Image image;
+
+    private boolean hasCheckedOut = false;
 
     public Klant(int[] positie, List<List<Node>> routeSegments, String sprite) {
         super(positie, null, sprite);
@@ -43,7 +46,6 @@ public class Klant extends Person {
         }
     }
 
-    /** Universele actie met laadbalk */
     private void startAction(String text, int waitTicks) {
         busy = true;
         actionTicks = waitTicks;
@@ -51,7 +53,6 @@ public class Klant extends Person {
         currentActionText = text;
     }
 
-    /** Pak een product */
     public void takeProduct(String productName, int waitTicks) {
         productsList.add(new Product(productName, 0.0));
         startAction("Pakt " + productName + "...", waitTicks);
@@ -59,7 +60,6 @@ public class Klant extends Person {
 
     @Override
     public void update() {
-        // Als klant bezig is met een actie, wacht
         if (busy) {
             actionTicks--;
             if (actionTicks <= 0) {
@@ -69,7 +69,6 @@ public class Klant extends Person {
             return;
         }
 
-        // Controleer of alle segmenten klaar zijn
         if (currentSegmentIndex >= routeSegments.size()) {
             Despawncharacter();
             return;
@@ -82,15 +81,14 @@ public class Klant extends Person {
             return;
         }
 
-        // Controleer of huidig pad klaar is
         if (pathIndex >= currentPath.size()) {
-            handleSegmentComplete(currentSegmentIndex);
+            Node last = currentPath.get(currentPath.size() - 1);
+            handleSegmentComplete(last.name);
             currentSegmentIndex++;
             pathIndex = 0;
             return;
         }
 
-        // Huidige target node
         Node target = currentPath.get(pathIndex);
         int targetX = (int) (target.x * TickController.getPanelWidth()) - width / 2;
         int targetY = (int) (target.y * TickController.getPanelHeight()) - height;
@@ -99,30 +97,53 @@ public class Klant extends Person {
         float dy = targetY - positie[1];
         float distance = (float) Math.sqrt(dx * dx + dy * dy);
 
+        // ✅ Kassalogica direct uitvoeren zodra klant kassa bereikt
+        if (target.name.equalsIgnoreCase("cashier") && !hasCheckedOut) {
+            handleSegmentComplete("cashier");
+            hasCheckedOut = true;
+            return; // Stop hier zodat hij niet direct doorloopt
+        }
+
         if (distance < speed) {
             positie[0] = targetX;
             positie[1] = targetY;
             pathIndex++;
-
-            // Node is kassa → stop en start actie
-            if (target.name.equalsIgnoreCase("kassa") || target.name.equalsIgnoreCase("cashier")) {
-                startAction("Afrekenen...", 60); // bv. 60 ticks wachten bij de kassa
-            }
-
         } else {
             positie[0] += (dx / distance) * speed;
             positie[1] += (dy / distance) * speed;
         }
     }
 
+    /** Acties op basis van node-naam i.p.v. segment index */
+    private void handleSegmentComplete(String nodeName) {
+        if (nodeName == null) return;
 
-    /** Acties na elk segment */
-    private void handleSegmentComplete(int segmentIndex) {
-        switch (segmentIndex) {
-            case 0 -> takeProduct("Appel", 30);
-            case 1 -> takeProduct("Brood", 20);
-            case 2 -> startAction("Afrekenen...", 50);
-            default -> System.out.println("Klant verlaat de winkel");
+        switch (nodeName.toLowerCase()) {
+
+            case "kast1" -> takeProduct("Appel", 30);
+            case "kast2" -> takeProduct("Brood", 20);
+            case "kast3" -> takeProduct("Melk", 25);
+            case "liggend-kast-1" -> takeProduct("Chips", 40);
+            case "liggend-kast-2" -> takeProduct("Koekjes", 35);
+            case "koelkast" -> takeProduct("Yoghurt", 45);
+
+            case "queue1", "queue2", "queue3" ->
+                    startAction("Wachten in de rij...", 20);
+
+            case "cashier" ->
+                    startAction("Afrekenen...", 60);
+
+            case "exit" -> {
+                System.out.println("Klant verlaat de winkel");
+                Despawncharacter();
+            }
+
+            case "entrance", "pad1", "pad2" -> {
+                // Geen actie nodig
+            }
+
+            default ->
+                    System.out.println("Onbekende locatie: " + nodeName);
         }
     }
 
@@ -135,7 +156,6 @@ public class Klant extends Person {
             g.fillRect(positie[0], positie[1], width, height);
         }
 
-        // Laadbalk tekenen als bezig
         if (busy && maxActionTicks > 0) {
             int barWidth = 80;
             int barHeight = 10;
