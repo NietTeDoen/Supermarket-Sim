@@ -11,6 +11,7 @@ import java.util.Map;
 import Controller.Main;
 import Model.Logic.Node;
 import Model.Logic.World;
+import Model.People.Klant;
 import Model.People.Person;
 
 public class SimulationPanel extends JPanel {
@@ -55,13 +56,14 @@ public class SimulationPanel extends JPanel {
             world.draw(g);
         }
 
-        // Personen tekenen
-        for (Person p : World.getPersons()) {
-            p.draw(g);
+
+            Graphics2D g2 = (Graphics2D) g;
+
+            // Voorbeeld: teken alle klanten
+            for (Klant k : World.getPersons()) {
+                k.draw(g2);
+            }
         }
-
-    }
-
 
     public int getPanelWidth() {
         return getWidth();

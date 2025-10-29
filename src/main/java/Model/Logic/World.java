@@ -60,9 +60,7 @@ public class World {
     public static Klant CreatePerson() {
         Node entrance = Main.nodes.get("entrance");
         if (entrance == null) return null;
-        if (Main.panel.getWidth() == 0 || Main.panel.getHeight() == 0) return null;
 
-        // Haal panel op
         JPanel panel = TickController.panel;
         if (panel == null || panel.getWidth() == 0 || panel.getHeight() == 0) return null;
 
@@ -70,22 +68,21 @@ public class World {
         int x = (int) (entrance.x * panel.getWidth());
         int y = (int) (entrance.y * panel.getHeight());
 
-        // Genereer een willekeurig pad van nodes inclusief schappen en exit
-        Node[] pathNodes = NodelistGenerator(entrance);
+        // Genereer padsegmenten (meerdere trajecten)
+        List<List<Node>> pathSegments = NodelistGenerator(entrance);
 
-        // Maak de persoon met het pad
-        Klant person = new Klant(new int[]{x, y}, Arrays.asList(pathNodes), "dummy");
+        // Maak de klant met deze segmenten
+        Klant person = new Klant(new int[]{x, y}, pathSegments, "dummy");
 
-        // Voeg toe aan de wereld
         persons.add(person);
-
         return person;
     }
 
-
-
-    public static Node[] NodelistGenerator(Node startNode) {
-        // nodes die geen targets mogen zijn
+    /**
+     * Genereert een lijst van padsegmenten. Elk segment loopt van een startnode
+     * naar een doel (bijv. schap), en de laatste naar de uitgang.
+     */
+    public static List<List<Node>> NodelistGenerator(Node startNode) {
         Set<String> exclude = Set.of(
                 "queue", "queue1", "queue2", "queue3",
                 "kassa", "entrance", "cashier", "exit", "pad1", "pad2"
@@ -98,43 +95,45 @@ public class World {
             }
         }
 
-        if (possibleTargets.isEmpty()) return new Node[0];
+        if (possibleTargets.isEmpty()) return List.of();
 
-        // Kies een paar random targets
+        // Kies een paar willekeurige schappen
         Collections.shuffle(possibleTargets);
         int count = Math.min(3, possibleTargets.size());
         List<Node> chosenTargets = possibleTargets.subList(0, count);
 
-        // Bouw volledig pad via WorldGraph.findPath
-        List<Node> fullPath = new ArrayList<>();
+        List<List<Node>> allSegments = new ArrayList<>();
         Node current = startNode;
 
+        // Maak per target een apart padsegment
         for (Node target : chosenTargets) {
             List<Node> pathSegment = WorldGraph.findPath(current, target);
             if (pathSegment != null && !pathSegment.isEmpty()) {
-                if (!fullPath.isEmpty()) pathSegment.remove(0); // voorkom duplicatie
-                fullPath.addAll(pathSegment);
+                allSegments.add(new ArrayList<>(pathSegment));
                 current = target;
             }
         }
 
-        // Voeg exit toe
+        // Voeg het pad naar de uitgang toe als laatste segment
         Node exit = Main.nodes.get("exit");
         if (exit != null) {
             List<Node> exitPath = WorldGraph.findPath(current, exit);
             if (exitPath != null && !exitPath.isEmpty()) {
-                if (!fullPath.isEmpty()) exitPath.remove(0);
-                fullPath.addAll(exitPath);
+                allSegments.add(new ArrayList<>(exitPath));
             }
         }
 
         // Debug output
-        String debug = "";
-        for (Node n : fullPath) debug += " | " + n.name;
-        System.out.println(debug);
+        System.out.println("Generated " + allSegments.size() + " path segments:");
+        for (int i = 0; i < allSegments.size(); i++) {
+            System.out.print(" Segment " + (i + 1) + ": ");
+            for (Node n : allSegments.get(i)) System.out.print(" -> " + n.name);
+            System.out.println();
+        }
 
-        return fullPath.toArray(new Node[0]);
+        return allSegments;
     }
+
 
 
 }
