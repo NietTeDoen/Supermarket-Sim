@@ -59,7 +59,7 @@ public class Klant extends Person {
 
     @Override
     public void update() {
-        // Als bezig: alleen actionTicks verminderen, geen beweging
+        // Als klant bezig is met een actie, wacht
         if (busy) {
             actionTicks--;
             if (actionTicks <= 0) {
@@ -69,7 +69,7 @@ public class Klant extends Person {
             return;
         }
 
-        // Alle segmenten afgerond?
+        // Controleer of alle segmenten klaar zijn
         if (currentSegmentIndex >= routeSegments.size()) {
             Despawncharacter();
             return;
@@ -82,7 +82,7 @@ public class Klant extends Person {
             return;
         }
 
-        // Segment afgerond?
+        // Controleer of huidig pad klaar is
         if (pathIndex >= currentPath.size()) {
             handleSegmentComplete(currentSegmentIndex);
             currentSegmentIndex++;
@@ -90,7 +90,7 @@ public class Klant extends Person {
             return;
         }
 
-        // Beweeg naar target node
+        // Huidige target node
         Node target = currentPath.get(pathIndex);
         int targetX = (int) (target.x * TickController.getPanelWidth()) - width / 2;
         int targetY = (int) (target.y * TickController.getPanelHeight()) - height;
@@ -103,11 +103,18 @@ public class Klant extends Person {
             positie[0] = targetX;
             positie[1] = targetY;
             pathIndex++;
+
+            // Node is kassa → stop en start actie
+            if (target.name.equalsIgnoreCase("kassa") || target.name.equalsIgnoreCase("cashier")) {
+                startAction("Afrekenen...", 60); // bv. 60 ticks wachten bij de kassa
+            }
+
         } else {
             positie[0] += (dx / distance) * speed;
             positie[1] += (dy / distance) * speed;
         }
     }
+
 
     /** Acties na elk segment */
     private void handleSegmentComplete(int segmentIndex) {
