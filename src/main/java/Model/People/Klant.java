@@ -9,27 +9,66 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Klasse die een klant in de winkel voorstelt.
+ * <p>
+ * Een klant kan producten pakken, in de rij wachten, naar de kassa gaan en uiteindelijk de winkel verlaten.
+ * De klant beweegt langs een route die uit segmenten bestaat, en kan acties uitvoeren zoals "pakken" of "afrekenen".
+ * Het mandje wordt altijd boven het hoofd van de klant weergegeven.
+ * </p>
+ */
 public class Klant extends Person {
 
+    /** Lijst met producten die de klant heeft gepakt */
     private List<Product> productsList = new ArrayList<>();
+
+    /** Route van de klant, onderverdeeld in segmenten */
     private List<List<Node>> routeSegments;
+
+    /** Index van het huidige segment van de route */
     private int currentSegmentIndex = 0;
+
+    /** Index van de positie binnen het huidige segment */
     private int pathIndex = 0;
+
+    /** Beweging snelheid van de klant */
     private float speed = 5f;
 
+    /** Geeft aan of de klant momenteel een actie uitvoert */
     private boolean busy = false;
+
+    /** Ticks die een actie nog moet duren */
     private int actionTicks = 0;
+
+    /** Maximale ticks voor de huidige actie */
     private int maxActionTicks = 0;
+
+    /** Beschrijving van de huidige actie */
     private String currentActionText = "";
 
+    /** Afmetingen van de klant (pixels) */
     private int width = 100;
     private int height = 150;
+
+    /** Huidige positie van de klant (x, y) */
     protected int[] positie;
+
+    /** Sprite image van de klant */
     private Image image;
 
+    /** Geeft aan of de klant al heeft afgerekend */
     private boolean hasCheckedOut = false;
+
+    /** Geeft aan of er iemand bij de kassa is (gedeeld tussen alle klanten) */
     private static boolean bijKassa = false;
 
+    /**
+     * Maakt een nieuwe klant met een startpositie, route en sprite.
+     *
+     * @param positie      startpositie van de klant als array [x, y]
+     * @param routeSegments lijst van route segmenten die de klant volgt
+     * @param sprite       pad naar het sprite-bestand
+     */
     public Klant(int[] positie, List<List<Node>> routeSegments, String sprite) {
         super(positie, null, sprite);
         this.positie = positie;
@@ -37,6 +76,7 @@ public class Klant extends Person {
         loadImage();
     }
 
+    /** Laadt de afbeelding voor de klant. */
     private void loadImage() {
         try {
             ImageIcon icon = new ImageIcon(getClass().getResource("/images/Klant.png"));
@@ -47,6 +87,12 @@ public class Klant extends Person {
         }
     }
 
+    /**
+     * Start een actie voor de klant.
+     *
+     * @param text      beschrijving van de actie
+     * @param waitTicks aantal ticks dat de actie duurt
+     */
     private void startAction(String text, int waitTicks) {
         busy = true;
         actionTicks = waitTicks;
@@ -54,6 +100,12 @@ public class Klant extends Person {
         currentActionText = text;
     }
 
+    /**
+     * Laat de klant een product pakken.
+     *
+     * @param productName naam van het product
+     * @param waitTicks   aantal ticks dat het pakken duurt
+     */
     public void takeProduct(String productName, int waitTicks) {
         if (productName == null){
             throw new NullPointerException("Product name is null");
@@ -62,17 +114,20 @@ public class Klant extends Person {
         startAction("Pakt " + productName + "...", waitTicks);
     }
 
+    /**
+     * Update de status en positie van de klant.
+     * <p>
+     * Beweegt de klant langs de route, voert acties uit en behandelt de kassalogica.
+     * </p>
+     */
     @Override
     public void update() {
         if (busy) {
             if (currentActionText.equals("Wachten in de rij...")) {
                 if (!bijKassa) {
-                    // Kassa is vrij, queue actie mag stoppen
                     actionTicks--;
                 }
-                // anders blijven ze wachten, dus geen actionTicks--
             } else {
-                // Alles buiten de queue telt gewoon ticks af
                 actionTicks--;
             }
 
@@ -114,11 +169,10 @@ public class Klant extends Person {
         float dy = targetY - positie[1];
         float distance = (float) Math.sqrt(dx * dx + dy * dy);
 
-        // ✅ Kassalogica direct uitvoeren zodra klant kassa bereikt
         if (target.name.equalsIgnoreCase("cashier") && !hasCheckedOut) {
             handleSegmentComplete("cashier");
             hasCheckedOut = true;
-            return; // Stop hier zodat hij niet direct doorloopt
+            return;
         }
 
         if (distance < speed) {
@@ -131,25 +185,26 @@ public class Klant extends Person {
         }
     }
 
-    /** Acties op basis van node-naam i.p.v. segment index */
+    /**
+     * Voert acties uit op basis van de voltooide node.
+     *
+     * @param nodeName naam van de node die voltooid is
+     */
     private void handleSegmentComplete(String nodeName) {
         if (nodeName == null) return;
 
         switch (nodeName.toLowerCase()) {
-
             case "kast1" -> takeProduct("Appel", 30);
             case "kast2" -> takeProduct("Brood", 20);
             case "kast3" -> takeProduct("Melk", 25);
             case "liggend-kast-1" -> takeProduct("Chips", 40);
             case "liggend-kast-2" -> takeProduct("Koekjes", 35);
             case "koelkast" -> takeProduct("Yoghurt", 45);
-
             case "queue1", "queue2", "queue3" ->{
                 if(bijKassa) {
                     startAction("Wachten in de rij...", 40);
                 }
             }
-
             case "cashier" -> {
                 bijKassa = true;
                 startAction("Afrekenen...", 120);
@@ -159,18 +214,17 @@ public class Klant extends Person {
                 bijKassa = false;
                 Despawncharacter();
             }
-
-            case "entrance", "pad1", "pad2" -> {
-                // Geen actie nodig
-            }
-
-            default ->
-                    System.out.println("Onbekende locatie: " + nodeName);
+            case "entrance", "pad1", "pad2" -> { /* Geen actie nodig */ }
+            default -> System.out.println("Onbekende locatie: " + nodeName);
         }
     }
 
+    /**
+     * Tekent de klant, mandje boven het hoofd en eventuele laadbalk.
+     *
+     * @param g Graphics2D object om op te tekenen
+     */
     public void draw(Graphics2D g) {
-        // Tekent klant zelf
         if (image != null)
             g.drawImage(image, positie[0], positie[1], width, height, null);
         else {
@@ -178,7 +232,7 @@ public class Klant extends Person {
             g.fillRect(positie[0], positie[1], width, height);
         }
 
-        // --- Mandje altijd boven hoofd ---
+        // Mandje boven hoofd
         if (!productsList.isEmpty()) {
             StringBuilder inventoryText = new StringBuilder("🛒 Mandje: ");
             for (int i = 0; i < productsList.size(); i++) {
@@ -193,48 +247,52 @@ public class Klant extends Person {
             int textHeight = fm.getHeight();
 
             int textX = positie[0] + width / 2 - textWidth / 2;
-            int textY = positie[1] - 10; // net boven het hoofd
+            int textY = positie[1] - 10;
 
-            // Achtergrond (half-transparant zwart)
             int padding = 6;
             g.setColor(new Color(0, 0, 0, 160));
             g.fillRoundRect(textX - padding, textY - textHeight + 3,
                     textWidth + padding * 2, textHeight, 10, 10);
 
-            // Tekst mandje
             g.setColor(new Color(255, 230, 120));
             g.drawString(inventoryText.toString(), textX, textY);
         }
 
-        // --- Laadbalk iets hoger, zodat mandje eronder blijft ---
+        // Laadbalk
         if (busy && maxActionTicks > 0) {
             int barWidth = 80;
             int barHeight = 10;
             int barX = positie[0] + width / 2 - barWidth / 2;
-            int barY = positie[1] - 35; // hoger dan mandje
+            int barY = positie[1] - 35;
 
             float progress = 1f - ((float) actionTicks / maxActionTicks);
 
-            // Achtergrond balk
             g.setColor(Color.DARK_GRAY);
             g.fillRect(barX, barY, barWidth, barHeight);
 
-            // Voortgang balk
             g.setColor(new Color(80, 200, 120));
             g.fillRect(barX, barY, (int) (barWidth * progress), barHeight);
 
-            // Tekst boven de balk
             g.setColor(Color.WHITE);
             g.setFont(new Font("Arial", Font.PLAIN, 12));
             g.drawString(currentActionText, barX, barY - 5);
         }
     }
 
-
+    /**
+     * Geeft de lijst van producten die de klant heeft gepakt.
+     *
+     * @return lijst van Product objecten
+     */
     public List<Product> getProductsList() {
         return productsList;
     }
 
+    /**
+     * Geeft de index van het huidige segment van de route.
+     *
+     * @return huidige segmentindex
+     */
     public int getCurrentSegmentIndex() {
         return currentSegmentIndex;
     }

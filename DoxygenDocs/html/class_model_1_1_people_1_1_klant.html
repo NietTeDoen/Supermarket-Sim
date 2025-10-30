@@ -145,7 +145,10 @@ Private Attributes</h2></td></tr>
 Static Private Attributes</h2></td></tr>
 <tr class="memitem:a1e3adeb50c4f2b24b18e00e265dafbce" id="r_a1e3adeb50c4f2b24b18e00e265dafbce"><td class="memItemLeft" align="right" valign="top">static boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1e3adeb50c4f2b24b18e00e265dafbce">bijKassa</a> = false</td></tr>
 </table>
-<a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Klasse die een klant in de winkel voorstelt. </p>
+<p>Een klant kan producten pakken, in de rij wachten, naar de kassa gaan en uiteindelijk de winkel verlaten. De klant beweegt langs een route die uit segmenten bestaat, en kan acties uitvoeren zoals "pakken" of "afrekenen". Het mandje wordt altijd boven het hoofd van de klant weergegeven. </p>
+</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a27bd72c999c87d69808999d6a8a37442" name="a27bd72c999c87d69808999d6a8a37442"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a27bd72c999c87d69808999d6a8a37442">&#9670;&#160;</a></span>Klant()</h2>
 
@@ -177,6 +180,15 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Maakt een nieuwe klant met een startpositie, route en sprite.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">positie</td><td>startpositie van de klant als array [x, y] </td></tr>
+    <tr><td class="paramname">routeSegments</td><td>lijst van route segmenten die de klant volgt </td></tr>
+    <tr><td class="paramname">sprite</td><td>pad naar het sprite-bestand </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -203,6 +215,13 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Tekent de klant, mandje boven het hoofd en eventuele laadbalk.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">g</td><td>Graphics2D object om op te tekenen </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -228,6 +247,8 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Geeft de index van het huidige segment van de route.</p>
+<dl class="section return"><dt>Returns</dt><dd>huidige segmentindex </dd></dl>
 
 </div>
 </div>
@@ -253,6 +274,8 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Geeft de lijst van producten die de klant heeft gepakt.</p>
+<dl class="section return"><dt>Returns</dt><dd>lijst van <a class="el" href="class_model_1_1_store_1_1_product.html">Product</a> objecten </dd></dl>
 
 </div>
 </div>
@@ -278,7 +301,13 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Acties op basis van node-naam i.p.v. segment index </p>
+<p>Voert acties uit op basis van de voltooide node.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nodeName</td><td>naam van de node die voltooid is </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -304,6 +333,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Laadt de afbeelding voor de klant. </p>
 
 <p>Reimplemented from <a class="el" href="class_model_1_1_people_1_1_person.html#a47a039ae615e5d2032351a123432c1d8">Model.People.Person</a>.</p>
 
@@ -335,6 +365,14 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Start een actie voor de klant.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">text</td><td>beschrijving van de actie </td></tr>
+    <tr><td class="paramname">waitTicks</td><td>aantal ticks dat de actie duurt </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -364,6 +402,14 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Laat de klant een product pakken.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">productName</td><td>naam van het product </td></tr>
+    <tr><td class="paramname">waitTicks</td><td>aantal ticks dat het pakken duurt </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -389,6 +435,8 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Update de status en positie van de klant. </p>
+<p>Beweegt de klant langs de route, voert acties uit en behandelt de kassalogica. </p>
 
 <p>Reimplemented from <a class="el" href="class_model_1_1_people_1_1_person.html#a2745b8d9a10713da9343e7c99520ee55">Model.People.Person</a>.</p>
 
@@ -414,6 +462,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Ticks die een actie nog moet duren </p>
 
 </div>
 </div>
@@ -436,6 +485,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Geeft aan of er iemand bij de kassa is (gedeeld tussen alle klanten) </p>
 
 </div>
 </div>
@@ -458,6 +508,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Geeft aan of de klant momenteel een actie uitvoert </p>
 
 </div>
 </div>
@@ -480,6 +531,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Beschrijving van de huidige actie </p>
 
 </div>
 </div>
@@ -502,6 +554,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Index van het huidige segment van de route </p>
 
 </div>
 </div>
@@ -524,6 +577,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Geeft aan of de klant al heeft afgerekend </p>
 
 </div>
 </div>
@@ -568,6 +622,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Sprite image van de klant </p>
 
 </div>
 </div>
@@ -590,6 +645,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Maximale ticks voor de huidige actie </p>
 
 </div>
 </div>
@@ -612,6 +668,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Index van de positie binnen het huidige segment </p>
 
 </div>
 </div>
@@ -634,6 +691,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Huidige positie van de klant (x, y) </p>
 
 </div>
 </div>
@@ -656,6 +714,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Lijst met producten die de klant heeft gepakt </p>
 
 </div>
 </div>
@@ -678,6 +737,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Route van de klant, onderverdeeld in segmenten </p>
 
 </div>
 </div>
@@ -700,6 +760,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Beweging snelheid van de klant </p>
 
 </div>
 </div>
@@ -722,6 +783,7 @@ Static Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Afmetingen van de klant (pixels) </p>
 
 </div>
 </div>

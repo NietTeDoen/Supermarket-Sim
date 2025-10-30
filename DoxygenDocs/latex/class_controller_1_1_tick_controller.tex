@@ -30,9 +30,14 @@ static JPanel \mbox{\hyperlink{class_controller_1_1_tick_controller_a75443282996
 \doxysubsubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{class_controller_1_1_tick_controller_aa5ef1a0f91cd8ff676cf1926d860731f}{tick}} ()  throws Interrupted\+Exception
+void \mbox{\hyperlink{class_controller_1_1_tick_controller_aa5ef1a0f91cd8ff676cf1926d860731f}{tick}} ()  throws Interrupted\+Exception 
 \end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+\doxylink{class_controller_1_1_tick_controller}{Tick\+Controller} beheert de "{}ticks"{} van de simulatie. Elke tick update alle personen in de wereld, verwerkt spawning van nieuwe klanten en hertekent het paneel.
+
+De simulatie draait op een vast aantal ticks per seconde (TICKS\+\_\+\+PER\+\_\+\+SECOND).
 
 \label{doc-func-members}
 \Hypertarget{class_controller_1_1_tick_controller_doc-func-members}
@@ -43,54 +48,118 @@ void \mbox{\hyperlink{class_controller_1_1_tick_controller_aa5ef1a0f91cd8ff676cf
 {\footnotesize\ttfamily \label{class_controller_1_1_tick_controller_a0e828b0d2e02d97771ec3612fd349700} 
 void Controller.\+Tick\+Controller.\+add\+Character (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_model_1_1_people_1_1_klant}{Klant}}}]{person}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
 
+Voegt een klant toe aan de simulatie.
+
+
+\begin{DoxyParams}{Parameters}
+{\em person} & de klant die toegevoegd wordt \\
+\hline
+\end{DoxyParams}
 \Hypertarget{class_controller_1_1_tick_controller_ab3d191418bf9a64121cac7f80227c6b5}\index{Controller.TickController@{Controller.TickController}!checkCustomerAmount@{checkCustomerAmount}}
 \index{checkCustomerAmount@{checkCustomerAmount}!Controller.TickController@{Controller.TickController}}
 \doxysubsubsection{\texorpdfstring{checkCustomerAmount()}{checkCustomerAmount()}}
 {\footnotesize\ttfamily \label{class_controller_1_1_tick_controller_ab3d191418bf9a64121cac7f80227c6b5} 
 int Controller.\+Tick\+Controller.\+check\+Customer\+Amount (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
 
+Controleert hoeveel klanten er zijn en spawnt nieuwe klanten indien nodig.
+
+\begin{DoxyReturn}{Returns}
+het actuele aantal klanten in de simulatie 
+\end{DoxyReturn}
 \Hypertarget{class_controller_1_1_tick_controller_a732be49f9c38518ffd185c3434a33b4e}\index{Controller.TickController@{Controller.TickController}!convertRelative@{convertRelative}}
 \index{convertRelative@{convertRelative}!Controller.TickController@{Controller.TickController}}
 \doxysubsubsection{\texorpdfstring{convertRelative()}{convertRelative()}}
 {\footnotesize\ttfamily \label{class_controller_1_1_tick_controller_a732be49f9c38518ffd185c3434a33b4e} 
 Point Controller.\+Tick\+Controller.\+convert\+Relative (\begin{DoxyParamCaption}\item[{double}]{relX}{, }\item[{double}]{relY}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
 
+Converteert relatieve coördinaten (0.\+0 -\/ 1.\+0) naar pixels op het panel.
+
+
+\begin{DoxyParams}{Parameters}
+{\em relX} & relatieve X-\/coördinaat \\
+\hline
+{\em relY} & relatieve Y-\/coördinaat \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Point met pixel-\/coördinaten 
+\end{DoxyReturn}
 \Hypertarget{class_controller_1_1_tick_controller_a0657952c2ba56b51f9391884dfd00229}\index{Controller.TickController@{Controller.TickController}!getPanelHeight@{getPanelHeight}}
 \index{getPanelHeight@{getPanelHeight}!Controller.TickController@{Controller.TickController}}
 \doxysubsubsection{\texorpdfstring{getPanelHeight()}{getPanelHeight()}}
 {\footnotesize\ttfamily \label{class_controller_1_1_tick_controller_a0657952c2ba56b51f9391884dfd00229} 
 int Controller.\+Tick\+Controller.\+get\+Panel\+Height (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
 
+Geeft de hoogte van het panel in pixels.
+
+\begin{DoxyReturn}{Returns}
+hoogte in pixels, of 1080 als panel null is 
+\end{DoxyReturn}
 \Hypertarget{class_controller_1_1_tick_controller_a94d4a9ae267002b4e5d6385664a631e4}\index{Controller.TickController@{Controller.TickController}!getPanelWidth@{getPanelWidth}}
 \index{getPanelWidth@{getPanelWidth}!Controller.TickController@{Controller.TickController}}
 \doxysubsubsection{\texorpdfstring{getPanelWidth()}{getPanelWidth()}}
 {\footnotesize\ttfamily \label{class_controller_1_1_tick_controller_a94d4a9ae267002b4e5d6385664a631e4} 
 int Controller.\+Tick\+Controller.\+get\+Panel\+Width (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
 
+Geeft de breedte van het panel in pixels.
+
+\begin{DoxyReturn}{Returns}
+breedte in pixels, of 1920 als panel null is 
+\end{DoxyReturn}
 \Hypertarget{class_controller_1_1_tick_controller_a7c969c1815b6edff1b919810778aec0a}\index{Controller.TickController@{Controller.TickController}!removeCharacter@{removeCharacter}}
 \index{removeCharacter@{removeCharacter}!Controller.TickController@{Controller.TickController}}
 \doxysubsubsection{\texorpdfstring{removeCharacter()}{removeCharacter()}}
 {\footnotesize\ttfamily \label{class_controller_1_1_tick_controller_a7c969c1815b6edff1b919810778aec0a} 
 void Controller.\+Tick\+Controller.\+remove\+Character (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_model_1_1_people_1_1_klant}{Klant}}}]{person}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
 
+Verwijdert een klant uit de simulatie en uit de wereld.
+
+
+\begin{DoxyParams}{Parameters}
+{\em person} & de klant die verwijderd wordt \\
+\hline
+\end{DoxyParams}
 \Hypertarget{class_controller_1_1_tick_controller_a3767dfab340ec6d636412bc83196808b}\index{Controller.TickController@{Controller.TickController}!setPanel@{setPanel}}
 \index{setPanel@{setPanel}!Controller.TickController@{Controller.TickController}}
 \doxysubsubsection{\texorpdfstring{setPanel()}{setPanel()}}
 {\footnotesize\ttfamily \label{class_controller_1_1_tick_controller_a3767dfab340ec6d636412bc83196808b} 
 void Controller.\+Tick\+Controller.\+set\+Panel (\begin{DoxyParamCaption}\item[{JPanel}]{p}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
 
+Stelt het panel in waarop de simulatie getekend wordt.
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & het JPanel om te gebruiken \\
+\hline
+\end{DoxyParams}
 \Hypertarget{class_controller_1_1_tick_controller_a98ed59d71162dbabc943e92a8ffb665f}\index{Controller.TickController@{Controller.TickController}!start@{start}}
 \index{start@{start}!Controller.TickController@{Controller.TickController}}
 \doxysubsubsection{\texorpdfstring{start()}{start()}}
 {\footnotesize\ttfamily \label{class_controller_1_1_tick_controller_a98ed59d71162dbabc943e92a8ffb665f} 
 void Controller.\+Tick\+Controller.\+start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) throws Interrupted\+Exception\hspace{0.3cm}{\ttfamily [inline]}}
 
+Start de tick-\/loop van de simulatie. 
+
+Update alle personen in de wereld en repaints het panel.
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Interrupted\+Exception} & als de thread onderbroken wordt tijdens sleep \\
+\hline
+\end{DoxyExceptions}
 \Hypertarget{class_controller_1_1_tick_controller_aa5ef1a0f91cd8ff676cf1926d860731f}\index{Controller.TickController@{Controller.TickController}!tick@{tick}}
 \index{tick@{tick}!Controller.TickController@{Controller.TickController}}
 \doxysubsubsection{\texorpdfstring{tick()}{tick()}}
 {\footnotesize\ttfamily \label{class_controller_1_1_tick_controller_aa5ef1a0f91cd8ff676cf1926d860731f} 
 void Controller.\+Tick\+Controller.\+tick (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) throws Interrupted\+Exception\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
 
+Voert één tick uit\+: update alle personen en verwijdert despawned personen.
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Interrupted\+Exception} & als de thread onderbroken wordt tijdens sleep \\
+\hline
+\end{DoxyExceptions}
 
 
 \label{doc-variable-members}
@@ -102,7 +171,7 @@ void Controller.\+Tick\+Controller.\+tick (\begin{DoxyParamCaption}{}{}\end{Doxy
 {\footnotesize\ttfamily \label{class_controller_1_1_tick_controller_a754432829968002a9a1caed5fe4f08d4} 
 JPanel Controller.\+Tick\+Controller.\+panel\hspace{0.3cm}{\ttfamily [static]}}
 
-
+Paneel waarop de simulatie wordt getekend 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 

@@ -82,6 +82,11 @@ static boolean \mbox{\hyperlink{class_model_1_1_people_1_1_klant_a1e3adeb50c4f2b
 \end{DoxyCompactItemize}
 
 
+\doxysubsection{Detailed Description}
+Klasse die een klant in de winkel voorstelt. 
+
+Een klant kan producten pakken, in de rij wachten, naar de kassa gaan en uiteindelijk de winkel verlaten. De klant beweegt langs een route die uit segmenten bestaat, en kan acties uitvoeren zoals "{}pakken"{} of "{}afrekenen"{}. Het mandje wordt altijd boven het hoofd van de klant weergegeven. 
+
 \label{doc-constructors}
 \Hypertarget{class_model_1_1_people_1_1_klant_doc-constructors}
 \doxysubsection{Constructor \& Destructor Documentation}
@@ -91,6 +96,17 @@ static boolean \mbox{\hyperlink{class_model_1_1_people_1_1_klant_a1e3adeb50c4f2b
 {\footnotesize\ttfamily \label{class_model_1_1_people_1_1_klant_a27bd72c999c87d69808999d6a8a37442} 
 Model.\+People.\+Klant.\+Klant (\begin{DoxyParamCaption}\item[{int\mbox{[}$\,$\mbox{]}}]{positie}{, }\item[{List$<$ List$<$ \mbox{\hyperlink{class_model_1_1_logic_1_1_node}{Node}} $>$ $>$}]{route\+Segments}{, }\item[{String}]{sprite}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+Maakt een nieuwe klant met een startpositie, route en sprite.
+
+
+\begin{DoxyParams}{Parameters}
+{\em positie} & startpositie van de klant als array \mbox{[}x, y\mbox{]} \\
+\hline
+{\em route\+Segments} & lijst van route segmenten die de klant volgt \\
+\hline
+{\em sprite} & pad naar het sprite-\/bestand \\
+\hline
+\end{DoxyParams}
 
 
 \label{doc-func-members}
@@ -102,31 +118,55 @@ Model.\+People.\+Klant.\+Klant (\begin{DoxyParamCaption}\item[{int\mbox{[}$\,$\m
 {\footnotesize\ttfamily \label{class_model_1_1_people_1_1_klant_a00f01564016078eeca612e76977c5276} 
 void Model.\+People.\+Klant.\+draw (\begin{DoxyParamCaption}\item[{Graphics2D}]{g}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+Tekent de klant, mandje boven het hoofd en eventuele laadbalk.
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & Graphics2D object om op te tekenen \\
+\hline
+\end{DoxyParams}
 \Hypertarget{class_model_1_1_people_1_1_klant_a3548d8895754bf0790e1fba74a61756a}\index{Model.People.Klant@{Model.People.Klant}!getCurrentSegmentIndex@{getCurrentSegmentIndex}}
 \index{getCurrentSegmentIndex@{getCurrentSegmentIndex}!Model.People.Klant@{Model.People.Klant}}
 \doxysubsubsection{\texorpdfstring{getCurrentSegmentIndex()}{getCurrentSegmentIndex()}}
 {\footnotesize\ttfamily \label{class_model_1_1_people_1_1_klant_a3548d8895754bf0790e1fba74a61756a} 
 int Model.\+People.\+Klant.\+get\+Current\+Segment\+Index (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+Geeft de index van het huidige segment van de route.
+
+\begin{DoxyReturn}{Returns}
+huidige segmentindex 
+\end{DoxyReturn}
 \Hypertarget{class_model_1_1_people_1_1_klant_a28db96520f090b2e6a34de8322f09481}\index{Model.People.Klant@{Model.People.Klant}!getProductsList@{getProductsList}}
 \index{getProductsList@{getProductsList}!Model.People.Klant@{Model.People.Klant}}
 \doxysubsubsection{\texorpdfstring{getProductsList()}{getProductsList()}}
 {\footnotesize\ttfamily \label{class_model_1_1_people_1_1_klant_a28db96520f090b2e6a34de8322f09481} 
 List$<$ \mbox{\hyperlink{class_model_1_1_store_1_1_product}{Product}} $>$ Model.\+People.\+Klant.\+get\+Products\+List (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+Geeft de lijst van producten die de klant heeft gepakt.
+
+\begin{DoxyReturn}{Returns}
+lijst van \doxylink{class_model_1_1_store_1_1_product}{Product} objecten 
+\end{DoxyReturn}
 \Hypertarget{class_model_1_1_people_1_1_klant_ae8b039a1597f8065238cb5d5aeb92087}\index{Model.People.Klant@{Model.People.Klant}!handleSegmentComplete@{handleSegmentComplete}}
 \index{handleSegmentComplete@{handleSegmentComplete}!Model.People.Klant@{Model.People.Klant}}
 \doxysubsubsection{\texorpdfstring{handleSegmentComplete()}{handleSegmentComplete()}}
 {\footnotesize\ttfamily \label{class_model_1_1_people_1_1_klant_ae8b039a1597f8065238cb5d5aeb92087} 
 void Model.\+People.\+Klant.\+handle\+Segment\+Complete (\begin{DoxyParamCaption}\item[{String}]{node\+Name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
 
-Acties op basis van node-\/naam i.\+p.\+v. segment index \Hypertarget{class_model_1_1_people_1_1_klant_aa9855b3044c2f851e08ad559cedc147a}\index{Model.People.Klant@{Model.People.Klant}!loadImage@{loadImage}}
+Voert acties uit op basis van de voltooide node.
+
+
+\begin{DoxyParams}{Parameters}
+{\em node\+Name} & naam van de node die voltooid is \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_model_1_1_people_1_1_klant_aa9855b3044c2f851e08ad559cedc147a}\index{Model.People.Klant@{Model.People.Klant}!loadImage@{loadImage}}
 \index{loadImage@{loadImage}!Model.People.Klant@{Model.People.Klant}}
 \doxysubsubsection{\texorpdfstring{loadImage()}{loadImage()}}
 {\footnotesize\ttfamily \label{class_model_1_1_people_1_1_klant_aa9855b3044c2f851e08ad559cedc147a} 
 void Model.\+People.\+Klant.\+load\+Image (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
 
-
+Laadt de afbeelding voor de klant. 
 
 Reimplemented from \mbox{\hyperlink{class_model_1_1_people_1_1_person_a47a039ae615e5d2032351a123432c1d8}{Model.\+People.\+Person}}.
 
@@ -136,19 +176,39 @@ Reimplemented from \mbox{\hyperlink{class_model_1_1_people_1_1_person_a47a039ae6
 {\footnotesize\ttfamily \label{class_model_1_1_people_1_1_klant_a47876c0018f79c8a5952950d837d2e4a} 
 void Model.\+People.\+Klant.\+start\+Action (\begin{DoxyParamCaption}\item[{String}]{text}{, }\item[{int}]{wait\+Ticks}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
 
+Start een actie voor de klant.
+
+
+\begin{DoxyParams}{Parameters}
+{\em text} & beschrijving van de actie \\
+\hline
+{\em wait\+Ticks} & aantal ticks dat de actie duurt \\
+\hline
+\end{DoxyParams}
 \Hypertarget{class_model_1_1_people_1_1_klant_a14bfc2c35d56f539732805d4e69d993f}\index{Model.People.Klant@{Model.People.Klant}!takeProduct@{takeProduct}}
 \index{takeProduct@{takeProduct}!Model.People.Klant@{Model.People.Klant}}
 \doxysubsubsection{\texorpdfstring{takeProduct()}{takeProduct()}}
 {\footnotesize\ttfamily \label{class_model_1_1_people_1_1_klant_a14bfc2c35d56f539732805d4e69d993f} 
 void Model.\+People.\+Klant.\+take\+Product (\begin{DoxyParamCaption}\item[{String}]{product\+Name}{, }\item[{int}]{wait\+Ticks}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+Laat de klant een product pakken.
+
+
+\begin{DoxyParams}{Parameters}
+{\em product\+Name} & naam van het product \\
+\hline
+{\em wait\+Ticks} & aantal ticks dat het pakken duurt \\
+\hline
+\end{DoxyParams}
 \Hypertarget{class_model_1_1_people_1_1_klant_a45cd6180a8cbf45b56973a8f65494c01}\index{Model.People.Klant@{Model.People.Klant}!update@{update}}
 \index{update@{update}!Model.People.Klant@{Model.People.Klant}}
 \doxysubsubsection{\texorpdfstring{update()}{update()}}
 {\footnotesize\ttfamily \label{class_model_1_1_people_1_1_klant_a45cd6180a8cbf45b56973a8f65494c01} 
 void Model.\+People.\+Klant.\+update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
+Update de status en positie van de klant. 
 
+Beweegt de klant langs de route, voert acties uit en behandelt de kassalogica. 
 
 Reimplemented from \mbox{\hyperlink{class_model_1_1_people_1_1_person_a2745b8d9a10713da9343e7c99520ee55}{Model.\+People.\+Person}}.
 
@@ -163,37 +223,37 @@ Reimplemented from \mbox{\hyperlink{class_model_1_1_people_1_1_person_a2745b8d9a
 {\footnotesize\ttfamily \label{class_model_1_1_people_1_1_klant_aa18f9011f4b7cd0861ff921c123c2cb6} 
 int Model.\+People.\+Klant.\+action\+Ticks = 0\hspace{0.3cm}{\ttfamily [private]}}
 
-\Hypertarget{class_model_1_1_people_1_1_klant_a1e3adeb50c4f2b24b18e00e265dafbce}\index{Model.People.Klant@{Model.People.Klant}!bijKassa@{bijKassa}}
+Ticks die een actie nog moet duren \Hypertarget{class_model_1_1_people_1_1_klant_a1e3adeb50c4f2b24b18e00e265dafbce}\index{Model.People.Klant@{Model.People.Klant}!bijKassa@{bijKassa}}
 \index{bijKassa@{bijKassa}!Model.People.Klant@{Model.People.Klant}}
 \doxysubsubsection{\texorpdfstring{bijKassa}{bijKassa}}
 {\footnotesize\ttfamily \label{class_model_1_1_people_1_1_klant_a1e3adeb50c4f2b24b18e00e265dafbce} 
 boolean Model.\+People.\+Klant.\+bij\+Kassa = false\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
 
-\Hypertarget{class_model_1_1_people_1_1_klant_ae81114c48657809aee02ca56dbb167fa}\index{Model.People.Klant@{Model.People.Klant}!busy@{busy}}
+Geeft aan of er iemand bij de kassa is (gedeeld tussen alle klanten) \Hypertarget{class_model_1_1_people_1_1_klant_ae81114c48657809aee02ca56dbb167fa}\index{Model.People.Klant@{Model.People.Klant}!busy@{busy}}
 \index{busy@{busy}!Model.People.Klant@{Model.People.Klant}}
 \doxysubsubsection{\texorpdfstring{busy}{busy}}
 {\footnotesize\ttfamily \label{class_model_1_1_people_1_1_klant_ae81114c48657809aee02ca56dbb167fa} 
 boolean Model.\+People.\+Klant.\+busy = false\hspace{0.3cm}{\ttfamily [private]}}
 
-\Hypertarget{class_model_1_1_people_1_1_klant_a9d978f10112d74c9eb54bf38c709452a}\index{Model.People.Klant@{Model.People.Klant}!currentActionText@{currentActionText}}
+Geeft aan of de klant momenteel een actie uitvoert \Hypertarget{class_model_1_1_people_1_1_klant_a9d978f10112d74c9eb54bf38c709452a}\index{Model.People.Klant@{Model.People.Klant}!currentActionText@{currentActionText}}
 \index{currentActionText@{currentActionText}!Model.People.Klant@{Model.People.Klant}}
 \doxysubsubsection{\texorpdfstring{currentActionText}{currentActionText}}
 {\footnotesize\ttfamily \label{class_model_1_1_people_1_1_klant_a9d978f10112d74c9eb54bf38c709452a} 
 String Model.\+People.\+Klant.\+current\+Action\+Text = "{}"{}\hspace{0.3cm}{\ttfamily [private]}}
 
-\Hypertarget{class_model_1_1_people_1_1_klant_a6e3aebdd889734c2494d409ac5705316}\index{Model.People.Klant@{Model.People.Klant}!currentSegmentIndex@{currentSegmentIndex}}
+Beschrijving van de huidige actie \Hypertarget{class_model_1_1_people_1_1_klant_a6e3aebdd889734c2494d409ac5705316}\index{Model.People.Klant@{Model.People.Klant}!currentSegmentIndex@{currentSegmentIndex}}
 \index{currentSegmentIndex@{currentSegmentIndex}!Model.People.Klant@{Model.People.Klant}}
 \doxysubsubsection{\texorpdfstring{currentSegmentIndex}{currentSegmentIndex}}
 {\footnotesize\ttfamily \label{class_model_1_1_people_1_1_klant_a6e3aebdd889734c2494d409ac5705316} 
 int Model.\+People.\+Klant.\+current\+Segment\+Index = 0\hspace{0.3cm}{\ttfamily [private]}}
 
-\Hypertarget{class_model_1_1_people_1_1_klant_a106d51727b6250c676054cda158f3d8a}\index{Model.People.Klant@{Model.People.Klant}!hasCheckedOut@{hasCheckedOut}}
+Index van het huidige segment van de route \Hypertarget{class_model_1_1_people_1_1_klant_a106d51727b6250c676054cda158f3d8a}\index{Model.People.Klant@{Model.People.Klant}!hasCheckedOut@{hasCheckedOut}}
 \index{hasCheckedOut@{hasCheckedOut}!Model.People.Klant@{Model.People.Klant}}
 \doxysubsubsection{\texorpdfstring{hasCheckedOut}{hasCheckedOut}}
 {\footnotesize\ttfamily \label{class_model_1_1_people_1_1_klant_a106d51727b6250c676054cda158f3d8a} 
 boolean Model.\+People.\+Klant.\+has\+Checked\+Out = false\hspace{0.3cm}{\ttfamily [private]}}
 
-\Hypertarget{class_model_1_1_people_1_1_klant_a38253e06052a9837d2b38a9decda3ca1}\index{Model.People.Klant@{Model.People.Klant}!height@{height}}
+Geeft aan of de klant al heeft afgerekend \Hypertarget{class_model_1_1_people_1_1_klant_a38253e06052a9837d2b38a9decda3ca1}\index{Model.People.Klant@{Model.People.Klant}!height@{height}}
 \index{height@{height}!Model.People.Klant@{Model.People.Klant}}
 \doxysubsubsection{\texorpdfstring{height}{height}}
 {\footnotesize\ttfamily \label{class_model_1_1_people_1_1_klant_a38253e06052a9837d2b38a9decda3ca1} 
@@ -205,49 +265,49 @@ int Model.\+People.\+Klant.\+height = 150\hspace{0.3cm}{\ttfamily [private]}}
 {\footnotesize\ttfamily \label{class_model_1_1_people_1_1_klant_a47128a3b63b98be9d531b8021c935c44} 
 Image Model.\+People.\+Klant.\+image\hspace{0.3cm}{\ttfamily [private]}}
 
-\Hypertarget{class_model_1_1_people_1_1_klant_a67715d3110d1463c4c2753390dcba124}\index{Model.People.Klant@{Model.People.Klant}!maxActionTicks@{maxActionTicks}}
+Sprite image van de klant \Hypertarget{class_model_1_1_people_1_1_klant_a67715d3110d1463c4c2753390dcba124}\index{Model.People.Klant@{Model.People.Klant}!maxActionTicks@{maxActionTicks}}
 \index{maxActionTicks@{maxActionTicks}!Model.People.Klant@{Model.People.Klant}}
 \doxysubsubsection{\texorpdfstring{maxActionTicks}{maxActionTicks}}
 {\footnotesize\ttfamily \label{class_model_1_1_people_1_1_klant_a67715d3110d1463c4c2753390dcba124} 
 int Model.\+People.\+Klant.\+max\+Action\+Ticks = 0\hspace{0.3cm}{\ttfamily [private]}}
 
-\Hypertarget{class_model_1_1_people_1_1_klant_a8f0df3c20ae59186dddcda6eb5d7f11f}\index{Model.People.Klant@{Model.People.Klant}!pathIndex@{pathIndex}}
+Maximale ticks voor de huidige actie \Hypertarget{class_model_1_1_people_1_1_klant_a8f0df3c20ae59186dddcda6eb5d7f11f}\index{Model.People.Klant@{Model.People.Klant}!pathIndex@{pathIndex}}
 \index{pathIndex@{pathIndex}!Model.People.Klant@{Model.People.Klant}}
 \doxysubsubsection{\texorpdfstring{pathIndex}{pathIndex}}
 {\footnotesize\ttfamily \label{class_model_1_1_people_1_1_klant_a8f0df3c20ae59186dddcda6eb5d7f11f} 
 int Model.\+People.\+Klant.\+path\+Index = 0\hspace{0.3cm}{\ttfamily [private]}}
 
-\Hypertarget{class_model_1_1_people_1_1_klant_a08147e7b0375be436854a4c2d5c8bad2}\index{Model.People.Klant@{Model.People.Klant}!positie@{positie}}
+Index van de positie binnen het huidige segment \Hypertarget{class_model_1_1_people_1_1_klant_a08147e7b0375be436854a4c2d5c8bad2}\index{Model.People.Klant@{Model.People.Klant}!positie@{positie}}
 \index{positie@{positie}!Model.People.Klant@{Model.People.Klant}}
 \doxysubsubsection{\texorpdfstring{positie}{positie}}
 {\footnotesize\ttfamily \label{class_model_1_1_people_1_1_klant_a08147e7b0375be436854a4c2d5c8bad2} 
 int \mbox{[}$\,$\mbox{]} Model.\+People.\+Klant.\+positie\hspace{0.3cm}{\ttfamily [protected]}}
 
-\Hypertarget{class_model_1_1_people_1_1_klant_a359258e4d86ce3b2a885d99a5b393859}\index{Model.People.Klant@{Model.People.Klant}!productsList@{productsList}}
+Huidige positie van de klant (x, y) \Hypertarget{class_model_1_1_people_1_1_klant_a359258e4d86ce3b2a885d99a5b393859}\index{Model.People.Klant@{Model.People.Klant}!productsList@{productsList}}
 \index{productsList@{productsList}!Model.People.Klant@{Model.People.Klant}}
 \doxysubsubsection{\texorpdfstring{productsList}{productsList}}
 {\footnotesize\ttfamily \label{class_model_1_1_people_1_1_klant_a359258e4d86ce3b2a885d99a5b393859} 
 List$<$\mbox{\hyperlink{class_model_1_1_store_1_1_product}{Product}}$>$ Model.\+People.\+Klant.\+products\+List = new Array\+List$<$$>$()\hspace{0.3cm}{\ttfamily [private]}}
 
-\Hypertarget{class_model_1_1_people_1_1_klant_a45850de38dea0fbb59873acd00d1c179}\index{Model.People.Klant@{Model.People.Klant}!routeSegments@{routeSegments}}
+Lijst met producten die de klant heeft gepakt \Hypertarget{class_model_1_1_people_1_1_klant_a45850de38dea0fbb59873acd00d1c179}\index{Model.People.Klant@{Model.People.Klant}!routeSegments@{routeSegments}}
 \index{routeSegments@{routeSegments}!Model.People.Klant@{Model.People.Klant}}
 \doxysubsubsection{\texorpdfstring{routeSegments}{routeSegments}}
 {\footnotesize\ttfamily \label{class_model_1_1_people_1_1_klant_a45850de38dea0fbb59873acd00d1c179} 
 List$<$List$<$\mbox{\hyperlink{class_model_1_1_logic_1_1_node}{Node}}$>$ $>$ Model.\+People.\+Klant.\+route\+Segments\hspace{0.3cm}{\ttfamily [private]}}
 
-\Hypertarget{class_model_1_1_people_1_1_klant_a989e3bfda00bfed95ebe9f28be713ea8}\index{Model.People.Klant@{Model.People.Klant}!speed@{speed}}
+Route van de klant, onderverdeeld in segmenten \Hypertarget{class_model_1_1_people_1_1_klant_a989e3bfda00bfed95ebe9f28be713ea8}\index{Model.People.Klant@{Model.People.Klant}!speed@{speed}}
 \index{speed@{speed}!Model.People.Klant@{Model.People.Klant}}
 \doxysubsubsection{\texorpdfstring{speed}{speed}}
 {\footnotesize\ttfamily \label{class_model_1_1_people_1_1_klant_a989e3bfda00bfed95ebe9f28be713ea8} 
 float Model.\+People.\+Klant.\+speed = 5f\hspace{0.3cm}{\ttfamily [private]}}
 
-\Hypertarget{class_model_1_1_people_1_1_klant_a55f4cebab1ffc647caab1fb08b473cbb}\index{Model.People.Klant@{Model.People.Klant}!width@{width}}
+Beweging snelheid van de klant \Hypertarget{class_model_1_1_people_1_1_klant_a55f4cebab1ffc647caab1fb08b473cbb}\index{Model.People.Klant@{Model.People.Klant}!width@{width}}
 \index{width@{width}!Model.People.Klant@{Model.People.Klant}}
 \doxysubsubsection{\texorpdfstring{width}{width}}
 {\footnotesize\ttfamily \label{class_model_1_1_people_1_1_klant_a55f4cebab1ffc647caab1fb08b473cbb} 
 int Model.\+People.\+Klant.\+width = 100\hspace{0.3cm}{\ttfamily [private]}}
 
-
+Afmetingen van de klant (pixels) 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 

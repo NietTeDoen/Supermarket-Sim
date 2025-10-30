@@ -112,9 +112,12 @@ Static Public Attributes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pri-methods" class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:aa5ef1a0f91cd8ff676cf1926d860731f" id="r_aa5ef1a0f91cd8ff676cf1926d860731f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa5ef1a0f91cd8ff676cf1926d860731f">tick</a> ()  throws InterruptedException</td></tr>
+<tr class="memitem:aa5ef1a0f91cd8ff676cf1926d860731f" id="r_aa5ef1a0f91cd8ff676cf1926d860731f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa5ef1a0f91cd8ff676cf1926d860731f">tick</a> ()  throws InterruptedException </td></tr>
 </table>
-<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><a class="el" href="class_controller_1_1_tick_controller.html">TickController</a> beheert de "ticks" van de simulatie. Elke tick update alle personen in de wereld, verwerkt spawning van nieuwe klanten en hertekent het paneel.</p>
+<p>De simulatie draait op een vast aantal ticks per seconde (TICKS_PER_SECOND).</p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
 <a id="a0e828b0d2e02d97771ec3612fd349700" name="a0e828b0d2e02d97771ec3612fd349700"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0e828b0d2e02d97771ec3612fd349700">&#9670;&#160;</a></span>addCharacter()</h2>
 
@@ -137,6 +140,13 @@ Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Voegt een klant toe aan de simulatie.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">person</td><td>de klant die toegevoegd wordt </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -162,6 +172,8 @@ Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Controleert hoeveel klanten er zijn en spawnt nieuwe klanten indien nodig.</p>
+<dl class="section return"><dt>Returns</dt><dd>het actuele aantal klanten in de simulatie </dd></dl>
 
 </div>
 </div>
@@ -191,6 +203,15 @@ Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Converteert relatieve coördinaten (0.0 - 1.0) naar pixels op het panel.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">relX</td><td>relatieve X-coördinaat </td></tr>
+    <tr><td class="paramname">relY</td><td>relatieve Y-coördinaat </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Point met pixel-coördinaten </dd></dl>
 
 </div>
 </div>
@@ -216,6 +237,8 @@ Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Geeft de hoogte van het panel in pixels.</p>
+<dl class="section return"><dt>Returns</dt><dd>hoogte in pixels, of 1080 als panel null is </dd></dl>
 
 </div>
 </div>
@@ -241,6 +264,8 @@ Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Geeft de breedte van het panel in pixels.</p>
+<dl class="section return"><dt>Returns</dt><dd>breedte in pixels, of 1920 als panel null is </dd></dl>
 
 </div>
 </div>
@@ -266,6 +291,13 @@ Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Verwijdert een klant uit de simulatie en uit de wereld.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">person</td><td>de klant die verwijderd wordt </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -291,6 +323,13 @@ Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Stelt het panel in waarop de simulatie getekend wordt.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p</td><td>het JPanel om te gebruiken </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -316,6 +355,14 @@ Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Start de tick-loop van de simulatie. </p>
+<p>Update alle personen in de wereld en repaints het panel.</p>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">InterruptedException</td><td>als de thread onderbroken wordt tijdens sleep </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -341,6 +388,13 @@ Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Voert één tick uit: update alle personen en verwijdert despawned personen.</p>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">InterruptedException</td><td>als de thread onderbroken wordt tijdens sleep </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -364,6 +418,7 @@ Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Paneel waarop de simulatie wordt getekend </p>
 
 </div>
 </div>
