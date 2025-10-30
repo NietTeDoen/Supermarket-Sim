@@ -83,6 +83,10 @@ public class World {
      * naar een doel (bijv. schap), en de laatste naar de uitgang.
      */
     public static List<List<Node>> NodelistGenerator(Node startNode) {
+        if(startNode == null){
+            throw new NullPointerException("startNode is null");
+        }
+
         Set<String> exclude = Set.of(
                 "queue", "queue1", "queue2", "queue3",
                 "kassa", "entrance", "cashier", "exit", "pad1", "pad2"

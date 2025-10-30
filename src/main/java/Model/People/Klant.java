@@ -56,6 +56,9 @@ public class Klant extends Person {
     }
 
     public void takeProduct(String productName, int waitTicks) {
+        if (productName == null){
+            throw new NullPointerException("Product name is null");
+        }
         productsList.add(new Product(productName, 0.0));
         startAction("Pakt " + productName + "...", waitTicks);
     }
