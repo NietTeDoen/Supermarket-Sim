@@ -170,8 +170,8 @@ public class Klant extends Person {
         }
     }
 
-    /** Tekent klant + laadbalk */
     public void draw(Graphics2D g) {
+        // Tekent klant zelf
         if (image != null)
             g.drawImage(image, positie[0], positie[1], width, height, null);
         else {
@@ -179,56 +179,58 @@ public class Klant extends Person {
             g.fillRect(positie[0], positie[1], width, height);
         }
 
+        // --- Mandje altijd boven hoofd ---
+        if (!productsList.isEmpty()) {
+            StringBuilder inventoryText = new StringBuilder("🛒 Mandje: ");
+            for (int i = 0; i < productsList.size(); i++) {
+                inventoryText.append(productsList.get(i).getNaam());
+                if (i < productsList.size() - 1)
+                    inventoryText.append(", ");
+            }
+
+            g.setFont(new Font("Arial", Font.BOLD, 13));
+            FontMetrics fm = g.getFontMetrics();
+            int textWidth = fm.stringWidth(inventoryText.toString());
+            int textHeight = fm.getHeight();
+
+            int textX = positie[0] + width / 2 - textWidth / 2;
+            int textY = positie[1] - 10; // net boven het hoofd
+
+            // Achtergrond (half-transparant zwart)
+            int padding = 6;
+            g.setColor(new Color(0, 0, 0, 160));
+            g.fillRoundRect(textX - padding, textY - textHeight + 3,
+                    textWidth + padding * 2, textHeight, 10, 10);
+
+            // Tekst mandje
+            g.setColor(new Color(255, 230, 120));
+            g.drawString(inventoryText.toString(), textX, textY);
+        }
+
+        // --- Laadbalk iets hoger, zodat mandje eronder blijft ---
         if (busy && maxActionTicks > 0) {
             int barWidth = 80;
             int barHeight = 10;
             int barX = positie[0] + width / 2 - barWidth / 2;
-            int barY = positie[1] - 20;
+            int barY = positie[1] - 35; // hoger dan mandje
 
             float progress = 1f - ((float) actionTicks / maxActionTicks);
 
-            // --- Laadbalk tekenen ---
+            // Achtergrond balk
             g.setColor(Color.DARK_GRAY);
             g.fillRect(barX, barY, barWidth, barHeight);
+
+            // Voortgang balk
             g.setColor(new Color(80, 200, 120));
             g.fillRect(barX, barY, (int) (barWidth * progress), barHeight);
 
-            // --- Tekst onder of boven de balk ---
+            // Tekst boven de balk
             g.setColor(Color.WHITE);
             g.setFont(new Font("Arial", Font.PLAIN, 12));
             g.drawString(currentActionText, barX, barY - 5);
-
-            // ✅ INVENTORY WEERGEVEN TIJDENS AFREKENEN
-            if (currentActionText.equals("Afrekenen...") && !productsList.isEmpty()) {
-                // Maak tekst
-                StringBuilder inventoryText = new StringBuilder("🛒 Mandje: ");
-                for (int i = 0; i < productsList.size(); i++) {
-                    inventoryText.append(productsList.get(i).getNaam());
-                    if (i < productsList.size() - 1)
-                        inventoryText.append(", ");
-                }
-
-                // Bereken positie boven laadbalk
-                g.setFont(new Font("Arial", Font.BOLD, 13));
-                FontMetrics fm = g.getFontMetrics();
-                int textWidth = fm.stringWidth(inventoryText.toString());
-                int textHeight = fm.getHeight();
-
-                int textX = positie[0] + width / 2 - textWidth / 2;
-                int textY = barY - 25; // iets hoger dan eerst
-
-                // Achtergrond (half-transparant zwart)
-                int padding = 6;
-                g.setColor(new Color(0, 0, 0, 160)); // zwart met transparantie
-                g.fillRoundRect(textX - padding, textY - textHeight + 3,
-                        textWidth + padding * 2, textHeight, 10, 10);
-
-                // Tekst
-                g.setColor(new Color(255, 230, 120)); // zachte gele kleur
-                g.drawString(inventoryText.toString(), textX, textY);
-            }
         }
     }
+
 
     public List<Product> getProductsList() {
         return productsList;
