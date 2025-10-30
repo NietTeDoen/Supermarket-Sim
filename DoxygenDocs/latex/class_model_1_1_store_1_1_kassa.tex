@@ -1,0 +1,221 @@
+\doxysection{Model.\+Store.\+Kassa Class Reference}
+\hypertarget{class_model_1_1_store_1_1_kassa}{}\label{class_model_1_1_store_1_1_kassa}\index{Model.Store.Kassa@{Model.Store.Kassa}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_model_1_1_store_1_1_kassa_ad31b90cbb1562e56c0b0f6149938242d}{Kassa}} (List$<$ \mbox{\hyperlink{class_model_1_1_store_1_1_product}{Product}} $>$ \mbox{\hyperlink{class_model_1_1_store_1_1_kassa_a41253f8992fea04611a61c8346fba892}{scanned\+Items}}, Double \mbox{\hyperlink{class_model_1_1_store_1_1_kassa_aaf7ee0e006b206f293096c91bf097e5e}{prijs}})
+\item 
+\mbox{\hyperlink{class_model_1_1_store_1_1_kassa_a15eef1c1818ed5d23c35999b4231db0d}{Kassa}} (double \mbox{\hyperlink{class_model_1_1_store_1_1_kassa_a817836757062078bb2cdf25787ea910d}{x}}, double \mbox{\hyperlink{class_model_1_1_store_1_1_kassa_a66955a10fa44b3c18a5b9ed63ba7631d}{y}})
+\item 
+void \mbox{\hyperlink{class_model_1_1_store_1_1_kassa_a85e4b7d66f875e0bead79f2337daf627}{draw}} (Graphics g)
+\item 
+Double \mbox{\hyperlink{class_model_1_1_store_1_1_kassa_aa56e3b20104a5dd741b86d2dd46716c7}{get\+Prijs}} ()
+\item 
+List$<$ \mbox{\hyperlink{class_model_1_1_store_1_1_product}{Product}} $>$ \mbox{\hyperlink{class_model_1_1_store_1_1_kassa_a19569ea9511c394c5949f76391f12dfa}{get\+Scanned\+Items}} ()
+\item 
+Boolean \mbox{\hyperlink{class_model_1_1_store_1_1_kassa_ad565ff6cbc42e631cf7208d832e49b69}{add\+Product}} (\mbox{\hyperlink{class_model_1_1_store_1_1_product}{Product}} product)
+\item 
+Boolean \mbox{\hyperlink{class_model_1_1_store_1_1_kassa_a6253789773f64cac4e10c8bfe2fde91a}{remove\+Product}} (\mbox{\hyperlink{class_model_1_1_store_1_1_product}{Product}} product)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_model_1_1_store_1_1_kassa_a61d2259aeb7718d6dd24b8f49779e35e}{set\+Panel}} (JPanel p)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_model_1_1_store_1_1_kassa_a7a1db05cad3f72a70497c61cc89c06a9}{load\+Image}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+List$<$ \mbox{\hyperlink{class_model_1_1_store_1_1_product}{Product}} $>$ \mbox{\hyperlink{class_model_1_1_store_1_1_kassa_a41253f8992fea04611a61c8346fba892}{scanned\+Items}}
+\item 
+Double \mbox{\hyperlink{class_model_1_1_store_1_1_kassa_aaf7ee0e006b206f293096c91bf097e5e}{prijs}}
+\item 
+Buffered\+Image \mbox{\hyperlink{class_model_1_1_store_1_1_kassa_a75fee584790a8e58c8cd5d57567e7e3d}{image}}
+\item 
+double \mbox{\hyperlink{class_model_1_1_store_1_1_kassa_a817836757062078bb2cdf25787ea910d}{x}}
+\item 
+double \mbox{\hyperlink{class_model_1_1_store_1_1_kassa_a66955a10fa44b3c18a5b9ed63ba7631d}{y}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static JPanel \mbox{\hyperlink{class_model_1_1_store_1_1_kassa_a1d9d37982fbdec70338080fa199f4e86}{panel}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+De {\ttfamily Kassa}-\/klasse stelt een kassa in de supermarkt voor. 
+
+Deze klasse bevat zowel logische functionaliteit (zoals het scannen en verwijderen van producten) als visuele eigenschappen voor weergave in de simulatie. 
+
+\label{doc-constructors}
+\Hypertarget{class_model_1_1_store_1_1_kassa_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_model_1_1_store_1_1_kassa_ad31b90cbb1562e56c0b0f6149938242d}\index{Model.Store.Kassa@{Model.Store.Kassa}!Kassa@{Kassa}}
+\index{Kassa@{Kassa}!Model.Store.Kassa@{Model.Store.Kassa}}
+\doxysubsubsection{\texorpdfstring{Kassa()}{Kassa()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_model_1_1_store_1_1_kassa_ad31b90cbb1562e56c0b0f6149938242d} 
+Model.\+Store.\+Kassa.\+Kassa (\begin{DoxyParamCaption}\item[{List$<$ \mbox{\hyperlink{class_model_1_1_store_1_1_product}{Product}} $>$}]{scanned\+Items}{, }\item[{Double}]{prijs}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Constructor voor logische initialisatie van een kassa. Wordt gebruikt in niet-\/visuele context.
+
+
+\begin{DoxyParams}{Parameters}
+{\em scanned\+Items} & de lijst van gescande producten \\
+\hline
+{\em prijs} & de huidige totaalprijs \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_model_1_1_store_1_1_kassa_a15eef1c1818ed5d23c35999b4231db0d}\index{Model.Store.Kassa@{Model.Store.Kassa}!Kassa@{Kassa}}
+\index{Kassa@{Kassa}!Model.Store.Kassa@{Model.Store.Kassa}}
+\doxysubsubsection{\texorpdfstring{Kassa()}{Kassa()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_model_1_1_store_1_1_kassa_a15eef1c1818ed5d23c35999b4231db0d} 
+Model.\+Store.\+Kassa.\+Kassa (\begin{DoxyParamCaption}\item[{double}]{x}{, }\item[{double}]{y}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Constructor voor visuele weergave van de kassa in de simulatie. 
+
+Deze constructor initialiseert een lege kassa met standaardprijs 0 en laadt automatisch de kassa-\/afbeelding uit de resourcesmap. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & de X-\/coördinaat waar de kassa getekend moet worden \\
+\hline
+{\em y} & de Y-\/coördinaat waar de kassa getekend moet worden \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{class_model_1_1_store_1_1_kassa_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_model_1_1_store_1_1_kassa_ad565ff6cbc42e631cf7208d832e49b69}\index{Model.Store.Kassa@{Model.Store.Kassa}!addProduct@{addProduct}}
+\index{addProduct@{addProduct}!Model.Store.Kassa@{Model.Store.Kassa}}
+\doxysubsubsection{\texorpdfstring{addProduct()}{addProduct()}}
+{\footnotesize\ttfamily \label{class_model_1_1_store_1_1_kassa_ad565ff6cbc42e631cf7208d832e49b69} 
+Boolean Model.\+Store.\+Kassa.\+add\+Product (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_model_1_1_store_1_1_product}{Product}}}]{product}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Voegt een product toe aan de kassa en telt de prijs op bij het totaal.
+
+
+\begin{DoxyParams}{Parameters}
+{\em product} & het toe te voegen {\ttfamily \doxylink{class_model_1_1_store_1_1_product}{Product}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} als het product succesvol is toegevoegd 
+\end{DoxyReturn}
+\Hypertarget{class_model_1_1_store_1_1_kassa_a85e4b7d66f875e0bead79f2337daf627}\index{Model.Store.Kassa@{Model.Store.Kassa}!draw@{draw}}
+\index{draw@{draw}!Model.Store.Kassa@{Model.Store.Kassa}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily \label{class_model_1_1_store_1_1_kassa_a85e4b7d66f875e0bead79f2337daf627} 
+void Model.\+Store.\+Kassa.\+draw (\begin{DoxyParamCaption}\item[{Graphics}]{g}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Tekent de kassa op het scherm. 
+
+Als de afbeelding niet beschikbaar is, wordt een rechthoek getekend. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & het {\ttfamily \doxylink{}{Graphics}}-\/object waarmee de kassa wordt getekend \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_model_1_1_store_1_1_kassa_aa56e3b20104a5dd741b86d2dd46716c7}\index{Model.Store.Kassa@{Model.Store.Kassa}!getPrijs@{getPrijs}}
+\index{getPrijs@{getPrijs}!Model.Store.Kassa@{Model.Store.Kassa}}
+\doxysubsubsection{\texorpdfstring{getPrijs()}{getPrijs()}}
+{\footnotesize\ttfamily \label{class_model_1_1_store_1_1_kassa_aa56e3b20104a5dd741b86d2dd46716c7} 
+Double Model.\+Store.\+Kassa.\+get\+Prijs (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Geeft de totale prijs van alle gescande producten.
+
+\begin{DoxyReturn}{Returns}
+de huidige totaalprijs 
+\end{DoxyReturn}
+\Hypertarget{class_model_1_1_store_1_1_kassa_a19569ea9511c394c5949f76391f12dfa}\index{Model.Store.Kassa@{Model.Store.Kassa}!getScannedItems@{getScannedItems}}
+\index{getScannedItems@{getScannedItems}!Model.Store.Kassa@{Model.Store.Kassa}}
+\doxysubsubsection{\texorpdfstring{getScannedItems()}{getScannedItems()}}
+{\footnotesize\ttfamily \label{class_model_1_1_store_1_1_kassa_a19569ea9511c394c5949f76391f12dfa} 
+List$<$ \mbox{\hyperlink{class_model_1_1_store_1_1_product}{Product}} $>$ Model.\+Store.\+Kassa.\+get\+Scanned\+Items (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Geeft de lijst van alle gescande producten.
+
+\begin{DoxyReturn}{Returns}
+een lijst van {\ttfamily \doxylink{class_model_1_1_store_1_1_product}{Product}}-\/objecten 
+\end{DoxyReturn}
+\Hypertarget{class_model_1_1_store_1_1_kassa_a7a1db05cad3f72a70497c61cc89c06a9}\index{Model.Store.Kassa@{Model.Store.Kassa}!loadImage@{loadImage}}
+\index{loadImage@{loadImage}!Model.Store.Kassa@{Model.Store.Kassa}}
+\doxysubsubsection{\texorpdfstring{loadImage()}{loadImage()}}
+{\footnotesize\ttfamily \label{class_model_1_1_store_1_1_kassa_a7a1db05cad3f72a70497c61cc89c06a9} 
+void Model.\+Store.\+Kassa.\+load\+Image (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Laadt de afbeelding van de kassa uit de resource-\/map. Als de afbeelding niet gevonden kan worden, wordt een waarschuwing weergegeven. \Hypertarget{class_model_1_1_store_1_1_kassa_a6253789773f64cac4e10c8bfe2fde91a}\index{Model.Store.Kassa@{Model.Store.Kassa}!removeProduct@{removeProduct}}
+\index{removeProduct@{removeProduct}!Model.Store.Kassa@{Model.Store.Kassa}}
+\doxysubsubsection{\texorpdfstring{removeProduct()}{removeProduct()}}
+{\footnotesize\ttfamily \label{class_model_1_1_store_1_1_kassa_a6253789773f64cac4e10c8bfe2fde91a} 
+Boolean Model.\+Store.\+Kassa.\+remove\+Product (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_model_1_1_store_1_1_product}{Product}}}]{product}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Verwijdert een product uit de kassa en trekt de prijs af van het totaal.
+
+
+\begin{DoxyParams}{Parameters}
+{\em product} & het te verwijderen {\ttfamily \doxylink{class_model_1_1_store_1_1_product}{Product}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} als het product succesvol is verwijderd 
+\end{DoxyReturn}
+\Hypertarget{class_model_1_1_store_1_1_kassa_a61d2259aeb7718d6dd24b8f49779e35e}\index{Model.Store.Kassa@{Model.Store.Kassa}!setPanel@{setPanel}}
+\index{setPanel@{setPanel}!Model.Store.Kassa@{Model.Store.Kassa}}
+\doxysubsubsection{\texorpdfstring{setPanel()}{setPanel()}}
+{\footnotesize\ttfamily \label{class_model_1_1_store_1_1_kassa_a61d2259aeb7718d6dd24b8f49779e35e} 
+void Model.\+Store.\+Kassa.\+set\+Panel (\begin{DoxyParamCaption}\item[{JPanel}]{p}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+\label{doc-variable-members}
+\Hypertarget{class_model_1_1_store_1_1_kassa_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_model_1_1_store_1_1_kassa_a75fee584790a8e58c8cd5d57567e7e3d}\index{Model.Store.Kassa@{Model.Store.Kassa}!image@{image}}
+\index{image@{image}!Model.Store.Kassa@{Model.Store.Kassa}}
+\doxysubsubsection{\texorpdfstring{image}{image}}
+{\footnotesize\ttfamily \label{class_model_1_1_store_1_1_kassa_a75fee584790a8e58c8cd5d57567e7e3d} 
+Buffered\+Image Model.\+Store.\+Kassa.\+image\hspace{0.3cm}{\ttfamily [private]}}
+
+Afbeelding die de kassa visueel weergeeft. \Hypertarget{class_model_1_1_store_1_1_kassa_a1d9d37982fbdec70338080fa199f4e86}\index{Model.Store.Kassa@{Model.Store.Kassa}!panel@{panel}}
+\index{panel@{panel}!Model.Store.Kassa@{Model.Store.Kassa}}
+\doxysubsubsection{\texorpdfstring{panel}{panel}}
+{\footnotesize\ttfamily \label{class_model_1_1_store_1_1_kassa_a1d9d37982fbdec70338080fa199f4e86} 
+JPanel Model.\+Store.\+Kassa.\+panel\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_model_1_1_store_1_1_kassa_aaf7ee0e006b206f293096c91bf097e5e}\index{Model.Store.Kassa@{Model.Store.Kassa}!prijs@{prijs}}
+\index{prijs@{prijs}!Model.Store.Kassa@{Model.Store.Kassa}}
+\doxysubsubsection{\texorpdfstring{prijs}{prijs}}
+{\footnotesize\ttfamily \label{class_model_1_1_store_1_1_kassa_aaf7ee0e006b206f293096c91bf097e5e} 
+Double Model.\+Store.\+Kassa.\+prijs\hspace{0.3cm}{\ttfamily [private]}}
+
+De totale prijs van alle gescande producten. \Hypertarget{class_model_1_1_store_1_1_kassa_a41253f8992fea04611a61c8346fba892}\index{Model.Store.Kassa@{Model.Store.Kassa}!scannedItems@{scannedItems}}
+\index{scannedItems@{scannedItems}!Model.Store.Kassa@{Model.Store.Kassa}}
+\doxysubsubsection{\texorpdfstring{scannedItems}{scannedItems}}
+{\footnotesize\ttfamily \label{class_model_1_1_store_1_1_kassa_a41253f8992fea04611a61c8346fba892} 
+List$<$\mbox{\hyperlink{class_model_1_1_store_1_1_product}{Product}}$>$ Model.\+Store.\+Kassa.\+scanned\+Items\hspace{0.3cm}{\ttfamily [private]}}
+
+Lijst met alle gescande producten aan deze kassa. \Hypertarget{class_model_1_1_store_1_1_kassa_a817836757062078bb2cdf25787ea910d}\index{Model.Store.Kassa@{Model.Store.Kassa}!x@{x}}
+\index{x@{x}!Model.Store.Kassa@{Model.Store.Kassa}}
+\doxysubsubsection{\texorpdfstring{x}{x}}
+{\footnotesize\ttfamily \label{class_model_1_1_store_1_1_kassa_a817836757062078bb2cdf25787ea910d} 
+double Model.\+Store.\+Kassa.\+x\hspace{0.3cm}{\ttfamily [private]}}
+
+X-\/coördinaat van de kassa op het scherm. \Hypertarget{class_model_1_1_store_1_1_kassa_a66955a10fa44b3c18a5b9ed63ba7631d}\index{Model.Store.Kassa@{Model.Store.Kassa}!y@{y}}
+\index{y@{y}!Model.Store.Kassa@{Model.Store.Kassa}}
+\doxysubsubsection{\texorpdfstring{y}{y}}
+{\footnotesize\ttfamily \label{class_model_1_1_store_1_1_kassa_a66955a10fa44b3c18a5b9ed63ba7631d} 
+double Model.\+Store.\+Kassa.\+y\hspace{0.3cm}{\ttfamily [private]}}
+
+Y-\/coördinaat van de kassa op het scherm. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/\+Model/\+Store/\mbox{\hyperlink{_kassa_8java}{Kassa.\+java}}\end{DoxyCompactItemize}

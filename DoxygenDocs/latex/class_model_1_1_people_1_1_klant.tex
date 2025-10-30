@@ -1,0 +1,254 @@
+\doxysection{Model.\+People.\+Klant Class Reference}
+\hypertarget{class_model_1_1_people_1_1_klant}{}\label{class_model_1_1_people_1_1_klant}\index{Model.People.Klant@{Model.People.Klant}}
+Inheritance diagram for Model.\+People.\+Klant\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_model_1_1_people_1_1_klant}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_model_1_1_people_1_1_klant_a27bd72c999c87d69808999d6a8a37442}{Klant}} (int\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_model_1_1_people_1_1_klant_a08147e7b0375be436854a4c2d5c8bad2}{positie}}, List$<$ List$<$ \mbox{\hyperlink{class_model_1_1_logic_1_1_node}{Node}} $>$ $>$ \mbox{\hyperlink{class_model_1_1_people_1_1_klant_a45850de38dea0fbb59873acd00d1c179}{route\+Segments}}, String \mbox{\hyperlink{class_model_1_1_people_1_1_person_ae61228ec6ebecfb755891f66d8618fbc}{sprite}})
+\item 
+void \mbox{\hyperlink{class_model_1_1_people_1_1_klant_a14bfc2c35d56f539732805d4e69d993f}{take\+Product}} (String product\+Name, int wait\+Ticks)
+\item 
+void \mbox{\hyperlink{class_model_1_1_people_1_1_klant_a45cd6180a8cbf45b56973a8f65494c01}{update}} ()
+\item 
+void \mbox{\hyperlink{class_model_1_1_people_1_1_klant_a00f01564016078eeca612e76977c5276}{draw}} (Graphics2D g)
+\item 
+List$<$ \mbox{\hyperlink{class_model_1_1_store_1_1_product}{Product}} $>$ \mbox{\hyperlink{class_model_1_1_people_1_1_klant_a28db96520f090b2e6a34de8322f09481}{get\+Products\+List}} ()
+\item 
+int \mbox{\hyperlink{class_model_1_1_people_1_1_klant_a3548d8895754bf0790e1fba74a61756a}{get\+Current\+Segment\+Index}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_model_1_1_people_1_1_person}{Model.\+People.\+Person}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_model_1_1_people_1_1_person_ad37e000ba04a41c1f0052670c7267937}{Person}} (int\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_model_1_1_people_1_1_person_a3a7783b70c565896b6b43dd9e50d003e}{positie}}, List$<$ \mbox{\hyperlink{class_model_1_1_logic_1_1_node}{Node}} $>$ \mbox{\hyperlink{class_model_1_1_people_1_1_person_a202c73166601262c0decb5d9327d0ec5}{path}}, String \mbox{\hyperlink{class_model_1_1_people_1_1_person_ae61228ec6ebecfb755891f66d8618fbc}{sprite}})
+\item 
+void \mbox{\hyperlink{class_model_1_1_people_1_1_person_a14b7afe1edca93831628fbaee50445b4}{draw}} (Graphics g)
+\item 
+void \mbox{\hyperlink{class_model_1_1_people_1_1_person_af63eb4e839db385bf7bca5c7ea0b8d84}{Despawncharacter}} ()
+\item 
+boolean \mbox{\hyperlink{class_model_1_1_people_1_1_person_ae7e32dc8a9044e24ad69f8c3d6513123}{is\+Despawned}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int\mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_model_1_1_people_1_1_klant_a08147e7b0375be436854a4c2d5c8bad2}{positie}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_model_1_1_people_1_1_klant_aa9855b3044c2f851e08ad559cedc147a}{load\+Image}} ()
+\item 
+void \mbox{\hyperlink{class_model_1_1_people_1_1_klant_a47876c0018f79c8a5952950d837d2e4a}{start\+Action}} (String text, int wait\+Ticks)
+\item 
+void \mbox{\hyperlink{class_model_1_1_people_1_1_klant_ae8b039a1597f8065238cb5d5aeb92087}{handle\+Segment\+Complete}} (String node\+Name)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+List$<$ \mbox{\hyperlink{class_model_1_1_store_1_1_product}{Product}} $>$ \mbox{\hyperlink{class_model_1_1_people_1_1_klant_a359258e4d86ce3b2a885d99a5b393859}{products\+List}} = new Array\+List$<$$>$()
+\item 
+List$<$ List$<$ \mbox{\hyperlink{class_model_1_1_logic_1_1_node}{Node}} $>$ $>$ \mbox{\hyperlink{class_model_1_1_people_1_1_klant_a45850de38dea0fbb59873acd00d1c179}{route\+Segments}}
+\item 
+int \mbox{\hyperlink{class_model_1_1_people_1_1_klant_a6e3aebdd889734c2494d409ac5705316}{current\+Segment\+Index}} = 0
+\item 
+int \mbox{\hyperlink{class_model_1_1_people_1_1_klant_a8f0df3c20ae59186dddcda6eb5d7f11f}{path\+Index}} = 0
+\item 
+float \mbox{\hyperlink{class_model_1_1_people_1_1_klant_a989e3bfda00bfed95ebe9f28be713ea8}{speed}} = 5f
+\item 
+boolean \mbox{\hyperlink{class_model_1_1_people_1_1_klant_ae81114c48657809aee02ca56dbb167fa}{busy}} = false
+\item 
+int \mbox{\hyperlink{class_model_1_1_people_1_1_klant_aa18f9011f4b7cd0861ff921c123c2cb6}{action\+Ticks}} = 0
+\item 
+int \mbox{\hyperlink{class_model_1_1_people_1_1_klant_a67715d3110d1463c4c2753390dcba124}{max\+Action\+Ticks}} = 0
+\item 
+String \mbox{\hyperlink{class_model_1_1_people_1_1_klant_a9d978f10112d74c9eb54bf38c709452a}{current\+Action\+Text}} = "{}"{}
+\item 
+int \mbox{\hyperlink{class_model_1_1_people_1_1_klant_a55f4cebab1ffc647caab1fb08b473cbb}{width}} = 100
+\item 
+int \mbox{\hyperlink{class_model_1_1_people_1_1_klant_a38253e06052a9837d2b38a9decda3ca1}{height}} = 150
+\item 
+Image \mbox{\hyperlink{class_model_1_1_people_1_1_klant_a47128a3b63b98be9d531b8021c935c44}{image}}
+\item 
+boolean \mbox{\hyperlink{class_model_1_1_people_1_1_klant_a106d51727b6250c676054cda158f3d8a}{has\+Checked\+Out}} = false
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static boolean \mbox{\hyperlink{class_model_1_1_people_1_1_klant_a1e3adeb50c4f2b24b18e00e265dafbce}{bij\+Kassa}} = false
+\end{DoxyCompactItemize}
+
+
+\label{doc-constructors}
+\Hypertarget{class_model_1_1_people_1_1_klant_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_model_1_1_people_1_1_klant_a27bd72c999c87d69808999d6a8a37442}\index{Model.People.Klant@{Model.People.Klant}!Klant@{Klant}}
+\index{Klant@{Klant}!Model.People.Klant@{Model.People.Klant}}
+\doxysubsubsection{\texorpdfstring{Klant()}{Klant()}}
+{\footnotesize\ttfamily \label{class_model_1_1_people_1_1_klant_a27bd72c999c87d69808999d6a8a37442} 
+Model.\+People.\+Klant.\+Klant (\begin{DoxyParamCaption}\item[{int\mbox{[}$\,$\mbox{]}}]{positie}{, }\item[{List$<$ List$<$ \mbox{\hyperlink{class_model_1_1_logic_1_1_node}{Node}} $>$ $>$}]{route\+Segments}{, }\item[{String}]{sprite}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_model_1_1_people_1_1_klant_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_model_1_1_people_1_1_klant_a00f01564016078eeca612e76977c5276}\index{Model.People.Klant@{Model.People.Klant}!draw@{draw}}
+\index{draw@{draw}!Model.People.Klant@{Model.People.Klant}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily \label{class_model_1_1_people_1_1_klant_a00f01564016078eeca612e76977c5276} 
+void Model.\+People.\+Klant.\+draw (\begin{DoxyParamCaption}\item[{Graphics2D}]{g}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_model_1_1_people_1_1_klant_a3548d8895754bf0790e1fba74a61756a}\index{Model.People.Klant@{Model.People.Klant}!getCurrentSegmentIndex@{getCurrentSegmentIndex}}
+\index{getCurrentSegmentIndex@{getCurrentSegmentIndex}!Model.People.Klant@{Model.People.Klant}}
+\doxysubsubsection{\texorpdfstring{getCurrentSegmentIndex()}{getCurrentSegmentIndex()}}
+{\footnotesize\ttfamily \label{class_model_1_1_people_1_1_klant_a3548d8895754bf0790e1fba74a61756a} 
+int Model.\+People.\+Klant.\+get\+Current\+Segment\+Index (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_model_1_1_people_1_1_klant_a28db96520f090b2e6a34de8322f09481}\index{Model.People.Klant@{Model.People.Klant}!getProductsList@{getProductsList}}
+\index{getProductsList@{getProductsList}!Model.People.Klant@{Model.People.Klant}}
+\doxysubsubsection{\texorpdfstring{getProductsList()}{getProductsList()}}
+{\footnotesize\ttfamily \label{class_model_1_1_people_1_1_klant_a28db96520f090b2e6a34de8322f09481} 
+List$<$ \mbox{\hyperlink{class_model_1_1_store_1_1_product}{Product}} $>$ Model.\+People.\+Klant.\+get\+Products\+List (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_model_1_1_people_1_1_klant_ae8b039a1597f8065238cb5d5aeb92087}\index{Model.People.Klant@{Model.People.Klant}!handleSegmentComplete@{handleSegmentComplete}}
+\index{handleSegmentComplete@{handleSegmentComplete}!Model.People.Klant@{Model.People.Klant}}
+\doxysubsubsection{\texorpdfstring{handleSegmentComplete()}{handleSegmentComplete()}}
+{\footnotesize\ttfamily \label{class_model_1_1_people_1_1_klant_ae8b039a1597f8065238cb5d5aeb92087} 
+void Model.\+People.\+Klant.\+handle\+Segment\+Complete (\begin{DoxyParamCaption}\item[{String}]{node\+Name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Acties op basis van node-\/naam i.\+p.\+v. segment index \Hypertarget{class_model_1_1_people_1_1_klant_aa9855b3044c2f851e08ad559cedc147a}\index{Model.People.Klant@{Model.People.Klant}!loadImage@{loadImage}}
+\index{loadImage@{loadImage}!Model.People.Klant@{Model.People.Klant}}
+\doxysubsubsection{\texorpdfstring{loadImage()}{loadImage()}}
+{\footnotesize\ttfamily \label{class_model_1_1_people_1_1_klant_aa9855b3044c2f851e08ad559cedc147a} 
+void Model.\+People.\+Klant.\+load\+Image (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_model_1_1_people_1_1_person_a47a039ae615e5d2032351a123432c1d8}{Model.\+People.\+Person}}.
+
+\Hypertarget{class_model_1_1_people_1_1_klant_a47876c0018f79c8a5952950d837d2e4a}\index{Model.People.Klant@{Model.People.Klant}!startAction@{startAction}}
+\index{startAction@{startAction}!Model.People.Klant@{Model.People.Klant}}
+\doxysubsubsection{\texorpdfstring{startAction()}{startAction()}}
+{\footnotesize\ttfamily \label{class_model_1_1_people_1_1_klant_a47876c0018f79c8a5952950d837d2e4a} 
+void Model.\+People.\+Klant.\+start\+Action (\begin{DoxyParamCaption}\item[{String}]{text}{, }\item[{int}]{wait\+Ticks}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\Hypertarget{class_model_1_1_people_1_1_klant_a14bfc2c35d56f539732805d4e69d993f}\index{Model.People.Klant@{Model.People.Klant}!takeProduct@{takeProduct}}
+\index{takeProduct@{takeProduct}!Model.People.Klant@{Model.People.Klant}}
+\doxysubsubsection{\texorpdfstring{takeProduct()}{takeProduct()}}
+{\footnotesize\ttfamily \label{class_model_1_1_people_1_1_klant_a14bfc2c35d56f539732805d4e69d993f} 
+void Model.\+People.\+Klant.\+take\+Product (\begin{DoxyParamCaption}\item[{String}]{product\+Name}{, }\item[{int}]{wait\+Ticks}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{class_model_1_1_people_1_1_klant_a45cd6180a8cbf45b56973a8f65494c01}\index{Model.People.Klant@{Model.People.Klant}!update@{update}}
+\index{update@{update}!Model.People.Klant@{Model.People.Klant}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily \label{class_model_1_1_people_1_1_klant_a45cd6180a8cbf45b56973a8f65494c01} 
+void Model.\+People.\+Klant.\+update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_model_1_1_people_1_1_person_a2745b8d9a10713da9343e7c99520ee55}{Model.\+People.\+Person}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{class_model_1_1_people_1_1_klant_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_model_1_1_people_1_1_klant_aa18f9011f4b7cd0861ff921c123c2cb6}\index{Model.People.Klant@{Model.People.Klant}!actionTicks@{actionTicks}}
+\index{actionTicks@{actionTicks}!Model.People.Klant@{Model.People.Klant}}
+\doxysubsubsection{\texorpdfstring{actionTicks}{actionTicks}}
+{\footnotesize\ttfamily \label{class_model_1_1_people_1_1_klant_aa18f9011f4b7cd0861ff921c123c2cb6} 
+int Model.\+People.\+Klant.\+action\+Ticks = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_model_1_1_people_1_1_klant_a1e3adeb50c4f2b24b18e00e265dafbce}\index{Model.People.Klant@{Model.People.Klant}!bijKassa@{bijKassa}}
+\index{bijKassa@{bijKassa}!Model.People.Klant@{Model.People.Klant}}
+\doxysubsubsection{\texorpdfstring{bijKassa}{bijKassa}}
+{\footnotesize\ttfamily \label{class_model_1_1_people_1_1_klant_a1e3adeb50c4f2b24b18e00e265dafbce} 
+boolean Model.\+People.\+Klant.\+bij\+Kassa = false\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_model_1_1_people_1_1_klant_ae81114c48657809aee02ca56dbb167fa}\index{Model.People.Klant@{Model.People.Klant}!busy@{busy}}
+\index{busy@{busy}!Model.People.Klant@{Model.People.Klant}}
+\doxysubsubsection{\texorpdfstring{busy}{busy}}
+{\footnotesize\ttfamily \label{class_model_1_1_people_1_1_klant_ae81114c48657809aee02ca56dbb167fa} 
+boolean Model.\+People.\+Klant.\+busy = false\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_model_1_1_people_1_1_klant_a9d978f10112d74c9eb54bf38c709452a}\index{Model.People.Klant@{Model.People.Klant}!currentActionText@{currentActionText}}
+\index{currentActionText@{currentActionText}!Model.People.Klant@{Model.People.Klant}}
+\doxysubsubsection{\texorpdfstring{currentActionText}{currentActionText}}
+{\footnotesize\ttfamily \label{class_model_1_1_people_1_1_klant_a9d978f10112d74c9eb54bf38c709452a} 
+String Model.\+People.\+Klant.\+current\+Action\+Text = "{}"{}\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_model_1_1_people_1_1_klant_a6e3aebdd889734c2494d409ac5705316}\index{Model.People.Klant@{Model.People.Klant}!currentSegmentIndex@{currentSegmentIndex}}
+\index{currentSegmentIndex@{currentSegmentIndex}!Model.People.Klant@{Model.People.Klant}}
+\doxysubsubsection{\texorpdfstring{currentSegmentIndex}{currentSegmentIndex}}
+{\footnotesize\ttfamily \label{class_model_1_1_people_1_1_klant_a6e3aebdd889734c2494d409ac5705316} 
+int Model.\+People.\+Klant.\+current\+Segment\+Index = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_model_1_1_people_1_1_klant_a106d51727b6250c676054cda158f3d8a}\index{Model.People.Klant@{Model.People.Klant}!hasCheckedOut@{hasCheckedOut}}
+\index{hasCheckedOut@{hasCheckedOut}!Model.People.Klant@{Model.People.Klant}}
+\doxysubsubsection{\texorpdfstring{hasCheckedOut}{hasCheckedOut}}
+{\footnotesize\ttfamily \label{class_model_1_1_people_1_1_klant_a106d51727b6250c676054cda158f3d8a} 
+boolean Model.\+People.\+Klant.\+has\+Checked\+Out = false\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_model_1_1_people_1_1_klant_a38253e06052a9837d2b38a9decda3ca1}\index{Model.People.Klant@{Model.People.Klant}!height@{height}}
+\index{height@{height}!Model.People.Klant@{Model.People.Klant}}
+\doxysubsubsection{\texorpdfstring{height}{height}}
+{\footnotesize\ttfamily \label{class_model_1_1_people_1_1_klant_a38253e06052a9837d2b38a9decda3ca1} 
+int Model.\+People.\+Klant.\+height = 150\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_model_1_1_people_1_1_klant_a47128a3b63b98be9d531b8021c935c44}\index{Model.People.Klant@{Model.People.Klant}!image@{image}}
+\index{image@{image}!Model.People.Klant@{Model.People.Klant}}
+\doxysubsubsection{\texorpdfstring{image}{image}}
+{\footnotesize\ttfamily \label{class_model_1_1_people_1_1_klant_a47128a3b63b98be9d531b8021c935c44} 
+Image Model.\+People.\+Klant.\+image\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_model_1_1_people_1_1_klant_a67715d3110d1463c4c2753390dcba124}\index{Model.People.Klant@{Model.People.Klant}!maxActionTicks@{maxActionTicks}}
+\index{maxActionTicks@{maxActionTicks}!Model.People.Klant@{Model.People.Klant}}
+\doxysubsubsection{\texorpdfstring{maxActionTicks}{maxActionTicks}}
+{\footnotesize\ttfamily \label{class_model_1_1_people_1_1_klant_a67715d3110d1463c4c2753390dcba124} 
+int Model.\+People.\+Klant.\+max\+Action\+Ticks = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_model_1_1_people_1_1_klant_a8f0df3c20ae59186dddcda6eb5d7f11f}\index{Model.People.Klant@{Model.People.Klant}!pathIndex@{pathIndex}}
+\index{pathIndex@{pathIndex}!Model.People.Klant@{Model.People.Klant}}
+\doxysubsubsection{\texorpdfstring{pathIndex}{pathIndex}}
+{\footnotesize\ttfamily \label{class_model_1_1_people_1_1_klant_a8f0df3c20ae59186dddcda6eb5d7f11f} 
+int Model.\+People.\+Klant.\+path\+Index = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_model_1_1_people_1_1_klant_a08147e7b0375be436854a4c2d5c8bad2}\index{Model.People.Klant@{Model.People.Klant}!positie@{positie}}
+\index{positie@{positie}!Model.People.Klant@{Model.People.Klant}}
+\doxysubsubsection{\texorpdfstring{positie}{positie}}
+{\footnotesize\ttfamily \label{class_model_1_1_people_1_1_klant_a08147e7b0375be436854a4c2d5c8bad2} 
+int \mbox{[}$\,$\mbox{]} Model.\+People.\+Klant.\+positie\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_model_1_1_people_1_1_klant_a359258e4d86ce3b2a885d99a5b393859}\index{Model.People.Klant@{Model.People.Klant}!productsList@{productsList}}
+\index{productsList@{productsList}!Model.People.Klant@{Model.People.Klant}}
+\doxysubsubsection{\texorpdfstring{productsList}{productsList}}
+{\footnotesize\ttfamily \label{class_model_1_1_people_1_1_klant_a359258e4d86ce3b2a885d99a5b393859} 
+List$<$\mbox{\hyperlink{class_model_1_1_store_1_1_product}{Product}}$>$ Model.\+People.\+Klant.\+products\+List = new Array\+List$<$$>$()\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_model_1_1_people_1_1_klant_a45850de38dea0fbb59873acd00d1c179}\index{Model.People.Klant@{Model.People.Klant}!routeSegments@{routeSegments}}
+\index{routeSegments@{routeSegments}!Model.People.Klant@{Model.People.Klant}}
+\doxysubsubsection{\texorpdfstring{routeSegments}{routeSegments}}
+{\footnotesize\ttfamily \label{class_model_1_1_people_1_1_klant_a45850de38dea0fbb59873acd00d1c179} 
+List$<$List$<$\mbox{\hyperlink{class_model_1_1_logic_1_1_node}{Node}}$>$ $>$ Model.\+People.\+Klant.\+route\+Segments\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_model_1_1_people_1_1_klant_a989e3bfda00bfed95ebe9f28be713ea8}\index{Model.People.Klant@{Model.People.Klant}!speed@{speed}}
+\index{speed@{speed}!Model.People.Klant@{Model.People.Klant}}
+\doxysubsubsection{\texorpdfstring{speed}{speed}}
+{\footnotesize\ttfamily \label{class_model_1_1_people_1_1_klant_a989e3bfda00bfed95ebe9f28be713ea8} 
+float Model.\+People.\+Klant.\+speed = 5f\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_model_1_1_people_1_1_klant_a55f4cebab1ffc647caab1fb08b473cbb}\index{Model.People.Klant@{Model.People.Klant}!width@{width}}
+\index{width@{width}!Model.People.Klant@{Model.People.Klant}}
+\doxysubsubsection{\texorpdfstring{width}{width}}
+{\footnotesize\ttfamily \label{class_model_1_1_people_1_1_klant_a55f4cebab1ffc647caab1fb08b473cbb} 
+int Model.\+People.\+Klant.\+width = 100\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/\+Model/\+People/\mbox{\hyperlink{_klant_8java}{Klant.\+java}}\end{DoxyCompactItemize}

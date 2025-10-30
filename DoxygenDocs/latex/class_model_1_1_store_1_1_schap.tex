@@ -1,0 +1,220 @@
+\doxysection{Model.\+Store.\+Schap Class Reference}
+\hypertarget{class_model_1_1_store_1_1_schap}{}\label{class_model_1_1_store_1_1_schap}\index{Model.Store.Schap@{Model.Store.Schap}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_model_1_1_store_1_1_schap_af57c390eec8d9ecb5a962b703e201ecc}{Schap}} (double \mbox{\hyperlink{class_model_1_1_store_1_1_schap_a32be9ea871991af34a52426ef363c665}{x}}, double \mbox{\hyperlink{class_model_1_1_store_1_1_schap_a10ed7c207c99369c28517d64cb46412f}{y}}, \mbox{\hyperlink{enum_model_1_1_store_1_1_schap_type}{Schap\+Type}} \mbox{\hyperlink{class_model_1_1_store_1_1_schap_ad394547b36105c3d1712cddd6c0e8ad0}{type}})
+\item 
+void \mbox{\hyperlink{class_model_1_1_store_1_1_schap_a082a1b999d04e54b6c098dc861d37363}{add\+Product}} (\mbox{\hyperlink{class_model_1_1_store_1_1_product}{Product}} product, int quantity)
+\item 
+boolean \mbox{\hyperlink{class_model_1_1_store_1_1_schap_ae168d99661fc5766b5fb86d79ee1eb51}{remove\+Product}} (\mbox{\hyperlink{class_model_1_1_store_1_1_product}{Product}} product)
+\item 
+void \mbox{\hyperlink{class_model_1_1_store_1_1_schap_ac95069723d6a9c4d1a9c7774302995a7}{draw}} (Graphics g)
+\item 
+int \mbox{\hyperlink{class_model_1_1_store_1_1_schap_a6680d0512e3f02a9f585d6597fc60c33}{getX}} ()
+\item 
+int \mbox{\hyperlink{class_model_1_1_store_1_1_schap_a67c00ae2cee0fe134e3bdcc99f1c5ade}{getY}} ()
+\item 
+\mbox{\hyperlink{enum_model_1_1_store_1_1_schap_type}{Schap\+Type}} \mbox{\hyperlink{class_model_1_1_store_1_1_schap_a5c39189cd1b8a2688879d3e60ae1b1ce}{get\+Type}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{class_model_1_1_store_1_1_schap_a6a0a1df8de789c7c14da1128cb6c36e2}{set\+Panel}} (JPanel p)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_model_1_1_store_1_1_schap_a75bf6636a98b735642af3e3a9d757944}{load\+Image}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{class_model_1_1_store_1_1_schap_a32be9ea871991af34a52426ef363c665}{x}}
+\item 
+double \mbox{\hyperlink{class_model_1_1_store_1_1_schap_a10ed7c207c99369c28517d64cb46412f}{y}}
+\item 
+\mbox{\hyperlink{enum_model_1_1_store_1_1_schap_type}{Schap\+Type}} \mbox{\hyperlink{class_model_1_1_store_1_1_schap_ad394547b36105c3d1712cddd6c0e8ad0}{type}}
+\item 
+Buffered\+Image \mbox{\hyperlink{class_model_1_1_store_1_1_schap_a7d712f79afdb39bb33b10c8c342d0fad}{image}}
+\item 
+Map$<$ \mbox{\hyperlink{class_model_1_1_store_1_1_product}{Product}}, Integer $>$ \mbox{\hyperlink{class_model_1_1_store_1_1_schap_a656d966e26a994e640f38c5632ef0ddd}{voorraad}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static JPanel \mbox{\hyperlink{class_model_1_1_store_1_1_schap_afcdc26142129c4e5515bbd9ec87dd233}{panel}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+De {\ttfamily Schap}-\/klasse stelt een winkelrek (schap) voor in de supermarkt. 
+
+Elk schap heeft een specifieke positie op de map, een bepaald type en een voorraad van producten. Ook wordt er een afbeelding geladen die het schap visueel weergeeft in de simulatie. 
+
+\label{doc-constructors}
+\Hypertarget{class_model_1_1_store_1_1_schap_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_model_1_1_store_1_1_schap_af57c390eec8d9ecb5a962b703e201ecc}\index{Model.Store.Schap@{Model.Store.Schap}!Schap@{Schap}}
+\index{Schap@{Schap}!Model.Store.Schap@{Model.Store.Schap}}
+\doxysubsubsection{\texorpdfstring{Schap()}{Schap()}}
+{\footnotesize\ttfamily \label{class_model_1_1_store_1_1_schap_af57c390eec8d9ecb5a962b703e201ecc} 
+Model.\+Store.\+Schap.\+Schap (\begin{DoxyParamCaption}\item[{double}]{x}{, }\item[{double}]{y}{, }\item[{\mbox{\hyperlink{enum_model_1_1_store_1_1_schap_type}{Schap\+Type}}}]{type}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Maakt een nieuw {\ttfamily Schap}-\/object aan met een positie en type. 
+
+De constructor initialiseert een lege voorraad en laadt automatisch de bijbehorende afbeelding voor het opgegeven {\ttfamily \doxylink{enum_model_1_1_store_1_1_schap_type}{Schap\+Type}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & de X-\/coördinaat van het schap \\
+\hline
+{\em y} & de Y-\/coördinaat van het schap \\
+\hline
+{\em type} & het type schap dat bepaalt welke afbeelding wordt gebruikt \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{class_model_1_1_store_1_1_schap_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_model_1_1_store_1_1_schap_a082a1b999d04e54b6c098dc861d37363}\index{Model.Store.Schap@{Model.Store.Schap}!addProduct@{addProduct}}
+\index{addProduct@{addProduct}!Model.Store.Schap@{Model.Store.Schap}}
+\doxysubsubsection{\texorpdfstring{addProduct()}{addProduct()}}
+{\footnotesize\ttfamily \label{class_model_1_1_store_1_1_schap_a082a1b999d04e54b6c098dc861d37363} 
+void Model.\+Store.\+Schap.\+add\+Product (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_model_1_1_store_1_1_product}{Product}}}]{product}{, }\item[{int}]{quantity}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Voegt een product toe aan de voorraad van dit schap. Als het product al aanwezig is, wordt de hoeveelheid verhoogd.
+
+
+\begin{DoxyParams}{Parameters}
+{\em product} & het {\ttfamily \doxylink{class_model_1_1_store_1_1_product}{Product}} dat moet worden toegevoegd \\
+\hline
+{\em quantity} & het aantal eenheden dat moet worden toegevoegd \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_model_1_1_store_1_1_schap_ac95069723d6a9c4d1a9c7774302995a7}\index{Model.Store.Schap@{Model.Store.Schap}!draw@{draw}}
+\index{draw@{draw}!Model.Store.Schap@{Model.Store.Schap}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily \label{class_model_1_1_store_1_1_schap_ac95069723d6a9c4d1a9c7774302995a7} 
+void Model.\+Store.\+Schap.\+draw (\begin{DoxyParamCaption}\item[{Graphics}]{g}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Tekent het schap op het scherm. 
+
+Als de afbeelding niet beschikbaar is, wordt een grijs vlak met de schapnaam getekend. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & het {\ttfamily \doxylink{}{Graphics}}-\/object waarmee het schap wordt getekend \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_model_1_1_store_1_1_schap_a5c39189cd1b8a2688879d3e60ae1b1ce}\index{Model.Store.Schap@{Model.Store.Schap}!getType@{getType}}
+\index{getType@{getType}!Model.Store.Schap@{Model.Store.Schap}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily \label{class_model_1_1_store_1_1_schap_a5c39189cd1b8a2688879d3e60ae1b1ce} 
+\mbox{\hyperlink{enum_model_1_1_store_1_1_schap_type}{Schap\+Type}} Model.\+Store.\+Schap.\+get\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Geeft het type schap.
+
+\begin{DoxyReturn}{Returns}
+het {\ttfamily \doxylink{enum_model_1_1_store_1_1_schap_type}{Schap\+Type}} van dit schap 
+\end{DoxyReturn}
+\Hypertarget{class_model_1_1_store_1_1_schap_a6680d0512e3f02a9f585d6597fc60c33}\index{Model.Store.Schap@{Model.Store.Schap}!getX@{getX}}
+\index{getX@{getX}!Model.Store.Schap@{Model.Store.Schap}}
+\doxysubsubsection{\texorpdfstring{getX()}{getX()}}
+{\footnotesize\ttfamily \label{class_model_1_1_store_1_1_schap_a6680d0512e3f02a9f585d6597fc60c33} 
+int Model.\+Store.\+Schap.\+getX (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Geeft de X-\/coördinaat van het schap.
+
+\begin{DoxyReturn}{Returns}
+de X-\/coördinaat 
+\end{DoxyReturn}
+\Hypertarget{class_model_1_1_store_1_1_schap_a67c00ae2cee0fe134e3bdcc99f1c5ade}\index{Model.Store.Schap@{Model.Store.Schap}!getY@{getY}}
+\index{getY@{getY}!Model.Store.Schap@{Model.Store.Schap}}
+\doxysubsubsection{\texorpdfstring{getY()}{getY()}}
+{\footnotesize\ttfamily \label{class_model_1_1_store_1_1_schap_a67c00ae2cee0fe134e3bdcc99f1c5ade} 
+int Model.\+Store.\+Schap.\+getY (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Geeft de Y-\/coördinaat van het schap.
+
+\begin{DoxyReturn}{Returns}
+de Y-\/coördinaat 
+\end{DoxyReturn}
+\Hypertarget{class_model_1_1_store_1_1_schap_a75bf6636a98b735642af3e3a9d757944}\index{Model.Store.Schap@{Model.Store.Schap}!loadImage@{loadImage}}
+\index{loadImage@{loadImage}!Model.Store.Schap@{Model.Store.Schap}}
+\doxysubsubsection{\texorpdfstring{loadImage()}{loadImage()}}
+{\footnotesize\ttfamily \label{class_model_1_1_store_1_1_schap_a75bf6636a98b735642af3e3a9d757944} 
+void Model.\+Store.\+Schap.\+load\+Image (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Laadt de afbeelding die bij het {\ttfamily \doxylink{enum_model_1_1_store_1_1_schap_type}{Schap\+Type}} hoort. Als de afbeelding niet gevonden kan worden, wordt er een waarschuwing weergegeven en blijft het {\ttfamily image}-\/veld op {\ttfamily null}. \Hypertarget{class_model_1_1_store_1_1_schap_ae168d99661fc5766b5fb86d79ee1eb51}\index{Model.Store.Schap@{Model.Store.Schap}!removeProduct@{removeProduct}}
+\index{removeProduct@{removeProduct}!Model.Store.Schap@{Model.Store.Schap}}
+\doxysubsubsection{\texorpdfstring{removeProduct()}{removeProduct()}}
+{\footnotesize\ttfamily \label{class_model_1_1_store_1_1_schap_ae168d99661fc5766b5fb86d79ee1eb51} 
+boolean Model.\+Store.\+Schap.\+remove\+Product (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_model_1_1_store_1_1_product}{Product}}}]{product}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Verwijdert één eenheid van een product uit de voorraad. 
+
+Als de voorraad op 0 staat of het product niet voorkomt, gebeurt er niets. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em product} & het {\ttfamily \doxylink{class_model_1_1_store_1_1_product}{Product}} dat verwijderd moet worden \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} als het product succesvol verwijderd is, anders {\ttfamily false} 
+\end{DoxyReturn}
+\Hypertarget{class_model_1_1_store_1_1_schap_a6a0a1df8de789c7c14da1128cb6c36e2}\index{Model.Store.Schap@{Model.Store.Schap}!setPanel@{setPanel}}
+\index{setPanel@{setPanel}!Model.Store.Schap@{Model.Store.Schap}}
+\doxysubsubsection{\texorpdfstring{setPanel()}{setPanel()}}
+{\footnotesize\ttfamily \label{class_model_1_1_store_1_1_schap_a6a0a1df8de789c7c14da1128cb6c36e2} 
+void Model.\+Store.\+Schap.\+set\+Panel (\begin{DoxyParamCaption}\item[{JPanel}]{p}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+\label{doc-variable-members}
+\Hypertarget{class_model_1_1_store_1_1_schap_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_model_1_1_store_1_1_schap_a7d712f79afdb39bb33b10c8c342d0fad}\index{Model.Store.Schap@{Model.Store.Schap}!image@{image}}
+\index{image@{image}!Model.Store.Schap@{Model.Store.Schap}}
+\doxysubsubsection{\texorpdfstring{image}{image}}
+{\footnotesize\ttfamily \label{class_model_1_1_store_1_1_schap_a7d712f79afdb39bb33b10c8c342d0fad} 
+Buffered\+Image Model.\+Store.\+Schap.\+image\hspace{0.3cm}{\ttfamily [private]}}
+
+De afbeelding die visueel bij dit schap hoort. \Hypertarget{class_model_1_1_store_1_1_schap_afcdc26142129c4e5515bbd9ec87dd233}\index{Model.Store.Schap@{Model.Store.Schap}!panel@{panel}}
+\index{panel@{panel}!Model.Store.Schap@{Model.Store.Schap}}
+\doxysubsubsection{\texorpdfstring{panel}{panel}}
+{\footnotesize\ttfamily \label{class_model_1_1_store_1_1_schap_afcdc26142129c4e5515bbd9ec87dd233} 
+JPanel Model.\+Store.\+Schap.\+panel\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_model_1_1_store_1_1_schap_ad394547b36105c3d1712cddd6c0e8ad0}\index{Model.Store.Schap@{Model.Store.Schap}!type@{type}}
+\index{type@{type}!Model.Store.Schap@{Model.Store.Schap}}
+\doxysubsubsection{\texorpdfstring{type}{type}}
+{\footnotesize\ttfamily \label{class_model_1_1_store_1_1_schap_ad394547b36105c3d1712cddd6c0e8ad0} 
+\mbox{\hyperlink{enum_model_1_1_store_1_1_schap_type}{Schap\+Type}} Model.\+Store.\+Schap.\+type\hspace{0.3cm}{\ttfamily [private]}}
+
+Het type schap, dat bepaalt welke afbeelding en afmetingen worden gebruikt. \Hypertarget{class_model_1_1_store_1_1_schap_a656d966e26a994e640f38c5632ef0ddd}\index{Model.Store.Schap@{Model.Store.Schap}!voorraad@{voorraad}}
+\index{voorraad@{voorraad}!Model.Store.Schap@{Model.Store.Schap}}
+\doxysubsubsection{\texorpdfstring{voorraad}{voorraad}}
+{\footnotesize\ttfamily \label{class_model_1_1_store_1_1_schap_a656d966e26a994e640f38c5632ef0ddd} 
+Map$<$\mbox{\hyperlink{class_model_1_1_store_1_1_product}{Product}}, Integer$>$ Model.\+Store.\+Schap.\+voorraad\hspace{0.3cm}{\ttfamily [private]}}
+
+De voorraad van producten in dit schap. \Hypertarget{class_model_1_1_store_1_1_schap_a32be9ea871991af34a52426ef363c665}\index{Model.Store.Schap@{Model.Store.Schap}!x@{x}}
+\index{x@{x}!Model.Store.Schap@{Model.Store.Schap}}
+\doxysubsubsection{\texorpdfstring{x}{x}}
+{\footnotesize\ttfamily \label{class_model_1_1_store_1_1_schap_a32be9ea871991af34a52426ef363c665} 
+double Model.\+Store.\+Schap.\+x\hspace{0.3cm}{\ttfamily [private]}}
+
+X-\/coördinaat van het schap op het scherm. \Hypertarget{class_model_1_1_store_1_1_schap_a10ed7c207c99369c28517d64cb46412f}\index{Model.Store.Schap@{Model.Store.Schap}!y@{y}}
+\index{y@{y}!Model.Store.Schap@{Model.Store.Schap}}
+\doxysubsubsection{\texorpdfstring{y}{y}}
+{\footnotesize\ttfamily \label{class_model_1_1_store_1_1_schap_a10ed7c207c99369c28517d64cb46412f} 
+double Model.\+Store.\+Schap.\+y\hspace{0.3cm}{\ttfamily [private]}}
+
+Y-\/coördinaat van het schap op het scherm. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/\+Model/\+Store/\mbox{\hyperlink{_schap_8java}{Schap.\+java}}\end{DoxyCompactItemize}

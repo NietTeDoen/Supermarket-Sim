@@ -1,0 +1,27 @@
+var class_model_1_1_people_1_1_klant =
+[
+    [ "Klant", "class_model_1_1_people_1_1_klant.html#a27bd72c999c87d69808999d6a8a37442", null ],
+    [ "draw", "class_model_1_1_people_1_1_klant.html#a00f01564016078eeca612e76977c5276", null ],
+    [ "getCurrentSegmentIndex", "class_model_1_1_people_1_1_klant.html#a3548d8895754bf0790e1fba74a61756a", null ],
+    [ "getProductsList", "class_model_1_1_people_1_1_klant.html#a28db96520f090b2e6a34de8322f09481", null ],
+    [ "handleSegmentComplete", "class_model_1_1_people_1_1_klant.html#ae8b039a1597f8065238cb5d5aeb92087", null ],
+    [ "loadImage", "class_model_1_1_people_1_1_klant.html#aa9855b3044c2f851e08ad559cedc147a", null ],
+    [ "startAction", "class_model_1_1_people_1_1_klant.html#a47876c0018f79c8a5952950d837d2e4a", null ],
+    [ "takeProduct", "class_model_1_1_people_1_1_klant.html#a14bfc2c35d56f539732805d4e69d993f", null ],
+    [ "update", "class_model_1_1_people_1_1_klant.html#a45cd6180a8cbf45b56973a8f65494c01", null ],
+    [ "actionTicks", "class_model_1_1_people_1_1_klant.html#aa18f9011f4b7cd0861ff921c123c2cb6", null ],
+    [ "bijKassa", "class_model_1_1_people_1_1_klant.html#a1e3adeb50c4f2b24b18e00e265dafbce", null ],
+    [ "busy", "class_model_1_1_people_1_1_klant.html#ae81114c48657809aee02ca56dbb167fa", null ],
+    [ "currentActionText", "class_model_1_1_people_1_1_klant.html#a9d978f10112d74c9eb54bf38c709452a", null ],
+    [ "currentSegmentIndex", "class_model_1_1_people_1_1_klant.html#a6e3aebdd889734c2494d409ac5705316", null ],
+    [ "hasCheckedOut", "class_model_1_1_people_1_1_klant.html#a106d51727b6250c676054cda158f3d8a", null ],
+    [ "height", "class_model_1_1_people_1_1_klant.html#a38253e06052a9837d2b38a9decda3ca1", null ],
+    [ "image", "class_model_1_1_people_1_1_klant.html#a47128a3b63b98be9d531b8021c935c44", null ],
+    [ "maxActionTicks", "class_model_1_1_people_1_1_klant.html#a67715d3110d1463c4c2753390dcba124", null ],
+    [ "pathIndex", "class_model_1_1_people_1_1_klant.html#a8f0df3c20ae59186dddcda6eb5d7f11f", null ],
+    [ "positie", "class_model_1_1_people_1_1_klant.html#a08147e7b0375be436854a4c2d5c8bad2", null ],
+    [ "productsList", "class_model_1_1_people_1_1_klant.html#a359258e4d86ce3b2a885d99a5b393859", null ],
+    [ "routeSegments", "class_model_1_1_people_1_1_klant.html#a45850de38dea0fbb59873acd00d1c179", null ],
+    [ "speed", "class_model_1_1_people_1_1_klant.html#a989e3bfda00bfed95ebe9f28be713ea8", null ],
+    [ "width", "class_model_1_1_people_1_1_klant.html#a55f4cebab1ffc647caab1fb08b473cbb", null ]
+];

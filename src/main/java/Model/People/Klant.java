@@ -52,7 +52,6 @@ public class Klant extends Person {
         actionTicks = waitTicks;
         maxActionTicks = waitTicks;
         currentActionText = text;
-
     }
 
     public void takeProduct(String productName, int waitTicks) {

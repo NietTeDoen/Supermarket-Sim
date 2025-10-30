@@ -1,0 +1,20 @@
+var searchData=
+[
+  ['getcurrentsegmentindex_0',['getCurrentSegmentIndex',['../class_model_1_1_people_1_1_klant.html#a3548d8895754bf0790e1fba74a61756a',1,'Model::People::Klant']]],
+  ['getheight_1',['getHeight',['../enum_model_1_1_store_1_1_schap_type.html#a36721bed828a1c52d71e787db6664795',1,'Model::Store::SchapType']]],
+  ['getimagepath_2',['getImagePath',['../enum_model_1_1_store_1_1_schap_type.html#a54695f48bf624f68b50903eea04830be',1,'Model::Store::SchapType']]],
+  ['getkassas_3',['getKassas',['../class_model_1_1_logic_1_1_world.html#a77fca65d5b7b6eb9e6d6872c67e60ae3',1,'Model::Logic::World']]],
+  ['getnaam_4',['getNaam',['../class_model_1_1_store_1_1_product.html#a38eb7b0b6f10f65595d5e5ae542ea803',1,'Model::Store::Product']]],
+  ['getpanelheight_5',['getPanelHeight',['../class_controller_1_1_tick_controller.html#a0657952c2ba56b51f9391884dfd00229',1,'Controller.TickController.getPanelHeight()'],['../class_view_1_1_simulation_panel.html#a37a5a732e7201383fc2270054143f6b0',1,'View.SimulationPanel.getPanelHeight()']]],
+  ['getpanelwidth_6',['getPanelWidth',['../class_controller_1_1_tick_controller.html#a94d4a9ae267002b4e5d6385664a631e4',1,'Controller.TickController.getPanelWidth()'],['../class_view_1_1_simulation_panel.html#aba56f1f54c872c6411eb6a9441e21414',1,'View.SimulationPanel.getPanelWidth()']]],
+  ['getpersons_7',['getPersons',['../class_model_1_1_logic_1_1_world.html#a1645e142e5e00233560312ee878f202e',1,'Model::Logic::World']]],
+  ['getprijs_8',['getPrijs',['../class_model_1_1_store_1_1_kassa.html#aa56e3b20104a5dd741b86d2dd46716c7',1,'Model.Store.Kassa.getPrijs()'],['../class_model_1_1_store_1_1_product.html#a1def5057a16d2c089fc950e160c0435c',1,'Model.Store.Product.getPrijs()']]],
+  ['getproductslist_9',['getProductsList',['../class_model_1_1_people_1_1_klant.html#a28db96520f090b2e6a34de8322f09481',1,'Model::People::Klant']]],
+  ['getscanneditems_10',['getScannedItems',['../class_model_1_1_store_1_1_kassa.html#a19569ea9511c394c5949f76391f12dfa',1,'Model::Store::Kassa']]],
+  ['getschappen_11',['getSchappen',['../class_model_1_1_logic_1_1_world.html#a4be555b20c112720262a811088a9e58a',1,'Model::Logic::World']]],
+  ['gettype_12',['getType',['../class_model_1_1_store_1_1_schap.html#a5c39189cd1b8a2688879d3e60ae1b1ce',1,'Model::Store::Schap']]],
+  ['getwidth_13',['getWidth',['../enum_model_1_1_store_1_1_schap_type.html#a8fdf0aabe6c4588970fac4f85531945c',1,'Model::Store::SchapType']]],
+  ['getx_14',['getX',['../class_model_1_1_store_1_1_schap.html#a6680d0512e3f02a9f585d6597fc60c33',1,'Model::Store::Schap']]],
+  ['gety_15',['getY',['../class_model_1_1_store_1_1_schap.html#a67c00ae2cee0fe134e3bdcc99f1c5ade',1,'Model::Store::Schap']]],
+  ['grafen_16',['grafen',['../class_controller_1_1_main.html#a4fdba8f880e597f41927e8f98783a8f5',1,'Controller::Main']]]
+];

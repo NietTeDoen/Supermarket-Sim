@@ -1,0 +1,93 @@
+\doxysection{Model.\+Logic.\+World\+Graph Class Reference}
+\hypertarget{class_model_1_1_logic_1_1_world_graph}{}\label{class_model_1_1_logic_1_1_world_graph}\index{Model.Logic.WorldGraph@{Model.Logic.WorldGraph}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_model_1_1_logic_1_1_world_graph_aeb24984d7644e84cc0fc3833d05f5f72}{add\+Node}} (\mbox{\hyperlink{class_model_1_1_logic_1_1_node}{Node}} node)
+\item 
+void \mbox{\hyperlink{class_model_1_1_logic_1_1_world_graph_a01d617b5627b25f2b448a00c8c884a72}{connect}} (\mbox{\hyperlink{class_model_1_1_logic_1_1_node}{Node}} node1, \mbox{\hyperlink{class_model_1_1_logic_1_1_node}{Node}} node2, float cost)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static List$<$ \mbox{\hyperlink{class_model_1_1_logic_1_1_node}{Node}} $>$ \mbox{\hyperlink{class_model_1_1_logic_1_1_world_graph_a5f6a27a874c8912ae2e34340bc04e487}{find\+Path}} (\mbox{\hyperlink{class_model_1_1_logic_1_1_node}{Node}} start, \mbox{\hyperlink{class_model_1_1_logic_1_1_node}{Node}} end)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+List$<$ \mbox{\hyperlink{class_model_1_1_logic_1_1_node}{Node}} $>$ \mbox{\hyperlink{class_model_1_1_logic_1_1_world_graph_ac26c8bd30df909dabffe0ec64dc7c38d}{nodes}} = new Array\+List$<$$>$()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{class_model_1_1_logic_1_1_world_graph}{World\+Graph} vertegenwoordigt een graaf van nodes (waypoints) en edges (verbindingen) voor padfinding in de simulatie.
+
+Het bevat methodes om nodes toe te voegen, verbindingen te maken en een pad te vinden tussen twee nodes. 
+
+\label{doc-func-members}
+\Hypertarget{class_model_1_1_logic_1_1_world_graph_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_model_1_1_logic_1_1_world_graph_aeb24984d7644e84cc0fc3833d05f5f72}\index{Model.Logic.WorldGraph@{Model.Logic.WorldGraph}!addNode@{addNode}}
+\index{addNode@{addNode}!Model.Logic.WorldGraph@{Model.Logic.WorldGraph}}
+\doxysubsubsection{\texorpdfstring{addNode()}{addNode()}}
+{\footnotesize\ttfamily \label{class_model_1_1_logic_1_1_world_graph_aeb24984d7644e84cc0fc3833d05f5f72} 
+void Model.\+Logic.\+World\+Graph.\+add\+Node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_model_1_1_logic_1_1_node}{Node}}}]{node}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Voegt een node toe aan de graaf.
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & de node die toegevoegd wordt \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_model_1_1_logic_1_1_world_graph_a01d617b5627b25f2b448a00c8c884a72}\index{Model.Logic.WorldGraph@{Model.Logic.WorldGraph}!connect@{connect}}
+\index{connect@{connect}!Model.Logic.WorldGraph@{Model.Logic.WorldGraph}}
+\doxysubsubsection{\texorpdfstring{connect()}{connect()}}
+{\footnotesize\ttfamily \label{class_model_1_1_logic_1_1_world_graph_a01d617b5627b25f2b448a00c8c884a72} 
+void Model.\+Logic.\+World\+Graph.\+connect (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_model_1_1_logic_1_1_node}{Node}}}]{node1}{, }\item[{\mbox{\hyperlink{class_model_1_1_logic_1_1_node}{Node}}}]{node2}{, }\item[{float}]{cost}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Verbindt twee nodes met een tweerichtings-\/edge.
+
+
+\begin{DoxyParams}{Parameters}
+{\em node1} & de eerste node \\
+\hline
+{\em node2} & de tweede node \\
+\hline
+{\em cost} & de kosten (bijv. afstand) van de verbinding \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_model_1_1_logic_1_1_world_graph_a5f6a27a874c8912ae2e34340bc04e487}\index{Model.Logic.WorldGraph@{Model.Logic.WorldGraph}!findPath@{findPath}}
+\index{findPath@{findPath}!Model.Logic.WorldGraph@{Model.Logic.WorldGraph}}
+\doxysubsubsection{\texorpdfstring{findPath()}{findPath()}}
+{\footnotesize\ttfamily \label{class_model_1_1_logic_1_1_world_graph_a5f6a27a874c8912ae2e34340bc04e487} 
+List$<$ \mbox{\hyperlink{class_model_1_1_logic_1_1_node}{Node}} $>$ Model.\+Logic.\+World\+Graph.\+find\+Path (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_model_1_1_logic_1_1_node}{Node}}}]{start}{, }\item[{\mbox{\hyperlink{class_model_1_1_logic_1_1_node}{Node}}}]{end}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+Vindt een pad tussen start en end node met BFS (Breadth-\/\+First Search).
+
+
+\begin{DoxyParams}{Parameters}
+{\em start} & de startnode \\
+\hline
+{\em end} & de doelnode \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+een lijst van nodes die het pad vormen van start naar end 
+\end{DoxyReturn}
+
+
+\label{doc-variable-members}
+\Hypertarget{class_model_1_1_logic_1_1_world_graph_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_model_1_1_logic_1_1_world_graph_ac26c8bd30df909dabffe0ec64dc7c38d}\index{Model.Logic.WorldGraph@{Model.Logic.WorldGraph}!nodes@{nodes}}
+\index{nodes@{nodes}!Model.Logic.WorldGraph@{Model.Logic.WorldGraph}}
+\doxysubsubsection{\texorpdfstring{nodes}{nodes}}
+{\footnotesize\ttfamily \label{class_model_1_1_logic_1_1_world_graph_ac26c8bd30df909dabffe0ec64dc7c38d} 
+List$<$\mbox{\hyperlink{class_model_1_1_logic_1_1_node}{Node}}$>$ Model.\+Logic.\+World\+Graph.\+nodes = new Array\+List$<$$>$()\hspace{0.3cm}{\ttfamily [private]}}
+
+Lijst van alle nodes in de graaf 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/\+Model/\+Logic/\mbox{\hyperlink{_world_graph_8java}{World\+Graph.\+java}}\end{DoxyCompactItemize}
