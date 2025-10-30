@@ -234,7 +234,7 @@ public class Klant extends Person {
 
         // Mandje boven hoofd
         if (!productsList.isEmpty()) {
-            StringBuilder inventoryText = new StringBuilder("🛒 Mandje: ");
+            StringBuilder inventoryText = new StringBuilder("Mandje: ");
             for (int i = 0; i < productsList.size(); i++) {
                 inventoryText.append(productsList.get(i).getNaam());
                 if (i < productsList.size() - 1)
