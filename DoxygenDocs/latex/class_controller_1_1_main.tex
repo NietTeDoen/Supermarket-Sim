@@ -41,6 +41,11 @@ static void \mbox{\hyperlink{class_controller_1_1_main_a4fdba8f880e597f41927e8f9
 \end{DoxyCompactItemize}
 
 
+\doxysubsection{Detailed Description}
+Hoofdklasse van de Supermarket Simulator. 
+
+Deze klasse initialiseert de wereld, maakt het GUI-\/frame, laadt nodes, producten en schappen, en start de \doxylink{class_controller_1_1_tick_controller}{Tick\+Controller} voor de simulatie. 
+
 \label{doc-constructors}
 \Hypertarget{class_controller_1_1_main_doc-constructors}
 \doxysubsection{Constructor \& Destructor Documentation}
@@ -50,6 +55,13 @@ static void \mbox{\hyperlink{class_controller_1_1_main_a4fdba8f880e597f41927e8f9
 {\footnotesize\ttfamily \label{class_controller_1_1_main_aa783e1d0d8530349e34a6eb90186bd75} 
 Controller.\+Main.\+Main (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) throws IOException\hspace{0.3cm}{\ttfamily [inline]}}
 
+Standaard constructor voor \doxylink{class_controller_1_1_main}{Main}.
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em IOException} & indien initialisatie faalt \\
+\hline
+\end{DoxyExceptions}
 
 
 \label{doc-func-members}
@@ -61,30 +73,55 @@ Controller.\+Main.\+Main (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) th
 {\footnotesize\ttfamily \label{class_controller_1_1_main_a4fdba8f880e597f41927e8f98783a8f5} 
 void Controller.\+Main.\+grafen (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
 
-\Hypertarget{class_controller_1_1_main_acec1b39ad6f19a8b171c8c6e1b597b16}\index{Controller.Main@{Controller.Main}!initiatecustomer@{initiatecustomer}}
+Initialiseert nodes en grafen voor de winkel. 
+
+Voegt nodes toe, verbindt ze met edges en test het pad van entrance naar exit. \Hypertarget{class_controller_1_1_main_acec1b39ad6f19a8b171c8c6e1b597b16}\index{Controller.Main@{Controller.Main}!initiatecustomer@{initiatecustomer}}
 \index{initiatecustomer@{initiatecustomer}!Controller.Main@{Controller.Main}}
 \doxysubsubsection{\texorpdfstring{initiatecustomer()}{initiatecustomer()}}
 {\footnotesize\ttfamily \label{class_controller_1_1_main_acec1b39ad6f19a8b171c8c6e1b597b16} 
 void Controller.\+Main.\+initiatecustomer (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
 
-\Hypertarget{class_controller_1_1_main_a6b36a1e4f84dde7e6b652ac2dd774bb0}\index{Controller.Main@{Controller.Main}!initiateSchappenLijst@{initiateSchappenLijst}}
+Placeholder om klanten te initialiseren. TODO\+: implementatie toevoegen. \Hypertarget{class_controller_1_1_main_a6b36a1e4f84dde7e6b652ac2dd774bb0}\index{Controller.Main@{Controller.Main}!initiateSchappenLijst@{initiateSchappenLijst}}
 \index{initiateSchappenLijst@{initiateSchappenLijst}!Controller.Main@{Controller.Main}}
 \doxysubsubsection{\texorpdfstring{initiateSchappenLijst()}{initiateSchappenLijst()}}
 {\footnotesize\ttfamily \label{class_controller_1_1_main_a6b36a1e4f84dde7e6b652ac2dd774bb0} 
 void Controller.\+Main.\+initiate\+Schappen\+Lijst (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
 
-\Hypertarget{class_controller_1_1_main_a60537e58baebcc370385505e582d1723}\index{Controller.Main@{Controller.Main}!main@{main}}
+Initialiseert de schappen en producten in de winkel. 
+
+Koppelt elk product aan een schap. \Hypertarget{class_controller_1_1_main_a60537e58baebcc370385505e582d1723}\index{Controller.Main@{Controller.Main}!main@{main}}
 \index{main@{main}!Controller.Main@{Controller.Main}}
 \doxysubsubsection{\texorpdfstring{main()}{main()}}
 {\footnotesize\ttfamily \label{class_controller_1_1_main_a60537e58baebcc370385505e582d1723} 
 void Controller.\+Main.\+main (\begin{DoxyParamCaption}\item[{String\mbox{[}$\,$\mbox{]}}]{args}{}\end{DoxyParamCaption}) throws IOException\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
 
+Startpunt van de applicatie. 
+
+Initialiseert de GUI, setup van de wereld, nodes, schappen en start de tick-\/thread. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & command-\/line arguments \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em IOException} & indien initialisatie faalt \\
+\hline
+\end{DoxyExceptions}
 \Hypertarget{class_controller_1_1_main_a33be81be66f4df21cc34216e55a06a8c}\index{Controller.Main@{Controller.Main}!SetupApplication@{SetupApplication}}
 \index{SetupApplication@{SetupApplication}!Controller.Main@{Controller.Main}}
 \doxysubsubsection{\texorpdfstring{SetupApplication()}{SetupApplication()}}
 {\footnotesize\ttfamily \label{class_controller_1_1_main_a33be81be66f4df21cc34216e55a06a8c} 
 void Controller.\+Main.\+Setup\+Application (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) throws IOException\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
 
+Initialiseert het GUI-\/frame en de simulatiepanelen.
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em IOException} & indien een resource (bijv. image) niet geladen kan worden \\
+\hline
+\end{DoxyExceptions}
 
 
 \label{doc-variable-members}
@@ -96,37 +133,37 @@ void Controller.\+Main.\+Setup\+Application (\begin{DoxyParamCaption}{}{}\end{Do
 {\footnotesize\ttfamily \label{class_controller_1_1_main_a46c1d1a2acccb1e3b5ec942fc647bd44} 
 Hash\+Map$<$String, double\mbox{[}$\,$\mbox{]}$>$ Controller.\+Main.\+node\+Cordinates = new Hash\+Map$<$$>$()\hspace{0.3cm}{\ttfamily [static]}}
 
-\Hypertarget{class_controller_1_1_main_ad6288b343849669631bff46945b4ecb5}\index{Controller.Main@{Controller.Main}!nodes@{nodes}}
+Coördinaten van nodes (relatief) \Hypertarget{class_controller_1_1_main_ad6288b343849669631bff46945b4ecb5}\index{Controller.Main@{Controller.Main}!nodes@{nodes}}
 \index{nodes@{nodes}!Controller.Main@{Controller.Main}}
 \doxysubsubsection{\texorpdfstring{nodes}{nodes}}
 {\footnotesize\ttfamily \label{class_controller_1_1_main_ad6288b343849669631bff46945b4ecb5} 
 Map$<$String, \mbox{\hyperlink{class_model_1_1_logic_1_1_node}{Node}}$>$ Controller.\+Main.\+nodes = new Hash\+Map$<$$>$()\hspace{0.3cm}{\ttfamily [static]}}
 
-\Hypertarget{class_controller_1_1_main_a118538b8636fe6c9dab599a68ccefc7e}\index{Controller.Main@{Controller.Main}!panel@{panel}}
+Map van node-\/namen naar Node-\/objecten \Hypertarget{class_controller_1_1_main_a118538b8636fe6c9dab599a68ccefc7e}\index{Controller.Main@{Controller.Main}!panel@{panel}}
 \index{panel@{panel}!Controller.Main@{Controller.Main}}
 \doxysubsubsection{\texorpdfstring{panel}{panel}}
 {\footnotesize\ttfamily \label{class_controller_1_1_main_a118538b8636fe6c9dab599a68ccefc7e} 
 \mbox{\hyperlink{class_view_1_1_simulation_panel}{Simulation\+Panel}} Controller.\+Main.\+panel\hspace{0.3cm}{\ttfamily [static]}}
 
-\Hypertarget{class_controller_1_1_main_a4540b87714ad02459b13e7fa72d95f91}\index{Controller.Main@{Controller.Main}!productlijst@{productlijst}}
+Het paneel waarop de simulatie wordt getekend \Hypertarget{class_controller_1_1_main_a4540b87714ad02459b13e7fa72d95f91}\index{Controller.Main@{Controller.Main}!productlijst@{productlijst}}
 \index{productlijst@{productlijst}!Controller.Main@{Controller.Main}}
 \doxysubsubsection{\texorpdfstring{productlijst}{productlijst}}
 {\footnotesize\ttfamily \label{class_controller_1_1_main_a4540b87714ad02459b13e7fa72d95f91} 
 List$<$\mbox{\hyperlink{class_model_1_1_store_1_1_product}{Product}}$>$ Controller.\+Main.\+productlijst = new Array\+List$<$$>$()\hspace{0.3cm}{\ttfamily [static]}}
 
-\Hypertarget{class_controller_1_1_main_a6811378003d409795c36e4ce0686d374}\index{Controller.Main@{Controller.Main}!schappenlijst@{schappenlijst}}
+Lijst van alle producten in de winkel \Hypertarget{class_controller_1_1_main_a6811378003d409795c36e4ce0686d374}\index{Controller.Main@{Controller.Main}!schappenlijst@{schappenlijst}}
 \index{schappenlijst@{schappenlijst}!Controller.Main@{Controller.Main}}
 \doxysubsubsection{\texorpdfstring{schappenlijst}{schappenlijst}}
 {\footnotesize\ttfamily \label{class_controller_1_1_main_a6811378003d409795c36e4ce0686d374} 
 List$<$\mbox{\hyperlink{class_model_1_1_store_1_1_schap}{Schap}}$>$ Controller.\+Main.\+schappenlijst = new Array\+List$<$$>$()\hspace{0.3cm}{\ttfamily [static]}}
 
-\Hypertarget{class_controller_1_1_main_a7e59fc939c93ae1fe07255cbcac2d943}\index{Controller.Main@{Controller.Main}!world@{world}}
+Lijst van alle schappen in de winkel \Hypertarget{class_controller_1_1_main_a7e59fc939c93ae1fe07255cbcac2d943}\index{Controller.Main@{Controller.Main}!world@{world}}
 \index{world@{world}!Controller.Main@{Controller.Main}}
 \doxysubsubsection{\texorpdfstring{world}{world}}
 {\footnotesize\ttfamily \label{class_controller_1_1_main_a7e59fc939c93ae1fe07255cbcac2d943} 
 \mbox{\hyperlink{class_model_1_1_logic_1_1_world}{World}} Controller.\+Main.\+world = new \mbox{\hyperlink{class_model_1_1_logic_1_1_world}{World}}()\hspace{0.3cm}{\ttfamily [static]}}
 
-
+De wereld van de simulatie 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 

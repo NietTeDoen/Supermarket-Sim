@@ -119,7 +119,10 @@ Static Private Member Functions</h2></td></tr>
 <tr class="memitem:a6b36a1e4f84dde7e6b652ac2dd774bb0" id="r_a6b36a1e4f84dde7e6b652ac2dd774bb0"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6b36a1e4f84dde7e6b652ac2dd774bb0">initiateSchappenLijst</a> ()</td></tr>
 <tr class="memitem:a4fdba8f880e597f41927e8f98783a8f5" id="r_a4fdba8f880e597f41927e8f98783a8f5"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4fdba8f880e597f41927e8f98783a8f5">grafen</a> ()</td></tr>
 </table>
-<a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Hoofdklasse van de Supermarket Simulator. </p>
+<p>Deze klasse initialiseert de wereld, maakt het GUI-frame, laadt nodes, producten en schappen, en start de <a class="el" href="class_controller_1_1_tick_controller.html">TickController</a> voor de simulatie. </p>
+</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aa783e1d0d8530349e34a6eb90186bd75" name="aa783e1d0d8530349e34a6eb90186bd75"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa783e1d0d8530349e34a6eb90186bd75">&#9670;&#160;</a></span>Main()</h2>
 
@@ -142,6 +145,13 @@ Static Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Standaard constructor voor <a class="el" href="class_controller_1_1_main.html">Main</a>.</p>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">IOException</td><td>indien initialisatie faalt </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -168,6 +178,8 @@ Static Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Initialiseert nodes en grafen voor de winkel. </p>
+<p>Voegt nodes toe, verbindt ze met edges en test het pad van entrance naar exit. </p>
 
 </div>
 </div>
@@ -193,6 +205,7 @@ Static Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Placeholder om klanten te initialiseren. TODO: implementatie toevoegen. </p>
 
 </div>
 </div>
@@ -218,6 +231,8 @@ Static Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Initialiseert de schappen en producten in de winkel. </p>
+<p>Koppelt elk product aan een schap. </p>
 
 </div>
 </div>
@@ -243,6 +258,20 @@ Static Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Startpunt van de applicatie. </p>
+<p>Initialiseert de GUI, setup van de wereld, nodes, schappen en start de tick-thread. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">args</td><td>command-line arguments </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">IOException</td><td>indien initialisatie faalt </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -268,6 +297,13 @@ Static Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Initialiseert het GUI-frame en de simulatiepanelen.</p>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">IOException</td><td>indien een resource (bijv. image) niet geladen kan worden </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -291,6 +327,7 @@ Static Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Coördinaten van nodes (relatief) </p>
 
 </div>
 </div>
@@ -313,6 +350,7 @@ Static Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Map van node-namen naar Node-objecten </p>
 
 </div>
 </div>
@@ -335,6 +373,7 @@ Static Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Het paneel waarop de simulatie wordt getekend </p>
 
 </div>
 </div>
@@ -357,6 +396,7 @@ Static Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Lijst van alle producten in de winkel </p>
 
 </div>
 </div>
@@ -379,6 +419,7 @@ Static Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Lijst van alle schappen in de winkel </p>
 
 </div>
 </div>
@@ -401,6 +442,7 @@ Static Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>De wereld van de simulatie </p>
 
 </div>
 </div>

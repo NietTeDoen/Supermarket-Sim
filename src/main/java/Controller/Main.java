@@ -15,18 +15,49 @@ import javax.swing.*;
 import java.io.IOException;
 import java.util.*;
 
+/**
+ * Hoofdklasse van de Supermarket Simulator.
+ * <p>
+ * Deze klasse initialiseert de wereld, maakt het GUI-frame, laadt nodes, producten en schappen,
+ * en start de TickController voor de simulatie.
+ * </p>
+ */
 public class Main {
 
+    /** Het paneel waarop de simulatie wordt getekend */
     public static SimulationPanel panel;
+
+    /** Map van node-namen naar Node-objecten */
     public static Map<String, Node> nodes = new HashMap<>();
 
+    /** Lijst van alle schappen in de winkel */
     public static List<Schap> schappenlijst = new ArrayList<>();
+
+    /** Lijst van alle producten in de winkel */
     public static List<Product> productlijst = new ArrayList<>();
+
+    /** Coördinaten van nodes (relatief) */
     public static HashMap<String, double[]> nodeCordinates = new HashMap<>();
 
+    /** De wereld van de simulatie */
+    public static World world = new World();
 
+    /**
+     * Standaard constructor voor Main.
+     *
+     * @throws IOException indien initialisatie faalt
+     */
     public Main() throws IOException { }
 
+    /**
+     * Startpunt van de applicatie.
+     * <p>
+     * Initialiseert de GUI, setup van de wereld, nodes, schappen en start de tick-thread.
+     * </p>
+     *
+     * @param args command-line arguments
+     * @throws IOException indien initialisatie faalt
+     */
     public static void main(String[] args) throws IOException {
         SwingUtilities.invokeLater(() -> {
             try {
@@ -49,8 +80,12 @@ public class Main {
             }
         });
     }
-    public static World world = new World();
 
+    /**
+     * Initialiseert het GUI-frame en de simulatiepanelen.
+     *
+     * @throws IOException indien een resource (bijv. image) niet geladen kan worden
+     */
     private static void SetupApplication() throws IOException {
         JFrame frame = new JFrame("Supermarket Simulator");
 
@@ -60,15 +95,11 @@ public class Main {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
-        // Maak wereld en tekenpaneel
-
         panel = new SimulationPanel();
         TickController.setPanel(panel);
         Schap.setPanel(panel);
         Kassa.setPanel(panel);
 
-
-        // Voeg schappen toe zodra ze zijn geïnitialiseerd
         for (Schap s : schappenlijst) {
             world.addSchap(s);
         }
@@ -77,6 +108,12 @@ public class Main {
         frame.setVisible(true);
     }
 
+    /**
+     * Initialiseert de schappen en producten in de winkel.
+     * <p>
+     * Koppelt elk product aan een schap.
+     * </p>
+     */
     private static void initiateSchappenLijst() {
         schappenlijst.add(new Schap(200, 300, SchapType.Kast1));
         schappenlijst.add(new Schap(400, 300, SchapType.Kast2));
@@ -95,17 +132,24 @@ public class Main {
         }
     }
 
-    private void initiatecustomer(){
-        //TODO
+    /**
+     * Placeholder om klanten te initialiseren.
+     * TODO: implementatie toevoegen.
+     */
+    private void initiatecustomer() {
+        // TODO
     }
 
-
-    private static void grafen(){
-        // 1. Maak een WorldGraph
+    /**
+     * Initialiseert nodes en grafen voor de winkel.
+     * <p>
+     * Voegt nodes toe, verbindt ze met edges en test het pad van entrance naar exit.
+     * </p>
+     */
+    private static void grafen() {
         WorldGraph graph = new WorldGraph();
 
-
-        //Dit zijn de relatieve cordinaten. die doen we x de screensize om de goede punten te plaatsen.
+        // Relatieve coördinaten voor nodes
         nodeCordinates.put("entrance", new double[]{0.5234375, 0.8140610545790934});
         nodeCordinates.put("pad1", new double[]{0.59765625, 0.8122109158186864});
         nodeCordinates.put("pad2", new double[]{0.84716796875, 0.81313598519889});
@@ -121,18 +165,16 @@ public class Main {
         nodeCordinates.put("cashier", new double[]{0.26611328125, 0.788159111933395});
         nodeCordinates.put("exit", new double[]{0.42333984375, 0.8103607770582794});
 
-        // 2. Voeg een paar dummy nodes toe
+        // Voeg nodes toe aan graf
         for (Map.Entry<String, double[]> entry : nodeCordinates.entrySet()) {
             String name = entry.getKey();
             double[] coords = entry.getValue();
-            float x = (float) coords[0];
-            float y = (float) coords[1];
-            Node node = new Node(name, x, y);
+            Node node = new Node(name, (float) coords[0], (float) coords[1]);
             graph.addNode(node);
             nodes.put(name, node);
         }
 
-        // 3. Maak verbindingen (edges)
+        // Verbindingen (edges)
         graph.connect(nodes.get("entrance"), nodes.get("pad1"), 1);
         graph.connect(nodes.get("pad1"), nodes.get("pad2"), 2);
         graph.connect(nodes.get("pad1"), nodes.get("liggend-kast-1"), 2);
@@ -148,16 +190,13 @@ public class Main {
         graph.connect(nodes.get("queue1"), nodes.get("cashier"), 1);
         graph.connect(nodes.get("cashier"), nodes.get("exit"), 2);
 
-
-        // 4. Test de findPath methode
+        // Test pad van entrance naar exit
         List<Node> path = graph.findPath(nodes.get("entrance"), nodes.get("exit"));
 
-        // 5. Print het pad
         System.out.println("Path from Entrance to ShelfB:");
         for (Node n : path) {
             System.out.print(n.name + " -> ");
         }
         System.out.println("END");
     }
-
 }

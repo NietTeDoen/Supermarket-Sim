@@ -113,7 +113,10 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a732d14ded4e1c629e49826206d20236b" id="r_a732d14ded4e1c629e49826206d20236b"><td class="memItemLeft" align="right" valign="top">BufferedImage&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a732d14ded4e1c629e49826206d20236b">backgroundImage</a></td></tr>
 <tr class="memitem:afc2aa39f21c74d075cfc2e5551a005b9" id="r_afc2aa39f21c74d075cfc2e5551a005b9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_model_1_1_logic_1_1_world.html">World</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afc2aa39f21c74d075cfc2e5551a005b9">world</a></td></tr>
 </table>
-<a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>JPanel waarin de simulatie wordt weergegeven. </p>
+<p>Tekent de achtergrond, nodes, klanten en andere wereldobjecten. </p>
+</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aff9fa5ef06ab704ee278cc37300169fa" name="aff9fa5ef06ab704ee278cc37300169fa"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aff9fa5ef06ab704ee278cc37300169fa">&#9670;&#160;</a></span>SimulationPanel()</h2>
 
@@ -136,6 +139,14 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Constructor voor <a class="el" href="class_view_1_1_simulation_panel.html">SimulationPanel</a>. </p>
+<p>Laadt de achtergrondafbeelding en initialiseert de wereld. </p>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">IOException</td><td>indien de achtergrondafbeelding niet kan worden geladen </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -162,6 +173,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Verkrijg de hoogte van het paneel.</p>
+<dl class="section return"><dt>Returns</dt><dd>hoogte in pixels </dd></dl>
 
 </div>
 </div>
@@ -187,6 +200,8 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Verkrijg de breedte van het paneel.</p>
+<dl class="section return"><dt>Returns</dt><dd>breedte in pixels </dd></dl>
 
 </div>
 </div>
@@ -212,6 +227,14 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Tekent de componenten van het panel. </p>
+<p>Tekent de achtergrond, nodes, wereldobjecten en alle klanten. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">g</td><td>Graphics object gebruikt voor tekenen </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -235,6 +258,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Achtergrondafbeelding van het winkelpaneel </p>
 
 </div>
 </div>
@@ -257,6 +281,7 @@ Private Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>De wereld die getekend wordt </p>
 
 </div>
 </div>
