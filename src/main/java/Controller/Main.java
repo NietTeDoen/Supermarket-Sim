@@ -33,9 +33,6 @@ public class Main {
     /** Lijst van alle schappen in de winkel */
     public static List<Schap> schappenlijst = new ArrayList<>();
 
-    /** Lijst van alle producten in de winkel */
-    public static List<Product> productlijst = new ArrayList<>();
-
     /** Coördinaten van nodes (relatief) */
     public static HashMap<String, double[]> nodeCordinates = new HashMap<>();
 
@@ -115,21 +112,11 @@ public class Main {
      * </p>
      */
     private static void initiateSchappenLijst() {
-        schappenlijst.add(new Schap(200, 300, SchapType.Kast1));
-        schappenlijst.add(new Schap(400, 300, SchapType.Kast2));
-        schappenlijst.add(new Schap(600, 300, SchapType.Kast3));
-        schappenlijst.add(new Schap(800, 300, SchapType.Liggend_kast1));
-        schappenlijst.add(new Schap(1000, 300, SchapType.Liggend_kast2));
-
-        productlijst.add(new Product("Cola", 1.99));
-        productlijst.add(new Product("Milk", 1.49));
-        productlijst.add(new Product("Potatoes", 0.99));
-        productlijst.add(new Product("Pork", 3.99));
-        productlijst.add(new Product("Carrot", 0.79));
-
-        for (int i = 0; i < schappenlijst.size(); i++) {
-            schappenlijst.get(i).addProduct(productlijst.get(i), 24);
-        }
+        schappenlijst.add(new Schap(200, 300, SchapType.Kast1, "Appel"));
+        schappenlijst.add(new Schap(400, 300, SchapType.Kast2, "Brood"));
+        schappenlijst.add(new Schap(600, 300, SchapType.Kast3, "Melk"));
+        schappenlijst.add(new Schap(800, 300, SchapType.Liggend_kast1, "Chips"));
+        schappenlijst.add(new Schap(1000, 300, SchapType.Liggend_kast2, "Koekjes"));
     }
 
     /**

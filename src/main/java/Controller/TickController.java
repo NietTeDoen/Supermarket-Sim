@@ -75,6 +75,7 @@ public class TickController {
         personList.add(person);
     }
 
+
     /**
      * Verwijdert een klant uit de simulatie en uit de wereld.
      *
@@ -92,6 +93,7 @@ public class TickController {
      */
     private void tick() throws InterruptedException {
         checkCustomerAmount();
+        World.checkSchap();
 
         for (Person person : World.getPersons()) {
             person.update(); // update markeert eventueel despawned

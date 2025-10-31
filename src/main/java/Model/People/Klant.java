@@ -2,6 +2,7 @@ package Model.People;
 
 import Controller.TickController;
 import Model.Logic.Node;
+import Model.Logic.World;
 import Model.Store.Product;
 
 import javax.swing.*;
@@ -114,6 +115,10 @@ public class Klant extends Person {
         startAction("Pakt " + productName + "...", waitTicks);
     }
 
+    public void BeAngry(int waitTicks) {
+        startAction("Customer is angry.", waitTicks);
+    }
+
     /**
      * Update de status en positie van de klant.
      * <p>
@@ -194,12 +199,60 @@ public class Klant extends Person {
         if (nodeName == null) return;
 
         switch (nodeName.toLowerCase()) {
-            case "kast1" -> takeProduct("Appel", 30);
-            case "kast2" -> takeProduct("Brood", 20);
-            case "kast3" -> takeProduct("Melk", 25);
-            case "liggend-kast-1" -> takeProduct("Chips", 40);
-            case "liggend-kast-2" -> takeProduct("Koekjes", 35);
-            case "koelkast" -> takeProduct("Yoghurt", 45);
+            case "kast1" -> {
+                if (World.getVoorraad("Appel") > 0) {
+                    takeProduct("Appel", 30);
+                    World.lowerVoorraadByOne("Appel");
+                } else {
+                    BeAngry(50);
+                    System.out.println("⚠️ Geen Appels meer op voorraad!");
+                }
+            }
+            case "kast2" -> {
+                if (World.getVoorraad("Brood") > 0) {
+                    takeProduct("Brood", 20);
+                    World.lowerVoorraadByOne("Brood");
+                } else {
+                    BeAngry(50);
+                    System.out.println("⚠️ Geen Brood meer op voorraad!");
+                }
+            }
+            case "kast3" -> {
+                if (World.getVoorraad("Melk") > 0) {
+                    takeProduct("Melk", 25);
+                    World.lowerVoorraadByOne("Melk");
+                } else {
+                    BeAngry(50);
+                    System.out.println("⚠️ Geen Melk meer op voorraad!");
+                }
+            }
+            case "liggend-kast-1" -> {
+                if (World.getVoorraad("Chips") > 0) {
+                    takeProduct("Chips", 40);
+                    World.lowerVoorraadByOne("Chips");
+                } else {
+                    BeAngry(50);
+                    System.out.println("⚠️ Geen Chips meer op voorraad!");
+                }
+            }
+            case "liggend-kast-2" -> {
+                if (World.getVoorraad("Koekjes") > 0) {
+                    takeProduct("Koekjes", 35);
+                    World.lowerVoorraadByOne("Koekjes");
+                } else {
+                    BeAngry(50);
+                    System.out.println("⚠️ Geen Koekjes meer op voorraad!");
+                }
+            }
+            case "koelkast" -> {
+                if (World.getVoorraad("Yoghurt") > 0) {
+                    takeProduct("Yoghurt", 45);
+                    World.lowerVoorraadByOne("Yoghurt");
+                } else {
+                    BeAngry(50);
+                    System.out.println("⚠️ Geen Yoghurt meer op voorraad!");
+                }
+            }
             case "queue1", "queue2", "queue3" ->{
                 if(bijKassa) {
                     startAction("Wachten in de rij...", 40);

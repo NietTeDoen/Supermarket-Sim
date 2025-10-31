@@ -24,6 +24,18 @@ public class World {
     public static List<Schap> schappen = new ArrayList<>();
     public static List<Klant> persons = new ArrayList<>();
 
+    public static final Map<String, Integer> PRODUCT_VOORRAAD = new HashMap<>();
+
+    static {
+        // Vul de dictionary één keer bij het laden van de klasse
+        PRODUCT_VOORRAAD.put("Appel", 7);
+        PRODUCT_VOORRAAD.put("Brood", 7);
+        PRODUCT_VOORRAAD.put("Melk", 7);
+        PRODUCT_VOORRAAD.put("Chips", 7);
+        PRODUCT_VOORRAAD.put("Koekjes", 7);
+        PRODUCT_VOORRAAD.put("Yoghurt", 2);
+    }
+
     private static JPanel panel;
 
     public World() {
@@ -32,12 +44,46 @@ public class World {
         kassas.add(new Kassa(0.0977, 0.3819));
 
 // Schappen (relatieve coördinaten)
-        schappen.add(new Schap(0.5664, 0.1042, SchapType.Kast1));
-        schappen.add(new Schap(0.3125, 0.1042, SchapType.Kast2));
-        schappen.add(new Schap(0.0977, 0.1042, SchapType.Kast3));
-        schappen.add(new Schap(0.4102, 0.3125, SchapType.Liggend_kast1));
-        schappen.add(new Schap(0.6973, 0.3750, SchapType.Liggend_kast2));
-        schappen.add(new Schap(0.7813, 0.0903, SchapType.Koelkast));
+        schappen.add(new Schap(0.5664, 0.1042, SchapType.Kast1, "Appel"));
+        schappen.add(new Schap(0.3125, 0.1042, SchapType.Kast2, "Brood"));
+        schappen.add(new Schap(0.0977, 0.1042, SchapType.Kast3, "Melk"));
+        schappen.add(new Schap(0.4102, 0.3125, SchapType.Liggend_kast1, "Chips"));
+        schappen.add(new Schap(0.6973, 0.3750, SchapType.Liggend_kast2, "Koekjes"));
+        schappen.add(new Schap(0.7813, 0.0903, SchapType.Koelkast, "Yoghurt"));
+    }
+
+    // 🔽 Nieuwe methode: verlaagt voorraad met 1 (maar niet onder nul)
+    public static void lowerVoorraadByOne(String product) {
+        if (!PRODUCT_VOORRAAD.containsKey(product)) {
+            System.out.println("❌ Product niet gevonden: " + product);
+            return;
+        }
+        int huidigeVoorraad = PRODUCT_VOORRAAD.get(product);
+        if (huidigeVoorraad > 0) {
+            PRODUCT_VOORRAAD.put(product, huidigeVoorraad - 1);
+            System.out.println("✅ " + product + " voorraad verlaagd naar " + (huidigeVoorraad - 1));
+        } else {
+            System.out.println("⚠️ Geen voorraad meer van: " + product);
+        }
+    }
+
+    public static int getVoorraad(String product) {
+        return PRODUCT_VOORRAAD.getOrDefault(product, 0);
+    }
+
+    public static void checkSchap() {
+        for (Map.Entry<String, Integer> entry : PRODUCT_VOORRAAD.entrySet()) {
+            String product = entry.getKey();
+            int voorraad = entry.getValue();
+
+            if (voorraad == 0) {
+                System.out.println("❌ " + product + " is OUT OF STOCK!");
+            } else if (voorraad < 3) {
+                System.out.println("⚠️ " + product + " heeft lage voorraad (" + voorraad + " over)");
+            } else {
+                System.out.println("✅ " + product + " voorraad is op peil (" + voorraad + ")");
+            }
+        }
     }
 
     public void draw(Graphics g) {
