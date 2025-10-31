@@ -89,7 +89,7 @@ public class World {
                 System.out.println("⚠️ " + product + " heeft lage voorraad (" + voorraad + " over)");
                 spawnMedewerker(product);
             } else {
-                System.out.println("✅ " + product + " voorraad is op peil (" + voorraad + ")");
+                //System.out.println("✅ " + product + " voorraad is op peil (" + voorraad + ")");
             }
         }
     }

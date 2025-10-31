@@ -1,4 +1,5 @@
 # UML Onderbouwing Documentatie
+Harm Haandrikman & Tom Voordes
 
 ## Inleiding
 Deze documentatie bevat de belangrijkste ontwerpdiagrammen van het systeem, waaronder een Use Case Diagram (UCD), Klassendiagram (KD) en Sequencediagrammen (SD). Elk diagram is voorzien van een toelichting die de keuzes en structuur van het ontwerp onderbouwt. Het systeem representeert een gesimuleerde supermarktomgeving waarin klanten producten verzamelen, afrekenen en vertrekken, terwijl medewerkers vakken vullen.

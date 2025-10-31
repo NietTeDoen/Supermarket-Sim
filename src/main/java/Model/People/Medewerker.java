@@ -11,7 +11,7 @@ import java.util.List;
 public class Medewerker extends Person {
 
     private String taak;
-    private float speed = 8f;
+    private float speed = 15f;
     private int width = 100;
     private int height = 150;
 

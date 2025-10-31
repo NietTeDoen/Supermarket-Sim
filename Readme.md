@@ -1,6 +1,6 @@
-# WIP
-
 # 🛒 Supermarkt Simulator
+
+# Harm Haandrikman & Tom Voordes
 
 ## 📌 Beschrijving
 De Supermarkt Simulator is een Java 2D-simulatie waarin klanten en medewerkers
@@ -22,5 +22,3 @@ Dit project is ontwikkeld als schoolopdracht met als leerdoelen:
 
 ### Vereisten
 - Java 21 (of hoger)
-
-## 🏗️ Projectstructuur
