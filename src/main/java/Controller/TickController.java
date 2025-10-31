@@ -2,6 +2,7 @@ package Controller;
 
 import Model.Logic.World;
 import Model.People.Klant;
+import Model.People.Medewerker;
 import Model.People.Person;
 
 import javax.swing.*;
@@ -98,6 +99,13 @@ public class TickController {
         for (Person person : World.getPersons()) {
             person.update(); // update markeert eventueel despawned
         }
+
+        for (Medewerker m : World.medewerkers) {
+            m.update();
+        }
+
+        // ✅ Verwijder alle medewerkers die despawned zijn (pas na de loop!)
+        World.medewerkers.removeIf(Medewerker::isDespawned);
 
         // Verwijder alle gedespawnte personen na de updates
         World.getPersons().removeIf(Person::isDespawned);

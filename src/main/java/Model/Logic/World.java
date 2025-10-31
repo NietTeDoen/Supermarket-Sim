@@ -3,6 +3,7 @@ package Model.Logic;
 import Controller.Main;
 import Controller.TickController;
 import Model.People.Klant;
+import Model.People.Medewerker;
 import Model.People.Person;
 import Model.Store.Kassa;
 import Model.Store.Schap;
@@ -23,6 +24,7 @@ public class World {
     public static List<Kassa> kassas = new ArrayList<>();
     public static List<Schap> schappen = new ArrayList<>();
     public static List<Klant> persons = new ArrayList<>();
+    public static List<Medewerker> medewerkers = new ArrayList<>();
 
     public static final Map<String, Integer> PRODUCT_VOORRAAD = new HashMap<>();
 
@@ -71,6 +73,10 @@ public class World {
         return PRODUCT_VOORRAAD.getOrDefault(product, 0);
     }
 
+    public static int setVoorraad(String product, int value) {
+        return PRODUCT_VOORRAAD.put(product, value);
+    }
+
     public static void checkSchap() {
         for (Map.Entry<String, Integer> entry : PRODUCT_VOORRAAD.entrySet()) {
             String product = entry.getKey();
@@ -78,11 +84,66 @@ public class World {
 
             if (voorraad == 0) {
                 System.out.println("❌ " + product + " is OUT OF STOCK!");
+                spawnMedewerker(product);
             } else if (voorraad < 3) {
                 System.out.println("⚠️ " + product + " heeft lage voorraad (" + voorraad + " over)");
+                spawnMedewerker(product);
             } else {
                 System.out.println("✅ " + product + " voorraad is op peil (" + voorraad + ")");
             }
+        }
+    }
+
+    private static void spawnMedewerker(String product) {
+        // Check of er al een medewerker onderweg is voor dit product
+        boolean alreadyAssigned = medewerkers.stream()
+                .anyMatch(m -> m.getCurrentTask() != null
+                        && m.getCurrentTask().equalsIgnoreCase(product)
+                        && !m.isDespawned());
+
+        if (alreadyAssigned) return; // stop hier, want medewerker is al onderweg
+
+        Node entrance = Main.nodes.get("entrance");
+        Node schapNode = getNodeForProduct(product); // zelf een map maken van product -> Node
+        Node exit = Main.nodes.get("exit");
+
+        if (entrance == null || schapNode == null || exit == null) return;
+
+        int[] startPositie = new int[]{
+                (int) (entrance.x * TickController.getPanelWidth()),
+                (int) (entrance.y * TickController.getPanelHeight())
+        };
+
+        List<List<Node>> routeSegments = new ArrayList<>();
+
+        // Segment: entrance -> schap
+        List<Node> toSchap = WorldGraph.findPath(entrance, schapNode);
+        if (toSchap != null && !toSchap.isEmpty()) routeSegments.add(toSchap);
+
+        // Segment: schap -> exit
+        List<Node> toExit = WorldGraph.findPath(schapNode, exit);
+        if (toExit != null && !toExit.isEmpty()) routeSegments.add(toExit);
+
+        // Maak de medewerker
+        Medewerker m = new Medewerker(startPositie, routeSegments, "/images/medewerker.png", product);
+        medewerkers.add(m);
+
+        System.out.println("🧑‍🔧 Medewerker gespawned om " + product + " bij te vullen");
+    }
+
+
+    /**
+     * Helper: geeft de node van het schap op basis van productnaam
+     */
+    private static Node getNodeForProduct(String product) {
+        switch (product.toLowerCase()) {
+            case "appel": return Main.nodes.get("kast1");
+            case "brood": return Main.nodes.get("kast2");
+            case "melk": return Main.nodes.get("kast3");
+            case "chips": return Main.nodes.get("liggend-kast-1");
+            case "koekjes": return Main.nodes.get("liggend-kast-2");
+            case "yoghurt": return Main.nodes.get("koelkast");
+            default: return null;
         }
     }
 
@@ -90,6 +151,7 @@ public class World {
         for (Kassa k : kassas) k.draw(g);
         for (Schap s : schappen) s.draw(g);
         for (Klant p : persons) p.draw(g);
+        for  (Medewerker m : medewerkers) m.draw(g);
     }
 
     // Add-methodes
